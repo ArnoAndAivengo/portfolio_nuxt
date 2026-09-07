@@ -1,0 +1,39 @@
+company: collaber.ru
+position: Frontend Engineer
+period: 2026 — настоящее время
+location: Удалённо · стартап
+sites:
+  - https://collaber.ru
+current: true
+badge: Frontend
+order: 1
+tags:
+  - Nuxt 3
+  - Vue 3
+  - TypeScript
+  - Pinia
+  - FSD
+  - TanStack Query
+  - Tailwind
+  - shadcn-vue
+  - Element Plus
+  - Laravel Echo
+  - Leaflet
+  - OpenAPI
+  - Docker
+teaser: "Спроектировал OpenAPI-контракты для 15+ эндпоинтов — клиент по контракту сократил время новых фич на 30%. Внедрил FSD: параллельная работа 5 разработчиков без пересечения слоёв."
+duties:
+  - label: О продукте
+    text: "collaber.ru — платформа прямых коллабораций и взаимного маркетинга: компании, инфлюенсеры и кинопроекты находят партнёров по гео, аудитории и задачам, договариваются бартером, взаимно или платно."
+  - label: Frontend-архитектура
+    text: Nuxt 3 (SPA) + Vue 3 + TypeScript, переход на FSD (widgets / features / entities / shared), Pinia и TanStack Query, клиент по OpenAPI, Docker для локального контура.
+  - label: Продуктовые сценарии
+    text: лента и каталог компаний, создание и управление офферами, профили и рекламный инвентарь, избранное, настройки, подписка и оплата (ЮKassa).
+  - label: Real-time и UI
+    text: чаты на Laravel Echo, карты Leaflet, Tailwind + shadcn-vue + Element Plus, i18n, GitFlow (develop / qa / main), ESLint / Stylelint / Husky.
+  - label: Интеграция с API
+    text: клиент по OpenAPI, экраны под контракт Laravel. Backend понимаю на уровне эндпоинтов — основная зона ответственности клиент.
+results:
+  - Спроектировал OpenAPI-контракты для 15+ эндпоинтов — клиент по контракту сократил время новых фич на 30%.
+  - Перевёл клиент на FSD (widgets / features / entities / shared) — параллельная работа 5 разработчиков без пересечения слоёв.
+  - GitFlow develop / qa / main + OpenAPI-клиент — предсказуемые релизы без расхождения контракта.

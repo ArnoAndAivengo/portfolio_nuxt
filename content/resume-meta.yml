@@ -1,0 +1,75 @@
+highlights:
+  - lead: Руководил фронтенд-командой 5–7 человек
+    text: найм, code review, FSD и CI/CD, спринт 3 → 2 недели.
+  - lead: Оптимизировал GraphQL
+    text: на e-commerce с миллионами визитов — объём данных −30–40%.
+  - lead: Спроектировал клиент на Vue 3 / Nuxt / TypeScript (FSD)
+    text: рефакторинг legacy 30k+ строк без «большого взрыва».
+  - lead: Настроил CI/CD
+    text: GitHub Actions / GitLab CI и мониторинг — выкатка в прод с часов до минут.
+  - lead: Внедрил code review, Vitest / Playwright
+    text: в pipeline — меньше регрессий на проде.
+contributions:
+  - label: Клиентская архитектура
+    text: Vue 3 / Nuxt / TypeScript, FSD (features / entities / shared). Понятная структура для онбординга и параллельной работы.
+  - label: Производительность
+    text: GraphQL и пагинация, виртуализация таблиц, lazy loading, SSR / Core Web Vitals, когда от этого зависит продукт.
+  - label: Команда и поставка
+    text: Декомпозиция, code review, Definition of Done, GitLab CI. Руководил фронтендом 5–7 человек.
+  - label: Качество релиза
+    text: Vitest, Playwright, Storybook. Меньше регрессий, короче цикл «задача → прод».
+skillGroups:
+  - label: Frontend
+    note: Vue 3, Nuxt 3 (SSR), TypeScript, Pinia, Vue Router, Vite, FSD
+    items:
+      - Feature-Sliced Design (FSD)
+      - "Рефакторинг legacy (>30 000 строк)"
+      - TailwindCSS
+      - SCSS / PostCSS
+      - Code splitting
+      - Виртуализация списков
+      - ECharts
+      - Jest / Vitest
+      - Playwright (e2e)
+  - label: Также понимаю
+    note: Контракт API и поставка фронтенда — не отдельная backend/DevOps-роль
+    items:
+      - REST / GraphQL / OpenAPI
+      - Node.js — понимание
+      - PostgreSQL — понимание
+      - GitLab CI / Vite
+      - Docker — локальный контур
+education:
+  - year: "2020"
+    title: Институт деловой карьеры, Москва
+    org: Менеджмент организации
+training:
+  - year: "2026"
+    title: Программирование на языке Python от базового уровня до продвинутого
+    org: Азбука цифры (osnovanie.info) — профессиональная переподготовка, 256 ч. Окончание в 2026
+  - year: "2025"
+    title: Backend-инфраструктура для фронтенд-разработчиков
+    org: Yandex Практикум — Node.js, NestJS, PostgreSQL, Docker, Nginx, Yandex Cloud
+    diploma: /images/alex/diploms/diplom_node.webp
+    diplomaAlt: Диплом — Backend-инфраструктура, Yandex Практикум
+  - year: "2018"
+    title: Дипломная программа «Веб-программист. Профессиональная разработка на PHP и JS»
+    org: Учебный центр при МГТУ им. Н.Э. Баумана (Специалист.ru)
+    diploma: /images/alex/diploms/diplom_web.webp
+    diplomaAlt: Диплом — Веб-программист, МГТУ им. Баумана, Специалист.ru
+  - year: "2018"
+    title: Английский язык B1
+    org: Госкурсы «ИН-ЯЗ» — III уровень
+languages:
+  - name: Русский
+    level: родной
+  - name: Английский
+    level: B1 (средний)
+extra:
+  - Понимаю Node.js, NestJS, PostgreSQL и контракт Laravel/OpenAPI — закрываю интеграцию на клиенте.
+  - Docker, Nginx, GitLab CI. Локальный AI для code review на Ollama.
+goals:
+  - label: Позиция
+    text: Senior Frontend (Vue 3 / Nuxt / TypeScript / FSD)
+  - label: Формат
+    text: полная удалёнка, гибрид или офис в Москве · полная занятость

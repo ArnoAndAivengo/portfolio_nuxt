@@ -1,0 +1,38 @@
+company: Ригла
+position: Frontend Engineer
+period: 2021 — 2024
+location: Удалённо
+sites:
+  - https://www.rigla.ru/
+  - https://msk.zhivika.ru/
+  - https://www.budzdorov.ru/
+current: false
+badge: Frontend
+order: 5
+tags:
+  - Vue 3
+  - TypeScript
+  - Pinia
+  - GraphQL
+  - Apollo Client
+  - SSR
+  - SCSS
+  - Storybook
+  - Vitest
+  - Playwright
+  - GTM
+  - GA4
+teaser: "Три e-commerce с миллионами визитов: оптимизировал GraphQL-запросы — объём данных −30–40%. SSR и code splitting для загрузки витрины."
+duties:
+  - text: Поддержка и развитие фронтенда трёх e-commerce сервисов (rigla.ru, budzdorov.ru, aptekazhivika.ru).
+  - text: "Добавление новых функций: карточки товаров, корзина, поиск."
+  - text: "Рефакторинг: переход на Pinia, внедрение TypeScript, модульная архитектура."
+  - text: "GraphQL (Apollo Client): оптимизация запросов — уменьшение объёма данных на 30–40%."
+  - text: "Оптимизация загрузки страниц: SSR, code splitting."
+  - text: Настройка GTM, GA4, Яндекс.Метрики для сбора событий.
+  - text: Разработка и поддержка Storybook, e2e- и unit-тесты (Playwright, Vitest).
+  - text: Адаптивная вёрстка по макетам Figma, ревью кода, управление ветвлением в Git.
+results:
+  - Оптимизировал GraphQL (Apollo) — объём данных в ответах −30–40%.
+  - SSR и code splitting на трёх витринах с миллионами визитов — быстрее первая отрисовка и SEO.
+  - Рефакторинг на Pinia + TypeScript — меньше техдолга в карточках, корзине и поиске.

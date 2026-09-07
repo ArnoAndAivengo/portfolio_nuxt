@@ -1,0 +1,10 @@
+---
+period: 2024 — 2025
+title: Frontend Engineer · Вкурсе
+current: false
+order: 3
+tags: [Vue 3, Nuxt, TypeScript, FSD, GitLab CI]
+---
+
+Vue 3 + Nuxt SSR с нуля, FSD. Команда 5–7 человек, спринт 3 → 2 недели
+за счёт CI/CD.

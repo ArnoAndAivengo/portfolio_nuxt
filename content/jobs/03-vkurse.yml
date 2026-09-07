@@ -1,0 +1,46 @@
+company: ОАО «Вкурсе»
+position: Team Lead Frontend Engineer
+period: 2024 — 2025
+location: Удалённо · стартап
+sites:
+  - https://iva360.ru/
+current: false
+badge: Team Lead
+order: 4
+tags:
+  - Vue 3
+  - Nuxt.js
+  - TypeScript
+  - Pinia
+  - Quasar
+  - Tailwind CSS
+  - Storybook
+  - Vite
+  - SSR
+  - Vitest
+  - Playwright
+  - FSD
+  - GitLab CI
+  - Jira
+teaser: Управлял командой из 5–7 человек, сократил спринт с 3 до 2 недель за счёт CI/CD и FSD. Vue 3 + Nuxt SSR с нуля.
+duties:
+  - label: Найм и формирование команды
+    text: "участвовал в подборе Frontend-разработчиков (провёл > 30 собеседований), сформировал ядро команды из 5–7 человек под задачи проекта."
+  - label: Постановка задач и контроль
+    text: декомпозировал эпики на пользовательские истории, вёл спринты в Jira, контролировал сроки и качество выполнения задач.
+  - label: Код-ревью и менторство
+    text: ежедневные код-ревью (до 10–15 MR в день), чек-листы и стандарты написания кода; 1:1 с разработчиками, помощь джуниорам.
+  - label: Agile-процессы
+    text: настроил Scrum с нуля — планирование, груминг, ретроспективы; сократил время спринта с 3 недель до 2.
+  - label: Коммуникация со стейкхолдерами
+    text: регулярные демо для заказчика, согласование технических решений с бэкендом и дизайнерами.
+  - label: Архитектура с нуля
+    text: спроектировал Vue 3 + Nuxt.js (SSR) под высокие нагрузки, заложил модульную структуру FSD + TypeScript.
+  - label: Инфраструктура качества
+    text: Storybook, CI/CD (GitLab CI), тестирование (Vitest + Playwright).
+  - label: Производительность
+    text: оптимизировал Core Web Vitals (LCP, FID) — рост SEO и UX.
+results:
+  - "Управлял командой из 5–7 человек: найм (> 30 собеседований), code review, Scrum — спринт 3 → 2 недели."
+  - FSD + GitLab CI + Vitest/Playwright — короче путь задачи до продакшена, меньше регрессий.
+  - SSR на Nuxt.js и работа над Core Web Vitals (LCP, FID) — рост SEO и UX.
