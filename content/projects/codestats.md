@@ -1,7 +1,7 @@
 ---
 title: Codestats
 href: https://github.com/ArnoAndAivengo/codestats-platform
-status: Public
+status: Private
 badge: Pet-проект
 featured: true
 current: true
