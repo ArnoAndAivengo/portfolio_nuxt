@@ -31,6 +31,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://arnoandaivengo.ru/projects/learn-portal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arnoandaivengo.ru/projects/codestats</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://arnoandaivengo.ru/projects/crypto/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

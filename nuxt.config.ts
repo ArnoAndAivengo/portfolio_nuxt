@@ -57,6 +57,8 @@ export default defineNuxtConfig({
         '/projects/saas-dashboard/**',
         '/projects/ai-chat',
         '/projects/ai-chat/**',
+        '/yandex_dc6fc1a56afa142c.html',
+        '/google848ea8eb86f9b687.html',
       ],
       routes: [
         '/',

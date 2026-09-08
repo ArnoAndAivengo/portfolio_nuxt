@@ -64,7 +64,7 @@ app/
   pages/
   utils/
 content/
-public/          # robots.txt, sitemap.xml, favicon, картинки
+public/          # robots.txt, sitemap.xml, файлы Вебмастера/Search Console, favicon, картинки
 nginx.snippet.conf
 ```
 
@@ -75,6 +75,8 @@ nginx.snippet.conf
 1. `npm run generate`
 2. Залить содержимое `.output/public` на статический хостинг (nginx, Apache и т.п.)
 3. При необходимости добавить директивы из `nginx.snippet.conf` (заголовки, 404, отсечка WP/`.git`)
+
+Файлы подтверждения Вебмастера и Search Console должны оставаться в корне webroot: `yandex_dc6fc1a56afa142c.html`, `google848ea8eb86f9b687.html`. Счётчиков аналитики на сайте нет.
 
 ## Стек
 
