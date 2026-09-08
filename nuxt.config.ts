@@ -1,3 +1,5 @@
+const CRYPTO_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.coingecko.com https://api.rss2json.com wss://stream.binance.com:9443 https://stream.binance.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -48,11 +50,20 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: true,
+      ignore: [
+        '/projects/crypto',
+        '/projects/crypto/**',
+        '/projects/saas-dashboard',
+        '/projects/saas-dashboard/**',
+        '/projects/ai-chat',
+        '/projects/ai-chat/**',
+      ],
       routes: [
         '/',
         '/services',
         '/articles',
         '/projects',
+        '/projects/pets',
         '/projects/learn-portal',
         '/projects/codestats',
         '/resume',
@@ -63,6 +74,12 @@ export default defineNuxtConfig({
         '/ai',
       ],
     },
+    devProxy: {
+      '/api/coingecko': {
+        target: 'https://api.coingecko.com/api/v3',
+        changeOrigin: true,
+      },
+    },
   },
   routeRules: {
     '/**': {
@@ -72,6 +89,33 @@ export default defineNuxtConfig({
         'Referrer-Policy': 'strict-origin-when-cross-origin',
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
         'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+      },
+    },
+    '/projects/crypto/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': CRYPTO_CSP,
+      },
+    },
+    '/projects/saas-dashboard/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+      },
+    },
+    '/projects/ai-chat/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       },
     },
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },

@@ -1,0 +1,1 @@
+import{a3 as a,a1 as s,s as u,v as r,u as o}from"./CHbgJ9jU.js";function i(e){const t=e||s();return t?.ssrContext?.head||t?.runWithContext(()=>{if(u())return r(o)})}function x(e,t={}){const n=i(t.nuxt);if(n)return a(e,{head:n,...t})}export{x as u};

@@ -47,10 +47,12 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         href: z.string(),
+        repo: z.string().optional(),
         badge: z.string().optional(),
         status: z.enum(['Private', 'Public']),
         featured: z.boolean(),
         current: z.boolean(),
+        spa: z.boolean().optional(),
         variant: z.string().optional(),
         order: z.number(),
         tags: z.array(z.string()),

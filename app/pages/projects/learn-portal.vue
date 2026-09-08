@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { LearnPortalPage } from '~/widgets/current-project'
+</script>
+
 <template>
-  <ComingSoon title="LearnPortal" />
+  <LearnPortalPage />
 </template>

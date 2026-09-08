@@ -370,7 +370,6 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
 
 .section {
   scroll-margin-top: 4rem;
-  margin-bottom: 2rem;
   animation: fade-up 0.65s var(--ease) both;
 }
 
@@ -404,6 +403,8 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
 [data-page="services"] { --page-accent: var(--accent-services); }
 [data-page="articles"] { --page-accent: var(--accent-articles); }
 [data-page="projects"] { --page-accent: var(--accent-projects); }
+[data-page="learn-portal"] { --page-accent: var(--accent-projects); }
+[data-page="codestats"] { --page-accent: var(--accent-codestats); }
 [data-page="resume"] { --page-accent: var(--accent-resume); }
 [data-page="motivation"] { --page-accent: var(--accent-motivation); }
 [data-page="trainers"] { --page-accent: var(--accent-trainers); }

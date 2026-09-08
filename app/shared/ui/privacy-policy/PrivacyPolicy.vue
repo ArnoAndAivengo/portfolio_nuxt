@@ -9,7 +9,7 @@ withDefaults(defineProps<{
   consentLabel: string
   updated?: string
 }>(), {
-  updated: '26 августа 2026',
+  updated: '',
 })
 
 const emit = defineEmits<{

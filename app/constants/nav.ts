@@ -28,9 +28,9 @@ export const SITE_NAV = [
     label: 'Проекты',
     key: 'projects',
     eyebrow: 'Проекты',
-    lead: 'Собственные продукты в разработке — от архитектуры и кода до деплоя.',
+    lead: 'Собственные продукты — от архитектуры и кода до деплоя.',
     seoTitle: 'Проекты — Александр Обухов',
-    seoDescription: 'Текущие проекты: LearnPortal и Codestats — от архитектуры и кода до деплоя.',
+    seoDescription: 'Текущие проекты LearnPortal и Codestats.',
   },
   {
     to: '/resume',

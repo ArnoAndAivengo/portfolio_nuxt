@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { CodestatsPage } from '~/widgets/current-project'
+</script>
+
 <template>
-  <ComingSoon title="Codestats" />
+  <CodestatsPage />
 </template>

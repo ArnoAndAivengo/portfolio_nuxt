@@ -1,11 +1,14 @@
 ---
 title: Crypto Dashboard
-href: https://gitlab.com/ArnoAndAivengo/crypto-dashboard
+href: /projects/crypto/
+repo: https://gitlab.com/ArnoAndAivengo/crypto-dashboard
 status: Public
 featured: true
 current: false
+spa: true
+variant: crypto
 order: 4
-tags: [React, Vite, Express, WebSocket]
+tags: [React, Vite, WebSocket]
 ---
 
-Дашборд криптовалют в реальном времени.
+Дашборд криптовалют в реальном времени на WebSocket.

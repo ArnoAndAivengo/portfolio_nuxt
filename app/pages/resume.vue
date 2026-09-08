@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { Tags } from '~/shared/ui/tags'
+import { isRemoteHref, projectHrefIsExternal, projectRepoHref } from '~/utils/project'
+
 const { data: home } = await useHome()
 const { data: resume } = await useAsyncData('resume', () => queryCollection('resume').first())
 const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
@@ -102,12 +105,7 @@ onUnmounted(() => {
         >
           <h3 class="skills__label">{{ group.label }}</h3>
           <p class="skills__hint">{{ group.note }}</p>
-          <ul class="tags">
-            <li
-              v-for="item in group.items"
-              :key="item"
-            >{{ item }}</li>
-          </ul>
+          <Tags :items="group.items" />
         </div>
       </div>
     </section>
@@ -125,24 +123,19 @@ onUnmounted(() => {
           <NuxtLink
             class="proj__card"
             :to="project.href"
-            :external="project.href.startsWith('http')"
-            :target="project.href.startsWith('http') ? '_blank' : undefined"
-            :rel="project.href.startsWith('http') ? 'noopener noreferrer' : undefined"
+            :external="projectHrefIsExternal(project.href, project.spa)"
+            :target="isRemoteHref(project.href) ? '_blank' : undefined"
+            :rel="isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
           >
             <div class="proj__head">
               <h3 class="proj__title">{{ project.title }}</h3>
               <span class="job__badge">{{ project.status }}</span>
-              <ProjectRepoIcon :href="project.href" />
+              <ProjectRepoIcon :href="projectRepoHref(project.href, project.repo)" />
             </div>
             <div class="proj__text prose">
               <ContentRenderer :value="project" />
             </div>
-            <ul class="tags">
-              <li
-                v-for="tag in project.tags"
-                :key="tag"
-              >{{ tag }}</li>
-            </ul>
+            <Tags :items="project.tags" />
           </NuxtLink>
         </li>
       </ul>
@@ -187,12 +180,7 @@ onUnmounted(() => {
             <p class="job__position">{{ job.position }}</p>
           </header>
           <p class="job__summary">{{ asText(job.teaser) }}</p>
-          <ul class="tags">
-            <li
-              v-for="tag in job.tags"
-              :key="tag"
-            >{{ tag }}</li>
-          </ul>
+          <Tags :items="job.tags" />
           <details class="job__extra">
             <summary class="job__more">
               <span class="job__more-label job__more-label--open">Подробнее</span>

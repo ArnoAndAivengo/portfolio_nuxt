@@ -1,0 +1,122 @@
+.projects-hub__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.projects-hub__card {
+  --hub-accent: var(--accent-projects);
+  padding: 0.85rem 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--hub-accent) 45%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  transition: border-color 0.3s ease, transform 0.35s var(--ease);
+}
+
+.projects-hub__card--codestats {
+  --hub-accent: var(--accent-codestats);
+}
+
+.projects-hub__card--saas {
+  --hub-accent: #2563eb;
+}
+
+.projects-hub__card--ai {
+  --hub-accent: var(--accent-ai);
+}
+
+.projects-hub__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hub-accent);
+}
+
+.projects-hub__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.projects-hub__title-link {
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.projects-hub__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  transition: color 0.25s ease;
+}
+
+.projects-hub__aside {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.85rem;
+  margin-left: auto;
+}
+
+.projects-hub__preview,
+.projects-hub__repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.projects-hub__repo .proj__icon {
+  color: inherit;
+}
+
+.projects-hub__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.projects-hub__excerpt {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.projects-hub__link .tags {
+  margin-top: 0.75rem;
+}
+
+.projects-hub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+  margin: 0;
+}
+
+.projects-hub__actions a {
+  color: var(--heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.projects-hub__preview:hover,
+.projects-hub__repo:hover {
+  color: var(--hub-accent);
+}
+
+.projects-hub__card:hover .projects-hub__title,
+.projects-hub__card:hover .projects-hub__actions a {
+  color: var(--hub-accent);
+}
