@@ -1,0 +1,46 @@
+---
+description: Feature-Sliced Design (FSD) для Nuxt: слои, импорты и структура
+globs: app/**/*
+---
+
+# Feature-Sliced Design в проекте
+
+Проект использует архитектуру FSD. Соблюдай порядок слоёв и правила импортов.
+
+Корень слоёв — `app/` (Nuxt 4 `srcDir`).
+
+## Слои (сверху вниз)
+
+1. **app** — приложение: `app.vue`, провайдеры, глобальные стили (корень `app/`)
+2. **pages** — страницы: `app/pages/` (Nuxt file-based routing)
+3. **widgets** — виджеты: самостоятельные блоки страницы, `app/widgets/`
+4. **features** — фичи: действия пользователя, `app/features/`
+5. **entities** — сущности: бизнес-сущности, `app/entities/`
+6. **shared** — переиспользуемое: UI, утилиты, API, типы, `app/shared/`
+
+## Алиасы импортов
+
+- `~/` или `~/shared/*`, `~/entities/*`, `~/features/*`, `~/widgets/*`, `~/pages/*`
+- Предпочтительно: `~/shared/...`, `~/entities/...` и т.д. для явного указания слоя.
+
+## Правила импортов
+
+- **shared** — не импортирует из других слоёв (entities, features, widgets, pages).
+- **entities** — только из `shared`.
+- **features** — из `entities` и `shared`.
+- **widgets** — из `features`, `entities`, `shared`.
+- **pages** — из `widgets`, `features`, `entities`, `shared`.
+- **app** (layouts, app.vue, plugins) — из любых слоёв.
+
+## Структура слайса (entities, features, widgets)
+
+- `ui/` — компоненты (Vue).
+- `model/` — стейт, API, composables (если есть).
+- `api/` — запросы к API (если есть).
+- Публичный API слайса — через `index.ts` (re-export только нужного).
+
+## Nuxt-специфика
+
+- `app/pages/` — роуты Nuxt (file-based routing), не переименовывать.
+- `app/layouts/` — макеты приложения (слой app).
+- Компоненты импортируются явно (через алиасы), не полагаться только на auto-import из `components/`.

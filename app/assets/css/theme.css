@@ -11,6 +11,7 @@
   --accent-resume: #b794f6;
   --accent-motivation: #f472b6;
   --accent-trainers: #22d3ee;
+  --accent-python: #facc15;
   --accent-ai: #818cf8;
 }
 
@@ -187,6 +188,10 @@ a {
 
 .aside--compact .lead {
   margin-top: 0.35rem;
+}
+
+.aside--compact .role + .lead {
+  margin-top: 1rem;
 }
 
 .name {
@@ -402,6 +407,8 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
 [data-page="resume"] { --page-accent: var(--accent-resume); }
 [data-page="motivation"] { --page-accent: var(--accent-motivation); }
 [data-page="trainers"] { --page-accent: var(--accent-trainers); }
+[data-page="typing"] { --page-accent: var(--accent-trainers); }
+[data-page="python"] { --page-accent: var(--accent-python); }
 [data-page="ai"] { --page-accent: var(--accent-ai); }
 
 .prose {
@@ -427,6 +434,15 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
   gap: 0.2rem;
   border-radius: 0.35rem;
   background: var(--accent-tint);
+}
+
+.prose ol {
+  margin: 0 0 1.35rem;
+  padding-left: 1.25rem;
+}
+
+.prose code {
+  font-size: 0.88em;
 }
 
 .prose li {

@@ -58,6 +58,8 @@ export default defineNuxtConfig({
         '/resume',
         '/motivation',
         '/trainers',
+        '/trainers/typing',
+        '/trainers/python',
         '/ai',
       ],
     },
@@ -73,5 +75,7 @@ export default defineNuxtConfig({
       },
     },
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },
+    '/trainers/typing.html': { redirect: { to: '/trainers/typing', statusCode: 301 } },
+    '/trainers/python.html': { redirect: { to: '/trainers/python', statusCode: 301 } },
   },
 })

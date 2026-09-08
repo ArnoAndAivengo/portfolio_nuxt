@@ -1,0 +1,589 @@
+.py-page {
+  --slate: var(--text);
+  --lightest-slate: var(--heading);
+  --lightest-navy: var(--border);
+  --green: var(--accent);
+  --navy: var(--bg);
+  --accent-typing: #22d3ee;
+  --accent-python: #facc15;
+  --page-accent: var(--accent-python);
+}
+
+.py-page.py-needs-consent #board,
+.py-page.py-needs-consent #tips {
+  display: none;
+}
+
+.py-page.py-has-consent .py-welcome {
+  display: none;
+}
+
+.py-page.py-has-consent .trainer-privacy {
+  display: none;
+}
+
+.py-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  height: 3px;
+  width: 0;
+  background: var(--page-accent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-python) 45%, transparent);
+  transition: width 0.55s var(--ease);
+  pointer-events: none;
+}
+
+.py-view {
+  display: none;
+}
+
+.py-view.is-on {
+  display: block;
+}
+
+.py-kicker {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+}
+
+.py-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--lightest-slate);
+}
+
+.py-lead {
+  margin: 0 0 1.35rem;
+  max-width: 38rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--slate);
+}
+
+.py-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  margin: 0 0 1.35rem;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.py-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--lightest-navy);
+  border-radius: 0.45rem;
+}
+
+.py-tab {
+  appearance: none;
+  flex: 1 1 auto;
+  min-width: 6.5rem;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  background: transparent;
+  color: var(--slate);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.py-tab:hover {
+  color: var(--lightest-slate);
+  background: rgba(250, 204, 21, 0.06);
+}
+
+.py-tab.is-active {
+  border-color: color-mix(in srgb, var(--accent-python) 55%, var(--lightest-navy));
+  background: var(--page-accent-tint);
+  color: var(--page-accent);
+}
+
+.py-empty {
+  padding: 1.25rem 1.15rem;
+  border: 1px dashed var(--lightest-navy);
+  border-radius: 0.4rem;
+}
+
+.py-empty__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--lightest-slate);
+}
+
+.py-empty__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+.py-meta strong {
+  color: var(--lightest-slate);
+  font-weight: 700;
+}
+
+.py-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 0.85rem 0;
+}
+
+.py-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--page-accent);
+  border-radius: 0.35rem;
+  background: var(--page-accent-tint);
+  color: var(--page-accent);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.3s var(--ease);
+}
+
+.py-btn:hover {
+  background: var(--page-accent);
+  color: var(--navy);
+}
+
+.py-btn--ghost {
+  border-color: var(--lightest-navy);
+  background: transparent;
+  color: var(--light-slate);
+}
+
+.py-btn--ghost:hover {
+  border-color: var(--page-accent);
+  background: var(--page-accent-tint);
+  color: var(--page-accent);
+}
+
+.py-btn:disabled,
+.py-btn:disabled:hover {
+  opacity: 0.42;
+  cursor: not-allowed;
+  transform: none;
+  border-color: var(--lightest-navy);
+  background: transparent;
+  color: var(--slate);
+}
+
+.py-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: min(32rem, calc(100dvh - 22rem));
+  margin: 0 0 0.25rem;
+  padding: 0.15rem 0.45rem 0.35rem 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(136, 146, 176, 0.45) transparent;
+}
+
+.py-lessons::-webkit-scrollbar {
+  width: 6px;
+}
+
+.py-lessons::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(136, 146, 176, 0.4);
+}
+
+.py-card {
+  padding: 1.05rem 1.1rem 1.15rem;
+  border: 1px solid var(--lightest-navy);
+  border-radius: 0.4rem;
+}
+
+.py-card.is-locked {
+  opacity: 0.62;
+}
+
+.py-card__kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+}
+
+.py-card__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--lightest-slate);
+}
+
+.py-card__lead,
+.py-card__meta {
+  margin: 0 0 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--slate);
+}
+
+.py-card__meta {
+  margin-bottom: 0.95rem;
+  color: var(--light-slate);
+}
+
+.py-card__actions .py-btn {
+  width: auto;
+}
+
+.py-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.15rem;
+}
+
+.py-score {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+
+.py-score strong {
+  color: var(--lightest-slate);
+}
+
+.py-dots {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.35rem;
+}
+
+.py-dot {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--lightest-navy);
+  transition: background 0.3s ease;
+}
+
+.py-dot.is-active {
+  background: var(--page-accent);
+}
+
+.py-dot.is-done {
+  background: color-mix(in srgb, var(--page-accent) 45%, var(--lightest-navy));
+}
+
+.py-dot.is-correct {
+  background: #34d399;
+}
+
+.py-dot.is-wrong {
+  background: #f87171;
+}
+
+.py-q-num {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--page-accent);
+}
+
+.py-q-text {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--lightest-slate);
+}
+
+.py-q-context {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.py-code {
+  margin: 0 0 1.15rem;
+  padding: 0.95rem 1rem;
+  overflow-x: auto;
+  border-radius: 0.35rem;
+  border: 1px solid var(--lightest-navy);
+  background: rgba(2, 12, 27, 0.7);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  white-space: pre;
+  color: var(--page-accent);
+}
+
+.py-code[hidden] {
+  display: none;
+}
+
+.py-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.py-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--lightest-navy);
+  border-radius: 0.35rem;
+  background: transparent;
+  color: var(--light-slate);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.py-option:hover:not(:disabled) {
+  border-color: var(--page-accent);
+  background: var(--page-accent-tint);
+}
+
+.py-option:disabled {
+  cursor: default;
+}
+
+.py-option__letter {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  border: 1px solid var(--lightest-navy);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--page-accent);
+}
+
+.py-option.is-correct {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--lightest-slate);
+}
+
+.py-option.is-correct .py-option__letter {
+  border-color: #34d399;
+  color: #34d399;
+}
+
+.py-option.is-wrong {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.py-option.is-wrong .py-option__letter {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+.py-feedback {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 0.35rem;
+  background: var(--page-accent-tint);
+  border: 1px solid var(--lightest-navy);
+}
+
+.py-feedback.is-correct {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.py-feedback.is-wrong {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.py-feedback__title {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--lightest-slate);
+}
+
+.py-feedback.is-correct .py-feedback__title {
+  color: #34d399;
+}
+
+.py-feedback.is-wrong .py-feedback__title {
+  color: #f87171;
+}
+
+.py-feedback__text,
+.py-feedback__extra {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.py-feedback__extra {
+  margin-top: 0.55rem;
+}
+
+.py-feedback__extra strong {
+  color: var(--light-slate);
+  font-weight: 600;
+}
+
+.py-run-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+}
+
+.py-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.15rem;
+}
+
+.py-stat {
+  padding: 0.85rem 0.5rem;
+  border: 1px solid var(--lightest-navy);
+  border-radius: 0.35rem;
+  text-align: center;
+}
+
+.py-stat__num {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--lightest-slate);
+}
+
+.py-stat__label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.py-stat--ok .py-stat__num {
+  color: #34d399;
+}
+
+.py-stat--bad .py-stat__num {
+  color: #f87171;
+}
+
+.py-stat--accent .py-stat__num {
+  color: var(--page-accent);
+}
+
+.py-badge {
+  display: inline-block;
+  margin-bottom: 1.15rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.3rem;
+  border: 1px solid var(--page-accent);
+  background: var(--page-accent-tint);
+  color: var(--page-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.py-badge--ok {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.py-badge--mid {
+  border-color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.py-unlock {
+  margin: 0 0 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--light-slate);
+}
+
+.py-unlock[hidden],
+.py-btn[hidden] {
+  display: none;
+}
+
+.py-hint {
+  margin: 0.85rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.py-welcome .bc-prose {
+  margin: 0 0 1.25rem;
+  max-width: 38rem;
+}
+
+@media (max-width: 720px) {
+  .py-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .py-progress,
+  .py-btn,
+  .py-option,
+  .py-dot {
+    transition: none;
+  }
+}

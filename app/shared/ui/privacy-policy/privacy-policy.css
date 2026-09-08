@@ -1,0 +1,76 @@
+.trainer-privacy .prose code {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  font-size: 0.86em;
+  color: var(--text-strong);
+}
+
+.trainer-privacy .prose ul {
+  display: block;
+  margin: 0.6rem 0 1rem;
+  padding-left: 1.15rem;
+  list-style: disc;
+  background: transparent;
+}
+
+.trainer-privacy .prose li {
+  margin: 0;
+  color: var(--text);
+}
+
+.trainer-privacy .prose li + li {
+  margin-top: 0.35rem;
+}
+
+.trainer-privacy__choice {
+  margin: 1.15rem 0 0.85rem;
+}
+
+.trainer-privacy__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.trainer-privacy__btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--page-accent, var(--accent));
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--page-accent, var(--accent)) 12%, transparent);
+  color: var(--page-accent, var(--accent));
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.3s var(--ease);
+}
+
+.trainer-privacy__btn:hover {
+  background: var(--page-accent, var(--accent));
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+.trainer-privacy__btn--ghost {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text-strong);
+}
+
+.trainer-privacy__btn--ghost:hover {
+  border-color: var(--page-accent, var(--accent));
+  background: color-mix(in srgb, var(--page-accent, var(--accent)) 12%, transparent);
+  color: var(--page-accent, var(--accent));
+}
+
+.trainer-privacy__updated {
+  margin: 0.85rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text);
+}
