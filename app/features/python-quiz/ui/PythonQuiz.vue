@@ -92,13 +92,9 @@ const {
           >{{ item.label }}</button>
         </div>
 
-        <p class="py-kicker">{{ levelMeta.label }} уровень</p>
-        <h3 class="py-title">
-          {{ level === 'basic' ? 'Учимся читать простой Python' : 'Уровень в работе' }}
-        </h3>
         <p class="py-lead">
           {{ level === 'basic'
-            ? 'Восемь уроков: от синтаксиса до вопросов как на собесе. Варианты перемешиваются.'
+            ? 'Восемь уроков: от синтаксиса до вопросов как на собесе.'
             : 'Сюда скоро добавим уроки. Пока можно пройти весь базовый уровень.' }}
         </p>
 
@@ -125,10 +121,13 @@ const {
               :key="lesson.id"
               class="py-card"
             >
-              <p class="py-card__kicker">{{ lesson.kicker }}</p>
+              <div style="display: flex; justify-content: space-between;">
+                <p class="py-card__kicker">{{ lesson.kicker }}</p>
+
+                <p class="py-card__meta">{{ statusOf(lesson.id, lesson.questions.length) }}</p>
+              </div>
               <h3 class="py-card__title">{{ lesson.title }}</h3>
               <p class="py-card__lead">{{ lesson.lead }}</p>
-              <p class="py-card__meta">{{ statusOf(lesson.id, lesson.questions.length) }}</p>
               <div class="py-card__actions">
                 <button
                   type="button"

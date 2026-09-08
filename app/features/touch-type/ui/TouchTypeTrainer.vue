@@ -69,8 +69,7 @@ const onDecline = () => {
           class="kt-view is-on"
           data-kt-view="hub"
         >
-          <p class="kt-kicker">QWERTY · English</p>
-          <h3 class="kt-title">Учимся печатать, не глядя на клавиатуру</h3>
+          <p class="kt-kicker">Touch Type · English</p>
 
           <div class="kt-meta">
             <span>Освоено: <strong id="kt-progress-keys">0 / 30</strong></span>
