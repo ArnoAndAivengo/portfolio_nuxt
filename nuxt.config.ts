@@ -73,7 +73,6 @@ export default defineNuxtConfig({
         '/trainers',
         '/trainers/typing',
         '/trainers/python',
-        '/ai',
       ],
     },
     devProxy: {

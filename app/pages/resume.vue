@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Tags } from '~/shared/ui/tags'
-import { isRemoteHref, projectHrefIsExternal, projectRepoHref } from '~/utils/project'
+import { isRemoteHref, projectGitUrl, projectHasPreview, projectHrefIsExternal } from '~/utils/project'
 
 const { data: home } = await useHome()
 const { data: resume } = await useAsyncData('resume', () => queryCollection('resume').first())
@@ -120,23 +120,36 @@ onUnmounted(() => {
           v-for="project in projects"
           :key="project.path"
         >
-          <NuxtLink
-            class="proj__card"
-            :to="project.href"
-            :external="projectHrefIsExternal(project.href, project.spa)"
-            :target="isRemoteHref(project.href) ? '_blank' : undefined"
-            :rel="isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
-          >
+          <article class="proj__card">
             <div class="proj__head">
               <h3 class="proj__title">{{ project.title }}</h3>
               <span class="job__badge">{{ project.status }}</span>
-              <ProjectRepoIcon :href="projectRepoHref(project.href, project.repo)" />
+              <NuxtLink
+                v-if="projectHasPreview(project.href, project.spa)"
+                class="proj__preview"
+                :to="project.href"
+                :external="projectHrefIsExternal(project.href, project.spa)"
+                :target="project.spa || isRemoteHref(project.href) ? '_blank' : undefined"
+                :rel="project.spa || isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
+              >
+                Превью
+              </NuxtLink>
+              <a
+                v-if="projectGitUrl(project.href, project.repo)"
+                class="proj__repo"
+                :href="projectGitUrl(project.href, project.repo)"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`Репозиторий ${project.title}`"
+              >
+                <ProjectRepoIcon :href="projectGitUrl(project.href, project.repo) ?? project.href" />
+              </a>
             </div>
             <div class="proj__text prose">
               <ContentRenderer :value="project" />
             </div>
             <Tags :items="project.tags" />
-          </NuxtLink>
+          </article>
         </li>
       </ul>
     </section>

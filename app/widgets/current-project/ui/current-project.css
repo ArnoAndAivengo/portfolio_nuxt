@@ -1,7 +1,6 @@
 .current-project {
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
 }
 
 .current-project__section {
