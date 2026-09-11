@@ -1,5 +1,5 @@
 company: collaber.ru
-position: Frontend Engineer
+position: Frontend-разработчик (Senior)
 period: 2026 — настоящее время
 location: Удалённо · стартап
 sites:
@@ -37,3 +37,4 @@ results:
   - Спроектировал OpenAPI-контракты для 15+ эндпоинтов — клиент по контракту сократил время новых фич на 30%.
   - Перевёл клиент на FSD (widgets / features / entities / shared) — параллельная работа 5 разработчиков без пересечения слоёв.
   - GitFlow develop / qa / main + OpenAPI-клиент — предсказуемые релизы без расхождения контракта.
+

@@ -1,11 +1,11 @@
 company: Центр горизонтального бурения
-position: Frontend Engineer
+position: Frontend-разработчик
 period: "2025 — 2025"
-location: Удалённо · проектная работа
+location: Удалённо
 sites:
   - https://cgb.burgaz.ru/
 current: false
-badge: Frontend
+badge: Проектная работа по ГПХ
 order: 3
 tags:
   - JavaScript (ES6+)
@@ -31,3 +31,4 @@ results:
   - Стабильная работа production-системы без простоев из‑за фронтенд-регрессий.
   - Ускорение закрытия типовых задач за счёт точечных изменений в наследуемом коде.
   - Прозрачная коммуникация с заказчиком по срокам и объёму работ.
+

@@ -1,6 +1,6 @@
 ---
 period: 2021 — 2024
-title: Frontend Engineer · Ригла
+title: Frontend-разработчик (Middle) · Ригла
 current: false
 order: 4
 tags: [Vue 3, GraphQL, SSR, Storybook, Playwright]

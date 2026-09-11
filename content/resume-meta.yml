@@ -20,7 +20,7 @@ contributions:
     text: Vitest, Playwright, Storybook. Меньше регрессий, короче цикл «задача → прод».
 skillGroups:
   - label: Frontend
-    note: Vue 3, Nuxt 3 (SSR), TypeScript, Pinia, Vue Router, Vite, FSD
+    note: Vue 3, Nuxt 3 (SSR), TypeScript, JavaScript, HTML, CSS, Pinia, Vue Router, Vite, FSD
     items:
       - Feature-Sliced Design (FSD)
       - "Рефакторинг legacy (>30 000 строк)"
@@ -35,7 +35,6 @@ skillGroups:
     note: Контракт API и поставка фронтенда — не отдельная backend/DevOps-роль
     items:
       - REST / GraphQL / OpenAPI
-      - Node.js — понимание
       - PostgreSQL — понимание
       - GitLab CI / Vite
       - Docker — локальный контур
@@ -66,10 +65,10 @@ languages:
   - name: Английский
     level: B1 (средний)
 extra:
-  - Понимаю Node.js, NestJS, PostgreSQL и контракт Laravel/OpenAPI — закрываю интеграцию на клиенте.
+  - Понимаю NestJS, PostgreSQL и контракт Laravel/OpenAPI — закрываю интеграцию на клиенте.
   - Docker, Nginx, GitLab CI. Локальный AI для code review на Ollama.
 goals:
   - label: Позиция
-    text: Senior Frontend (Vue 3 / Nuxt / TypeScript / FSD)
+    text: Frontend-разработчик (Senior) · Vue 3 / Nuxt / TypeScript / FSD
   - label: Формат
     text: полная удалёнка, гибрид или офис в Москве · полная занятость

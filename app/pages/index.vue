@@ -125,6 +125,11 @@ usePageSeo({
     >
       <h2 class="section__title">Контакты</h2>
       <p class="prose">Готов обсудить роль или проект.</p>
+      <p class="contact-plain">
+        <a :href="`mailto:${home.email}`">{{ home.email }}</a>
+        <a :href="home.phoneHref">{{ home.phone }}</a>
+        <span>Москва</span>
+      </p>
       <div class="contact-actions">
         <a
           class="btn btn--primary"

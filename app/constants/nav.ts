@@ -12,7 +12,7 @@ export const SITE_NAV = [
     eyebrow: 'Услуги',
     lead: 'Берусь за проекты любой сложности. Лендинги, SaaS, API, деплой — всё под ключ. От прототипа до боевого сервера.',
     seoTitle: 'Услуги — Александр Обухов',
-    seoDescription: 'Frontend, backend и DevOps под ключ. Vue, Nuxt, Node.js — от идеи до продакшена.',
+    seoDescription: 'Frontend, backend и DevOps под ключ. Vue, Nuxt, TypeScript — от идеи до продакшена.',
   },
   {
     to: '/articles',

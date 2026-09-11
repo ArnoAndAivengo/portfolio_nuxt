@@ -111,50 +111,6 @@ onUnmounted(() => {
     </section>
 
     <section
-      id="projects"
-      class="section"
-    >
-      <h2 class="section__title">Проекты</h2>
-      <ul class="proj">
-        <li
-          v-for="project in projects"
-          :key="project.path"
-        >
-          <article class="proj__card">
-            <div class="proj__head">
-              <h3 class="proj__title">{{ project.title }}</h3>
-              <span class="job__badge">{{ project.status }}</span>
-              <NuxtLink
-                v-if="projectHasPreview(project.href, project.spa)"
-                class="proj__preview"
-                :to="project.href"
-                :external="projectHrefIsExternal(project.href, project.spa)"
-                :target="project.spa || isRemoteHref(project.href) ? '_blank' : undefined"
-                :rel="project.spa || isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
-              >
-                Превью
-              </NuxtLink>
-              <a
-                v-if="projectGitUrl(project.href, project.repo)"
-                class="proj__repo"
-                :href="projectGitUrl(project.href, project.repo)"
-                target="_blank"
-                rel="noopener noreferrer"
-                :aria-label="`Репозиторий ${project.title}`"
-              >
-                <ProjectRepoIcon :href="projectGitUrl(project.href, project.repo) ?? project.href" />
-              </a>
-            </div>
-            <div class="proj__text prose">
-              <ContentRenderer :value="project" />
-            </div>
-            <Tags :items="project.tags" />
-          </article>
-        </li>
-      </ul>
-    </section>
-
-    <section
       id="experience"
       class="section"
     >
@@ -227,6 +183,50 @@ onUnmounted(() => {
           </details>
         </article>
       </div>
+    </section>
+
+    <section
+      id="projects"
+      class="section"
+    >
+      <h2 class="section__title">Проекты</h2>
+      <ul class="proj">
+        <li
+          v-for="project in projects"
+          :key="project.path"
+        >
+          <article class="proj__card">
+            <div class="proj__head">
+              <h3 class="proj__title">{{ project.title }}</h3>
+              <span class="job__badge">{{ project.status }}</span>
+              <NuxtLink
+                v-if="projectHasPreview(project.href, project.spa)"
+                class="proj__preview"
+                :to="project.href"
+                :external="projectHrefIsExternal(project.href, project.spa)"
+                :target="project.spa || isRemoteHref(project.href) ? '_blank' : undefined"
+                :rel="project.spa || isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
+              >
+                Превью
+              </NuxtLink>
+              <a
+                v-if="projectGitUrl(project.href, project.repo)"
+                class="proj__repo"
+                :href="projectGitUrl(project.href, project.repo)"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`Репозиторий ${project.title}`"
+              >
+                <ProjectRepoIcon :href="projectGitUrl(project.href, project.repo) ?? project.href" />
+              </a>
+            </div>
+            <div class="proj__text prose">
+              <ContentRenderer :value="project" />
+            </div>
+            <Tags :items="project.tags" />
+          </article>
+        </li>
+      </ul>
     </section>
 
     <section
@@ -336,6 +336,11 @@ onUnmounted(() => {
     >
       <h2 class="section__title">Контакты</h2>
       <p class="prose">Готов обсудить роль или проект.</p>
+      <p class="contact-plain">
+        <a :href="`mailto:${home.email}`">{{ home.email }}</a>
+        <a :href="home.phoneHref">{{ home.phone }}</a>
+        <span>Москва</span>
+      </p>
       <div class="contact-actions">
         <a
           class="btn btn--primary"

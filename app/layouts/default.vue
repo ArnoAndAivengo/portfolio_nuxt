@@ -36,7 +36,9 @@ const personSchema = computed(() => {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: home.value.name,
-    jobTitle: home.value.role,
+    jobTitle: [home.value.role, home.value.roleEn],
+    email: home.value.email,
+    telephone: home.value.phoneHref.replace(/^tel:/, ''),
     description: home.value.seoDescription,
     image: home.value.ogImage || OG_IMAGE,
     url: `${SITE_ORIGIN}/`,
@@ -117,6 +119,12 @@ useHead({
             </div>
             <h1 class="name">{{ home.name }}</h1>
             <p class="role">{{ home.role }}</p>
+            <p class="role-en">{{ home.roleEn }}</p>
+            <p class="profile-contacts">
+              <a :href="`mailto:${home.email}`">{{ home.email }}</a>
+              <a :href="home.phoneHref">{{ home.phone }}</a>
+              <span>Москва</span>
+            </p>
             <div class="status">
               <span
                 class="status__dot"
@@ -129,8 +137,8 @@ useHead({
             v-if="showProfile"
             class="lead"
           >
-            Фокус на <strong>Vue&nbsp;3 / Nuxt</strong>.
-            {{ home.experienceYears }} — e‑commerce, аналитика, edtech.
+            {{ home.lead }}
+            {{ home.experienceYears }} — e-commerce, аналитика, edtech.
           </p>
           <p
             v-else
@@ -178,7 +186,7 @@ useHead({
             target="_blank"
             rel="noopener noreferrer"
           >Telegram</a>
-          <a :href="`mailto:${home.email}`">Email</a>
+          <a :href="`mailto:${home.email}`">{{ home.email }}</a>
           <a :href="home.phoneHref">{{ home.phone }}</a>
         </div>
         <div class="social">

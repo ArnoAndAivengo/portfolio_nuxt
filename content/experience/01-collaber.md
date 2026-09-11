@@ -1,6 +1,6 @@
 ---
 period: 2026 — н.в.
-title: Frontend Engineer · collaber.ru
+title: Frontend-разработчик (Senior) · collaber.ru
 current: true
 order: 1
 tags: [Nuxt 3, TypeScript, FSD, Laravel, Pinia]

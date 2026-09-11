@@ -8,6 +8,7 @@ export default defineContentConfig({
       schema: z.object({
         name: z.string(),
         role: z.string(),
+        roleEn: z.string(),
         status: z.string(),
         eyebrow: z.string(),
         lead: z.string(),
