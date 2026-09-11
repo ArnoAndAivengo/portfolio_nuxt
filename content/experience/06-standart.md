@@ -1,5 +1,5 @@
 ---
-period: 2020 — 2021
+period: Апрель 2020 — Февраль 2021
 title: Frontend-разработчик (Junior) · Стандарт Проект
 current: false
 order: 5

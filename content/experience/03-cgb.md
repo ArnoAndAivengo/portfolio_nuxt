@@ -1,5 +1,5 @@
 ---
-period: 2025 — 2025
+period: Июль 2025 — Декабрь 2025
 title: Frontend-разработчик · Центр горизонтального бурения
 current: false
 order: 2

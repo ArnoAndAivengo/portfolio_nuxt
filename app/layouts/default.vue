@@ -138,7 +138,8 @@ useHead({
             class="lead"
           >
             {{ home.lead }}
-            {{ home.experienceYears }} — e-commerce, аналитика, edtech.
+            {{ home.experienceYears }} <br>
+            — e-commerce, аналитика, edtech.
           </p>
           <p
             v-else
@@ -226,10 +227,6 @@ useHead({
           </a>
         </div>
       </div>
-      <a
-        href="#top"
-        class="footer__link"
-      >Наверх ↑</a>
     </footer>
   </div>
 </template>

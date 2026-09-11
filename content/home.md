@@ -12,7 +12,7 @@ seoDescription: "Frontend-разработчик (Senior), 7+ лет: Vue 3, Nux
 ogImage: https://arnoandaivengo.ru/images/alex/alex-og.jpg
 canonical: https://arnoandaivengo.ru/
 telegram: https://t.me/alexObukhovArno
-email: alexobukhovarno@gmail.com
+email: alexobukhov@hotmail.ru
 phone: +7 915 212-77-21
 phoneHref: tel:+79152127721
 maxUrl: https://max.ru/?phone=79152127721

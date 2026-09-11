@@ -1,5 +1,5 @@
 ---
-period: 2024 — 2025
+period: Июль 2024 — Май 2025
 title: Team Lead / Frontend-разработчик (Middle+) · Вкурсе
 current: false
 order: 3

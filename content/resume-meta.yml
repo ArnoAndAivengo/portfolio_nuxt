@@ -65,8 +65,8 @@ languages:
   - name: Английский
     level: B1 (средний)
 extra:
-  - Понимаю NestJS, PostgreSQL и контракт Laravel/OpenAPI — закрываю интеграцию на клиенте.
-  - Docker, Nginx, GitLab CI. Локальный AI для code review на Ollama.
+  - Backend - Node, Express и MongoDB, NestJS и PostgreSQL.
+  - CI-CD - Docker, Nginx, GitLab CI.
 goals:
   - label: Позиция
     text: Frontend-разработчик (Senior) · Vue 3 / Nuxt / TypeScript / FSD

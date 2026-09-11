@@ -1,5 +1,5 @@
 ---
-period: 2021 — 2024
+period: Март 2021 — Июль 2024
 title: Frontend-разработчик (Middle) · Ригла
 current: false
 order: 4
