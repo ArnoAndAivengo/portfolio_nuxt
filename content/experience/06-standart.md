@@ -2,7 +2,7 @@
 period: Апрель 2020 — Февраль 2021
 title: Frontend-разработчик (Junior) · Стандарт Проект
 current: false
-order: 5
+order: 6
 tags: [Vue, Firebase, element-ui]
 ---
 

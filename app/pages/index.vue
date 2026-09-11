@@ -4,8 +4,8 @@ import { isRemoteHref, projectGitUrl, projectHasPreview, projectHrefIsExternal }
 
 const { data: home } = await useHome()
 const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
-const { data: experience } = await useAsyncData('experience', () =>
-  queryCollection('experience').order('order', 'ASC').all(),
+const { data: jobs } = await useAsyncData('home-jobs', () =>
+  queryCollection('jobs').order('order', 'ASC').all(),
 )
 const { data: projects } = await useAsyncData('projects', () =>
   queryCollection('projects').where('featured', '=', true).order('order', 'ASC').all(),
@@ -37,26 +37,13 @@ usePageSeo({
       class="section"
     >
       <h2 class="section__title">Опыт</h2>
-      <ol class="exp">
-        <li
-          v-for="job in experience"
-          :key="job.path"
-        >
-          <article
-            class="exp__card"
-            :class="{ 'exp__card--current': job.current }"
-          >
-            <div class="exp__period">{{ job.period }}</div>
-            <div>
-              <h3 class="exp__title">{{ job.title }}</h3>
-              <div class="exp__text prose">
-                <ContentRenderer :value="job" />
-              </div>
-              <Tags :items="job.tags" />
-            </div>
-          </article>
-        </li>
-      </ol>
+      <div class="jobs">
+        <JobCard
+          v-for="job in jobs"
+          :key="job.order + job.company"
+          :job="job"
+        />
+      </div>
     </section>
 
     <section

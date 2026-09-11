@@ -2,7 +2,7 @@
 period: Июль 2025 — Декабрь 2025
 title: Frontend-разработчик · Центр горизонтального бурения
 current: false
-order: 2
+order: 3
 tags: [JavaScript, PHP, REST API]
 ---
 

@@ -2,7 +2,7 @@
 period: Июль 2024 — Май 2025
 title: Team Lead / Frontend-разработчик (Middle+) · Вкурсе
 current: false
-order: 3
+order: 4
 tags: [Vue 3, Nuxt, TypeScript, FSD, GitLab CI]
 ---
 

@@ -2,7 +2,7 @@
 period: Декабрь 2018 — Март 2020
 title: Программист-разработчик · НИИАС
 current: false
-order: 6
+order: 7
 tags: [React, ExtJS, OpenLayers, GraphQL]
 ---
 
