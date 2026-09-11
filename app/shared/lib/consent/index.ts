@@ -6,13 +6,16 @@ export const readConsent = (cookie: string): ConsentChoice => {
   if (!import.meta.client) return ''
 
   const match = document.cookie.match(new RegExp(`(?:^|; )${cookie.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}=([^;]*)`))
-  const value = match ? decodeURIComponent(match[1]) : ''
+  const raw = match?.[1]
+  const value = raw ? decodeURIComponent(raw) : ''
 
   return value === 'accepted' || value === 'declined' ? value : ''
 }
 
 export const writeConsent = (cookie: string, value: Exclude<ConsentChoice, ''>, maxAge = YEAR) => {
-  document.cookie = `${cookie}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`
+  const secure = location.protocol === 'https:' ? '; Secure' : ''
+
+  document.cookie = `${cookie}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; SameSite=Lax${secure}`
 }
 
 export const consentLabel = (choice: ConsentChoice) => {

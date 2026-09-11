@@ -15,10 +15,16 @@ const pageTitle = () => {
   return `${props.title} — ${home.value?.name ?? ''}`.trim()
 }
 
-const pageDescription = () => {
-  if ('seoDescription' in nav.value) return nav.value.seoDescription
+const pageDescription = (): string | undefined => {
+  const item = nav.value
 
-  if ('lead' in nav.value) return nav.value.lead
+  if ('seoDescription' in item && typeof item.seoDescription === 'string') {
+    return item.seoDescription
+  }
+
+  if ('lead' in item && typeof item.lead === 'string') {
+    return item.lead
+  }
 
   return home.value?.seoDescription
 }

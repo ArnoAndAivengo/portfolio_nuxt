@@ -27,10 +27,6 @@ const title = computed(() =>
     : 'Эксперименты и учебные репозитории',
 )
 
-const moreTo = computed(() =>
-  props.section === 'current' ? '/projects/pets' : '/projects',
-)
-
 const repoUrl = (project: { href: string; repo?: string }) =>
   projectRepoHref(project.href, project.repo)
 
@@ -44,17 +40,6 @@ const repoLink = (project: { href: string; repo?: string }) => {
 
   return label ? { href, label } : null
 }
-
-const primaryLabel = (project: { spa?: boolean; current: boolean }) => {
-  if (project.spa) return 'Открыть демо'
-
-  if (project.current) return 'Открыть проект'
-
-  return 'Открыть'
-}
-
-const showPrimaryAction = (project: { spa?: boolean; current: boolean }) =>
-  Boolean(project.spa || project.current)
 
 const variantOf = (project: { variant?: string; spa?: boolean; title: string }) => {
   if (project.variant) return project.variant

@@ -4,10 +4,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     '@nuxtjs/color-mode',
+    '@nuxt/eslint',
   ],
   ssr: true,
   devtools: { enabled: true },
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2025-07-15',
   css: [
     '~/assets/css/fonts.css',
     '~/assets/css/theme.css',
@@ -18,6 +19,10 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'preload', href: '/fonts/inter/cyrillic-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', href: '/fonts/inter/latin-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', href: '/fonts/inter/cyrillic-600-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', href: '/fonts/inter/latin-600-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
       ],
     },
   },

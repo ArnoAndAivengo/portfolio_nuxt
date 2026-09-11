@@ -19,8 +19,8 @@ html.dark {
   color-scheme: dark;
   --bg: #0a192f;
   --bg-elevated: #112240;
-  --text: #8892b0;
-  --text-strong: #a8b2d1;
+  --text: #a8b2d1;
+  --text-strong: #ccd6f6;
   --heading: #ccd6f6;
   --heading-bright: #e6f1ff;
   --accent: #64ffda;
@@ -96,6 +96,15 @@ body {
 
 a {
   color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="tab"]:focus-visible,
+[role="switch"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .skip-link {
@@ -351,6 +360,15 @@ a {
   box-shadow: 0 8px 24px var(--shadow);
   cursor: pointer;
   appearance: none;
+}
+
+.theme-switch:focus {
+  outline: none;
+}
+
+.theme-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .theme-switch__knob {

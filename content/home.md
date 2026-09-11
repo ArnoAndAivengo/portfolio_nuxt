@@ -20,7 +20,7 @@ github: https://github.com/ArnoAndAivengo
 gitlab: https://gitlab.com/ArnoAndAivengo
 skills:
   - label: Frontend
-    items: [Vue 3, Nuxt 3, TypeScript, JavaScript, HTML, CSS, FSD, Pinia, Vite, Tailwind, ECharts, Storybook]
+    items: [Vue 3, Nuxt 4, TypeScript, JavaScript, HTML, CSS, FSD, Pinia, Vite, Tailwind, ECharts, Storybook]
   - label: Backend
     items: [NestJS, Laravel, PostgreSQL, Redis, JWT]
   - label: Поставка

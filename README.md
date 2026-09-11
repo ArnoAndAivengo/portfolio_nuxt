@@ -17,9 +17,15 @@ npm install
 npm run dev        # http://localhost:3000
 npm run generate   # статика в .output/public
 npm run preview    # превью собранного сайта по HTTP
+npm run lint
+npm run typecheck
+npm run test       # Vitest
+npm run test:e2e   # Playwright smoke (нужен предварительный generate)
 ```
 
 Не открывайте `index.html` как файл: без HTTP Vue не гидрируется.
+
+CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt generate` и Playwright.
 
 ## Разделы
 
@@ -59,7 +65,6 @@ npm run preview    # превью собранного сайта по HTTP
 | Резюме (текст) | `content/resume.md` |
 | Резюме (мета) | `content/resume-meta.yml` |
 | Места работы | `content/jobs/*.yml` |
-| Опыт на главной | `content/experience/*.md` |
 | Проекты | `content/projects/*.md` |
 | Статьи | `content/articles/**/*.md` (пока пусто) |
 
@@ -100,5 +105,6 @@ nginx.snippet.conf
 ## Стек
 
 - Nuxt 4, Vue 3, `@nuxt/content` 3, `@nuxtjs/color-mode`
-- TypeScript
+- TypeScript, ESLint (`@nuxt/eslint`)
+- Vitest, Playwright
 - CSS-переменные в `app/assets/css/theme.css`, шрифты self-host

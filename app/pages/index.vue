@@ -3,7 +3,6 @@ import { Tags } from '~/shared/ui/tags'
 import { isRemoteHref, projectGitUrl, projectHasPreview, projectHrefIsExternal } from '~/utils/project'
 
 const { data: home } = await useHome()
-const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
 const { data: jobs } = await useAsyncData('home-jobs', () =>
   queryCollection('jobs').order('order', 'ASC').all(),
 )

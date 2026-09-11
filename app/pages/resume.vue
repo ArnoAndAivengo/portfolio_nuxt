@@ -33,19 +33,34 @@ const printResume = () => {
 }
 
 const diploma = ref<{ src: string, alt: string } | null>(null)
+const diplomaCloseRef = ref<HTMLButtonElement | null>(null)
+const diplomaOpener = ref<HTMLElement | null>(null)
 
-const openDiploma = (src: string, alt: string) => {
+const openDiploma = (src: string, alt: string, event?: MouseEvent) => {
+  diplomaOpener.value = (event?.currentTarget as HTMLElement) ?? null
   diploma.value = { src, alt }
   document.body.style.overflow = 'hidden'
+  nextTick(() => diplomaCloseRef.value?.focus())
 }
 
 const closeDiploma = () => {
   diploma.value = null
   document.body.style.overflow = ''
+  nextTick(() => diplomaOpener.value?.focus())
 }
 
 const onDiplomaKey = (event: KeyboardEvent) => {
-  if (event.key === 'Escape') closeDiploma()
+  if (!diploma.value) return
+
+  if (event.key === 'Escape') {
+    closeDiploma()
+    return
+  }
+
+  if (event.key === 'Tab') {
+    event.preventDefault()
+    diplomaCloseRef.value?.focus()
+  }
 }
 
 onMounted(() => {
@@ -211,7 +226,7 @@ onUnmounted(() => {
             type="button"
             class="edu__diploma"
             :aria-label="item.diplomaAlt || 'Открыть диплом'"
-            @click="openDiploma(item.diploma, item.diplomaAlt || 'Диплом')"
+            @click="openDiploma(item.diploma, item.diplomaAlt || 'Диплом', $event)"
           >
             <img
               :src="item.diploma"
@@ -304,7 +319,6 @@ onUnmounted(() => {
         >MAX</a>
         <button
           type="button"
-          target="_blank"
           class="btn btn--ghost"
           @click="printResume"
         >PDF</button>
@@ -321,6 +335,7 @@ onUnmounted(() => {
         @click.self="closeDiploma"
       >
         <button
+          ref="diplomaCloseRef"
           type="button"
           class="diploma-modal__close"
           aria-label="Закрыть"

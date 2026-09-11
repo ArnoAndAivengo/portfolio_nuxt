@@ -25,13 +25,18 @@ const shuffle = <T>(arr: T[]) => {
 
   for (let i = copy.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1))
-    const tmp = copy[i]
-    copy[i] = copy[j]
-    copy[j] = tmp
+    const left = copy[i]
+    const right = copy[j]
+    if (left === undefined || right === undefined) continue
+    copy[i] = right
+    copy[j] = left
   }
 
   return copy
 }
+
+const isLevelId = (value: unknown): value is PythonLevelId =>
+  LEVELS.some((item) => item.id === value)
 
 export const usePythonQuiz = () => {
   const consent = ref<ConsentChoice>('')
@@ -127,7 +132,7 @@ export const usePythonQuiz = () => {
       if (!raw) return
       const data = JSON.parse(raw)
       if (!data || typeof data !== 'object') return
-      if (LEVELS.some((item) => item.id === data.level)) level.value = data.level
+      if (isLevelId(data.level)) level.value = data.level
       results.value = data.results && typeof data.results === 'object' ? data.results : {}
       if (data.view === 'run' && data.lessonIndex != null) {
         const idx = Number(data.lessonIndex) || 0
@@ -135,7 +140,7 @@ export const usePythonQuiz = () => {
         const qIndex = Number(data.questionIndex) || 0
         if (lesson && qIndex < lesson.questions.length) {
           lessonIndex.value = idx
-          level.value = lesson.level
+          if (isLevelId(lesson.level)) level.value = lesson.level
           questionIndex.value = qIndex
           correct.value = Number(data.correct) || 0
           wrong.value = Number(data.wrong) || 0
@@ -159,9 +164,10 @@ export const usePythonQuiz = () => {
   }
 
   const startLesson = (index: number) => {
-    if (index < 0 || index >= LESSONS.length) return
+    const lesson = LESSONS[index]
+    if (!lesson) return
     lessonIndex.value = index
-    level.value = LESSONS[index].level
+    if (isLevelId(lesson.level)) level.value = lesson.level
     questionIndex.value = 0
     correct.value = 0
     wrong.value = 0
@@ -199,7 +205,7 @@ export const usePythonQuiz = () => {
     rec.best = Math.max(rec.best, correct.value)
     rec.attempts += 1
     results.value = { ...results.value, [lesson.id]: rec }
-    level.value = lesson.level
+    if (isLevelId(lesson.level)) level.value = lesson.level
     view.value = 'done'
     persist()
   }

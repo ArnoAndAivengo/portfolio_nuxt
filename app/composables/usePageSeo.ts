@@ -1,11 +1,13 @@
 import { OG_IMAGE } from '~/constants'
 import { siteUrl } from '~/utils/site'
 
+type OgType = 'website' | 'article' | 'profile'
+
 type SeoInput = {
   title: () => string | undefined
   description: () => string | undefined
   path: () => string | undefined
-  type?: string
+  type?: OgType
   image?: () => string | undefined
   author?: () => string | undefined
 }
@@ -13,13 +15,14 @@ type SeoInput = {
 export const usePageSeo = (input: SeoInput) => {
   const url = () => siteUrl(input.path() || '/')
   const image = () => input.image?.() || OG_IMAGE
+  const ogType: OgType = input.type || 'website'
 
   useSeoMeta({
     title: () => input.title(),
     description: () => input.description(),
     ogTitle: () => input.title(),
     ogDescription: () => input.description(),
-    ogType: input.type || 'website',
+    ogType,
     ogUrl: url,
     ogImage: image,
     ogLocale: 'ru_RU',

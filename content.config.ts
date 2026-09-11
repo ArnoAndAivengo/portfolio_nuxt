@@ -31,17 +31,6 @@ export default defineContentConfig({
         })),
       }),
     }),
-    experience: defineCollection({
-      type: 'page',
-      source: 'experience/*.md',
-      schema: z.object({
-        period: z.string(),
-        title: z.string(),
-        current: z.boolean(),
-        order: z.number(),
-        tags: z.array(z.string()),
-      }),
-    }),
     projects: defineCollection({
       type: 'page',
       source: 'projects/*.md',

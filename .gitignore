@@ -32,3 +32,8 @@ Thumbs.db
 # Local leftovers
 .tmp*
 *.local
+
+# Tests
+playwright-report
+test-results
+blob-report

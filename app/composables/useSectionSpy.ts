@@ -13,7 +13,10 @@ export function useSectionSpy() {
     if (!els.length) return
 
     const marker = Math.round(window.innerHeight * 0.28)
-    let current = els[0].id
+    const first = els[0]
+    if (!first) return
+
+    let current = first.id
 
     for (const el of els) {
       if (el.getBoundingClientRect().top <= marker) current = el.id
@@ -21,8 +24,9 @@ export function useSectionSpy() {
 
     const bottomGap =
       document.documentElement.scrollHeight - (window.scrollY + window.innerHeight)
+    const last = els[els.length - 1]
 
-    if (bottomGap < 64) current = els[els.length - 1].id
+    if (bottomGap < 64 && last) current = last.id
 
     if (activeId.value !== current) activeId.value = current
   }

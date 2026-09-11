@@ -86,8 +86,9 @@ const {
             :key="item.id"
             type="button"
             class="py-tab"
+            role="tab"
             :class="{ 'is-active': level === item.id }"
-            :aria-pressed="level === item.id"
+            :aria-selected="level === item.id"
             @click="setLevel(item.id)"
           >{{ item.label }}</button>
         </div>
