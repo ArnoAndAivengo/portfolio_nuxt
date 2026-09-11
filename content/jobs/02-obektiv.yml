@@ -1,5 +1,5 @@
 company: ООО Объектив
-position: Frontend-разработчик
+position: Frontend-разработчик (Middle+)
 period: Июнь 2025 — Май 2026
 location: Удалённо
 sites: []
@@ -19,7 +19,6 @@ tags:
   - BEM
   - Git
   - CI/CD
-  - Cursor AI
 teaser: "Дашборды на больших данных: Vue 3 + ECharts, серверная пагинация и виртуальная прокрутка. FSD + CI/CD (Playwright, Vitest) — релизы без регрессий UI."
 duties:
   - label: О проекте
