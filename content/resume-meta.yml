@@ -1,23 +1,32 @@
 highlights:
   - lead: Руководил фронтенд-командой 5–7 человек
-    text: найм, code review, FSD и CI/CD, спринт 3 → 2 недели.
-  - lead: Оптимизировал GraphQL
-    text: на e-commerce с миллионами визитов — объём данных −30–40%.
-  - lead: Спроектировал клиент на Vue 3 / Nuxt / TypeScript (FSD)
-    text: рефакторинг legacy 30k+ строк без «большого взрыва».
-  - lead: Настроил CI/CD
-    text: GitHub Actions / GitLab CI и мониторинг — выкатка в прод с часов до минут.
-  - lead: Внедрил code review, Vitest / Playwright
-    text: в pipeline — меньше регрессий на проде.
+    text: Внедрил найм, code review, FSD и Definition of Done → спринт сократился с 3 до 2 недель, онбординг новых разработчиков ускорился.
+
+  - lead: Перевёл legacy-клиент на Vue 3 / Nuxt / TypeScript с FSD
+    text: Отрефакторил 30 000+ строк → параллельная работа команд без блокировок, предсказуемые релизы.
+
+  - lead: Оптимизировал GraphQL на e-commerce с миллионами визитов
+    text: Сократил payload ответов на 30–40% за счёт выборки полей и пагинации → быстрее отрисовка, ниже нагрузка на сеть.
+
+  - lead: Настроил CI/CD (GitHub Actions / GitLab CI) и мониторинг
+    text: Автоматизировал сборку, тесты и выкатку → время доставки в прод сократилось с часов до минут.
+
+  - lead: Внедрил Vitest / Playwright в pipeline
+    text: Покрыл критические сценарии e2e и unit-тестами → меньше регрессий на проде, короче цикл «задача → прод».
+
 contributions:
   - label: Клиентская архитектура
     text: Vue 3 / Nuxt / TypeScript, FSD (features / entities / shared). Понятная структура для онбординга и параллельной работы.
+
   - label: Производительность
     text: GraphQL и пагинация, виртуализация таблиц, lazy loading, SSR / Core Web Vitals, когда от этого зависит продукт.
+
   - label: Команда и поставка
     text: Декомпозиция, code review, Definition of Done, GitLab CI. Руководил фронтендом 5–7 человек.
+
   - label: Качество релиза
     text: Vitest, Playwright, Storybook. Меньше регрессий, короче цикл «задача → прод».
+
 skillGroups:
   - label: Frontend
     note: Vue 3, Nuxt 3 (SSR), TypeScript, JavaScript, HTML, CSS, Pinia, Vue Router, Vite, FSD
@@ -65,8 +74,8 @@ languages:
   - name: Английский
     level: B1 (средний)
 extra:
-  - Backend - Node, Express и MongoDB, NestJS и PostgreSQL.
-  - CI-CD - Docker, Nginx, GitLab CI.
+  - Backend — Node, Express и MongoDB, NestJS и PostgreSQL.
+  - CI/CD — Docker, Nginx, GitLab CI.
 goals:
   - label: Позиция
     text: Frontend-разработчик (Senior) · Vue 3 / Nuxt / TypeScript / FSD

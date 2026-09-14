@@ -9,6 +9,7 @@ const { data: jobs } = await useAsyncData('home-jobs', () =>
 const { data: projects } = await useAsyncData('projects', () =>
   queryCollection('projects').where('featured', '=', true).order('order', 'ASC').all(),
 )
+const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
 
 usePageSeo({
   title: () => home.value?.seoTitle,
@@ -30,6 +31,11 @@ usePageSeo({
         <ContentRenderer :value="home" />
       </div>
     </section>
+
+    <KeyResults
+      v-if="meta"
+      :items="meta.highlights"
+    />
 
     <section
       id="experience"

@@ -52,6 +52,30 @@ export default defineContentConfig({
       type: 'page',
       source: 'articles/**/*.md',
     }),
+    services: defineCollection({
+      type: 'data',
+      source: 'services.yml',
+      schema: z.object({
+        lead: z.string(),
+        intro: z.string(),
+        note: z.string(),
+        offers: z.array(z.object({
+          title: z.string(),
+          text: z.string(),
+          examples: z.array(z.object({
+            label: z.string(),
+            href: z.string(),
+            external: z.boolean().optional(),
+          })).optional(),
+        })),
+        worksLead: z.string(),
+        whyFree: z.array(z.string()),
+        gratitudeLead: z.string(),
+        gratitude: z.array(z.string()),
+        gratitudeNote: z.string(),
+        contactLead: z.string(),
+      }),
+    }),
     resume: defineCollection({
       type: 'page',
       source: 'resume.md',

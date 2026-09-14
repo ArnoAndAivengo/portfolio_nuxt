@@ -1,0 +1,199 @@
+.services-hub__slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.services-hub__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.services-hub__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.services-hub__viewport:focus-visible {
+  outline: 2px solid var(--accent-services);
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+
+.services-hub__track {
+  display: flex;
+}
+
+.services-hub__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.services-hub__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.services-hub__arrow {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  background: transparent;
+  color: var(--heading);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.services-hub__arrow:hover {
+  border-color: var(--accent-services);
+  color: var(--accent-services);
+  background: color-mix(in srgb, var(--accent-services) 10%, transparent);
+}
+
+.services-hub__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.services-hub__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.services-hub__dot[aria-current="true"] {
+  background: var(--accent-services);
+  transform: scale(1.25);
+}
+
+.services-hub__card {
+  --hub-accent: var(--accent-services);
+  height: 100%;
+  padding: 0.6rem 0.7rem 0;
+  border-radius: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--hub-accent) 40%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.35s var(--ease);
+}
+
+.services-hub__card:hover {
+  border-color: var(--hub-accent);
+}
+
+.services-hub__title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--heading);
+  transition: color 0.25s ease;
+}
+
+.services-hub__card:hover .services-hub__title {
+  color: var(--hub-accent);
+}
+
+.services-hub__excerpt {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.services-hub__excerpt:last-child {
+  margin-bottom: 0.6rem;
+}
+
+.services-hub__examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.45rem;
+  margin-top: auto;
+  margin-bottom: 0;
+  margin-inline: -0.7rem;
+  padding: 0.4rem 0.7rem;
+  background: color-mix(in srgb, var(--hub-accent) 18%, transparent);
+  font-size: 0.72rem;
+  color: var(--heading);
+}
+
+.services-hub__examples a {
+  color: var(--heading);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.services-hub__examples a:hover {
+  color: var(--hub-accent);
+}
+
+.services-hub__note {
+  margin: 1.15rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.services-hub__extra {
+  margin-top: 1.35rem;
+}
+
+#offer .section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+#offer .job__badge {
+  margin-left: auto;
+  letter-spacing: 0.08em;
+}
+
+#works .prose {
+  margin-bottom: 1rem;
+}
+
+#thanks .resume-list {
+  margin-top: 0.85rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-hub__viewport {
+    scroll-behavior: auto;
+  }
+
+  .services-hub__card,
+  .services-hub__arrow,
+  .services-hub__dot {
+    transition: none;
+  }
+}

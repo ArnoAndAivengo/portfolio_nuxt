@@ -10,9 +10,9 @@ export const SITE_NAV = [
     label: 'Услуги',
     key: 'services',
     eyebrow: 'Услуги',
-    lead: 'Берусь за проекты любой сложности. Лендинги, SaaS, API, деплой — всё под ключ. От прототипа до боевого сервера.',
-    seoTitle: 'Услуги — Александр Обухов',
-    seoDescription: 'Frontend, backend и DevOps под ключ. Vue, Nuxt, TypeScript — от идеи до продакшена.',
+    lead: 'Реализую проекты любой сложности и направления — от лёгкого одностраничника до сложного SPA.',
+    seoTitle: 'Услуги бесплатно — Александр Обухов',
+    seoDescription: 'Frontend бесплатно: лендинги, каталоги, SPA и продукты на Vue / Nuxt / TypeScript. Портфолио, GitHub и GitLab.',
   },
   {
     to: '/articles',

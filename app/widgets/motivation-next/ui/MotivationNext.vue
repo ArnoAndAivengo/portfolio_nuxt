@@ -5,7 +5,7 @@
   >
     <h2 class="section__title">Дальше</h2>
     <p class="prose">
-      Нужен fullstack под ключ или полное резюме с кейсами?
+      Нужен сайт или SPA? Или полное резюме с кейсами?
     </p>
     <div class="contact-actions">
       <NuxtLink

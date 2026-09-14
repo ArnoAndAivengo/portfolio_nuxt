@@ -48,7 +48,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | `/trainers/bugs` | Поиск багов: Python и JavaScript |
 | `/trainers/bugs/python` | Поиск багов в Python |
 | `/trainers/bugs/javascript` | Поиск багов в JavaScript |
-| `/services` | Услуги (заглушка) |
+| `/services` | Услуги — бесплатно, от лендинга до SPA |
 | `/articles` | Статьи (заглушка) |
 | `/motivation` | История: путь IT-специалиста |
 
@@ -71,6 +71,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | Резюме (мета) | `content/resume-meta.yml` |
 | Места работы | `content/jobs/*.yml` |
 | Проекты | `content/projects/*.md` |
+| Услуги | `content/services.yml` |
 | Статьи | `content/articles/**/*.md` (пока пусто) |
 
 После правок контента достаточно `npm run generate`.

@@ -12,7 +12,7 @@ seoDescription: "Frontend-разработчик (Senior), 7+ лет: Vue 3, Nux
 ogImage: https://arnoandaivengo.ru/images/alex/alex-og.jpg
 canonical: https://arnoandaivengo.ru/
 telegram: https://t.me/alexObukhovArno
-email: alexobukhov@hotmail.ru
+email: alexobukhov@hotmail.com
 phone: +7 915 212-77-21
 phoneHref: tel:+79152127721
 maxUrl: https://max.ru/?phone=79152127721
@@ -28,12 +28,11 @@ skills:
 ---
 
 **Frontend-разработчик (Senior) с 7+ лет** коммерческого опыта в e‑commerce, аналитике и edtech.
-Специализируюсь на сложных SPA и SSR: проектирую клиентскую архитектуру, 
-держу качество релиза и довожу интерфейс до измеримого бизнес-результата.
+Специализируюсь на сложных SPA и SSR: проектирую клиентскую архитектуру,
+довожу проект от ТЗ до релиза в кратчайшие сроки.
 
-Лучше всего работаю на стыке продукта, дизайна и инженерии: 
-Vue 3 / Nuxt / TypeScript, FSD, стандарты команды и CI/CD. 
+Основной стек — Vue 3, Nuxt, TypeScript, FSD. Отвечаю за стандарты кода в команде и CI/CD.
 При необходимости закрываю смежный контур frontend → backend → DevOps 
-(FastAPI, Docker, Nginx) — без смены основной экспертизы с фронта.
+(NestJS, PostgreSQL, Docker, Nginx) — без смены основной экспертизы с фронта.
 
 Рассматриваю роль Frontend-разработчика (Senior) — полная удалёнка, гибрид или офис в Москве.

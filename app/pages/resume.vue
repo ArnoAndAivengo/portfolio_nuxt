@@ -86,7 +86,7 @@ onUnmounted(() => {
     >
       <h2 class="section__title">Обо мне</h2>
       <div class="prose">
-        <ContentRenderer :value="resume" />
+        <ContentRenderer :value="home" />
       </div>
     </section>
 
