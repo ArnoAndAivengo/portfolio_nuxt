@@ -42,6 +42,7 @@ export default defineContentConfig({
         status: z.enum(['Private', 'Public']),
         featured: z.boolean(),
         current: z.boolean(),
+        pets: z.boolean().optional(),
         spa: z.boolean().optional(),
         variant: z.string().optional(),
         order: z.number(),

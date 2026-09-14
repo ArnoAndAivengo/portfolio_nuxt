@@ -18,7 +18,7 @@ const items = computed(() => {
     return all.filter((project) => project.current)
   }
 
-  return all.filter((project) => !project.current && project.featured)
+  return all.filter((project) => !project.current && (project.featured || project.pets))
 })
 
 const title = computed(() =>
@@ -58,7 +58,11 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
       class="section"
     >
       <h2 class="section__title">{{ title }}</h2>
-      <ul class="projects-hub__list">
+      <ul
+        class="projects-hub__list"
+        tabindex="0"
+        aria-label="Список проектов"
+      >
         <li
           v-for="project in items"
           :key="project.path"
