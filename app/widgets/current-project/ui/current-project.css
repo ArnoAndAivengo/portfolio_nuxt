@@ -35,77 +35,23 @@
 
 .current-project__numbered,
 .current-project__checks {
-  display: grid;
-  gap: 0;
   margin: 0.15rem 0 1.6rem;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-  border-radius: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--page-accent, var(--accent)) 28%, var(--border));
-  background: color-mix(in srgb, var(--page-accent, var(--accent)) 8%, var(--bg-elevated));
-}
-
-.current-project__numbered {
-  counter-reset: cp-n;
-}
-
-.current-project__numbered[start="4"] {
-  counter-reset: cp-n 3;
+  padding-left: 1.25rem;
 }
 
 .current-project__numbered li,
 .current-project__checks li {
-  position: relative;
-  margin: 0;
-  padding: 0.9rem 1rem 0.9rem 2.85rem;
-  border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--page-accent, var(--accent)) 18%, var(--border));
-  background: transparent;
+  margin: 0 0 0.85rem;
   font-size: 1rem;
   line-height: 1.65;
 }
 
 .current-project__numbered li:last-child,
 .current-project__checks li:last-child {
-  border-bottom: 0;
+  margin-bottom: 0;
 }
 
-.current-project__numbered li {
-  counter-increment: cp-n;
-}
-
-.current-project__numbered li::before {
-  content: counter(cp-n);
-  position: absolute;
-  left: 0.75rem;
-  top: 1.2rem;
-  display: grid;
-  place-items: center;
-  width: 1.45rem;
-  height: 1.45rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--page-accent, var(--accent)) 16%, transparent);
-  font-size: 0.78rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  color: var(--page-accent, var(--accent));
-}
-
-.current-project__checks li::before {
-  content: "";
-  position: absolute;
-  left: 1.05rem;
-  top: 1.4rem;
-  width: 0.55rem;
-  height: 0.55rem;
-  border: 1.5px solid var(--page-accent, var(--accent));
-  border-radius: 0.15rem;
-  transform: rotate(45deg);
-}
-
-.current-project__numbered strong,
-.current-project__checks strong {
+.current-project__numbered strong {
   display: block;
   margin: 0 0 0.2rem;
   color: var(--heading);

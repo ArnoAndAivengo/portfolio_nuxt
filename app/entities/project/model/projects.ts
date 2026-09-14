@@ -27,6 +27,7 @@ export const PROJECT_PAGES = {
     seoDescription: 'LearnPortal — обучающая платформа для web-разработчиков. Участие открыто и бесплатно: код, курсы, продукт. Пока без публичной площадки — работа локально через merge request.',
     sections: [
       { id: 'overview', label: 'О проекте' },
+      { id: 'screenshots', label: 'Скриншоты' },
       { id: 'inside', label: 'Что внутри' },
       { id: 'stack', label: 'Стек' },
       { id: 'status', label: 'Статус' },

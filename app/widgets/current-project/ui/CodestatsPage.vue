@@ -39,7 +39,7 @@ const stack = ['NestJS', 'PostgreSQL', 'Redis', 'Nuxt 3', 'Vue 3', 'React', 'Doc
         </p>
         <p><strong>Зачем это нужно:</strong></p>
       </div>
-      <ol class="current-project__numbered">
+      <ul class="current-project__numbered">
         <li>
           <strong>Резюме мало говорит о навыках.</strong>
           Слова «Vue, Node, PostgreSQL» легко написать — сложнее показать,
@@ -55,13 +55,11 @@ const stack = ['NestJS', 'PostgreSQL', 'Redis', 'Nuxt 3', 'Vue 3', 'React', 'Doc
           LMS знает, что урок сдан, но работодатель не видит путь ученика —
           коммиты, репозитории, рост от задачи к задаче.
         </li>
-      </ol>
+      </ul>
       <div class="prose">
         <p><strong>Codestats закрывает этот разрыв:</strong></p>
       </div>
-      <ol
-        class="current-project__numbered"
-      >
+      <ul class="current-project__numbered">
         <li>
           <strong>Кандидат с доказательствами.</strong>
           Профиль на GitHub и сводка по активности — рядом с карточкой кандидата.
@@ -74,7 +72,7 @@ const stack = ['NestJS', 'PostgreSQL', 'Redis', 'Nuxt 3', 'Vue 3', 'React', 'Doc
           <strong>Связь с LearnPortal.</strong>
           Два отдельных продукта, общий мост через GitHub — без смешивания обучения и рекрутинга.
         </li>
-      </ol>
+      </ul>
     </section>
 
     <section

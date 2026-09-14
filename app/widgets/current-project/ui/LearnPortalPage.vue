@@ -2,6 +2,7 @@
 import { PROJECT_PAGES } from '~/entities/project'
 import { Tags } from '~/shared/ui/tags'
 import ProjectCta from './ProjectCta.vue'
+import ScreenshotSlider from './ScreenshotSlider.vue'
 import './current-project.css'
 
 const page = PROJECT_PAGES.learnPortal
@@ -14,6 +15,18 @@ usePageSeo({
   image: () => home.value?.ogImage,
   author: () => home.value?.name,
 })
+
+const screenshots = [
+  { src: '/images/learnportal/learnportal.png', alt: 'Урок JavaScript: теория по DOM и опрос' },
+  { src: '/images/learnportal/learnportal-2.png', alt: 'Программа курса HTML: модули и уроки' },
+  { src: '/images/learnportal/learnportal-3.png', alt: 'Админ-панель: дашборд платформы' },
+  { src: '/images/learnportal/learnportal-4.png', alt: 'Каталог курсов для разработчиков с фильтрами' },
+  { src: '/images/learnportal/learnportal-5.png', alt: 'Документация проекта: индекс и навигация' },
+  { src: '/images/learnportal/learnportal-6.png', alt: 'Справочник: VS Code, Git, HTML, CSS и JavaScript' },
+  { src: '/images/learnportal/learnportal-7.png', alt: 'Блог: список статей автора' },
+  { src: '/images/learnportal/learnportal-8.png', alt: 'Редактор новой статьи с модерацией' },
+  { src: '/images/learnportal/learnportal-9.png', alt: 'Профиль ученика: XP, курсы и вовлечённость' },
+]
 
 const stack = ['Nuxt 3', 'Vue 3', 'FSD', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'Nginx']
 const roles = [
@@ -49,9 +62,9 @@ const roles = [
           Параллельно развивается <NuxtLink to="/projects/codestats">Codestats</NuxtLink> — аналитика для IT-рекрутинга;
           мост между продуктами — GitHub, GiLab-идентичность ученика.
         </p>
-        <p>Несколько проблем, из‑за которых современное обучение часто не доводит до профессии:</p>
+        <p><strong>Несколько проблем, из‑за которых современное обучение часто не доводит до профессии:</strong></p>
       </div>
-      <ol class="current-project__numbered">
+      <ul class="current-project__numbered">
         <li>
           <strong>Нет прозрачности знаний.</strong>
           После курсов непонятно, что человек реально умеет: сертификат есть,
@@ -77,11 +90,11 @@ const roles = [
           Обучение обрывается дипломом: нет живого профиля, портфолио с реального пути
           и выхода на оплачиваемые задачи до первого оффера.
         </li>
-      </ol>
+      </ul>
       <div class="prose">
         <p><strong>LearnPortal отвечает на это так:</strong></p>
       </div>
-      <ol class="current-project__numbered">
+      <ul class="current-project__numbered">
         <li>
           <strong>Наставничество с первой минуты.</strong>
           Для первых шагов AI‑ассистент помогает начать с нуля и освоиться на платформе:
@@ -111,7 +124,15 @@ const roles = [
           <strong>Программирование для всех.</strong>
           Большая часть материалов создаваемая сообществом будет бесплатной и доступной с любого устройства.
         </li>
-      </ol>
+      </ul>
+    </section>
+
+    <section
+      id="screenshots"
+      class="section current-project__section"
+    >
+      <h2 class="section__title">Скриншоты</h2>
+      <ScreenshotSlider :items="screenshots" />
     </section>
 
     <section
