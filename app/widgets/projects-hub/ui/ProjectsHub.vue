@@ -69,6 +69,7 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
           >
             <div class="projects-hub__head">
               <NuxtLink
+                v-if="!project.spa"
                 class="projects-hub__title-link"
                 :to="project.href"
                 :external="projectHrefIsExternal(project.href, project.spa)"
@@ -77,6 +78,10 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
               >
                 <h3 class="projects-hub__title">{{ project.title }}</h3>
               </NuxtLink>
+              <h3
+                v-else
+                class="projects-hub__title"
+              >{{ project.title }}</h3>
               <div
                 v-if="project.spa || repoLink(project)"
                 class="projects-hub__aside"
@@ -104,6 +109,7 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
               </div>
             </div>
             <NuxtLink
+              v-if="!project.spa"
               class="projects-hub__link"
               :to="project.href"
               :external="projectHrefIsExternal(project.href, project.spa)"
@@ -115,6 +121,15 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
               </div>
               <Tags :items="project.tags" />
             </NuxtLink>
+            <div
+              v-else
+              class="projects-hub__body"
+            >
+              <div class="projects-hub__excerpt prose">
+                <ContentRenderer :value="project" />
+              </div>
+              <Tags :items="project.tags" />
+            </div>
           </article>
         </li>
       </ul>

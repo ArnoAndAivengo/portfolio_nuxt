@@ -93,7 +93,8 @@
   line-height: 1.6;
 }
 
-.projects-hub__link .tags {
+.projects-hub__link .tags,
+.projects-hub__body .tags {
   margin-top: 0.75rem;
 }
 
