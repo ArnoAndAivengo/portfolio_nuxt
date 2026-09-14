@@ -3,60 +3,140 @@ import { Tags } from '~/shared/ui/tags'
 import './services-hub.css'
 
 const SLIDE_SIZE = 4
+const PROCESS_SLIDE_SIZE = 2
+
+const chunkPages = <T>(items: T[], size: number) => {
+  const pages: T[][] = []
+
+  for (let i = 0; i < items.length; i += size) {
+    pages.push(items.slice(i, i + size))
+  }
+
+  return pages
+}
+
+const AUTO_MS = 10_000
+
+const useSnapSlider = (pageCount: { readonly value: number }) => {
+  const viewport = ref<HTMLElement | null>(null)
+  const pageIndex = ref(0)
+  const paused = ref(false)
+  let timer: ReturnType<typeof setInterval> | null = null
+
+  const reducedMotion = () =>
+    typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  const stop = () => {
+    if (!timer) return
+
+    clearInterval(timer)
+    timer = null
+  }
+
+  const start = () => {
+    stop()
+    if (paused.value || reducedMotion() || pageCount.value < 2) return
+
+    timer = setInterval(() => {
+      if (document.hidden || paused.value) return
+
+      scrollToPage(pageIndex.value + 1)
+    }, AUTO_MS)
+  }
+
+  const scrollToPage = (index: number) => {
+    const el = viewport.value
+    const count = pageCount.value
+    if (!el || !count) return
+
+    const next = ((index % count) + count) % count
+    el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
+
+    if (!paused.value) start()
+  }
+
+  const onScroll = () => {
+    const el = viewport.value
+    if (!el?.clientWidth) return
+
+    pageIndex.value = Math.round(el.scrollLeft / el.clientWidth)
+  }
+
+  const pause = () => {
+    paused.value = true
+    stop()
+  }
+
+  const resume = () => {
+    paused.value = false
+    start()
+  }
+
+  const onVisibility = () => {
+    if (document.hidden) stop()
+    else start()
+  }
+
+  onMounted(() => {
+    const el = viewport.value
+    if (!el) return
+
+    el.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('visibilitychange', onVisibility)
+
+    const resize = new ResizeObserver(() => {
+      el.scrollTo({ left: pageIndex.value * el.clientWidth })
+    })
+    resize.observe(el)
+    start()
+
+    onUnmounted(() => {
+      el.removeEventListener('scroll', onScroll)
+      document.removeEventListener('visibilitychange', onVisibility)
+      resize.disconnect()
+      stop()
+    })
+  })
+
+  return { viewport, pageIndex, scrollToPage, pause, resume }
+}
 
 const { data: home } = await useHome()
 const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
 const { data: services } = await useAsyncData('services', () => queryCollection('services').first())
 
-const viewport = ref<HTMLElement | null>(null)
-const pageIndex = ref(0)
+const offerPages = computed(() => chunkPages(services.value?.offers ?? [], SLIDE_SIZE))
+const processPages = computed(() => chunkPages(services.value?.process ?? [], PROCESS_SLIDE_SIZE))
 
-const offerPages = computed(() => {
-  const offers = services.value?.offers ?? []
-  const pages = []
+const {
+  viewport: offersViewport,
+  pageIndex: offersPage,
+  scrollToPage: scrollOffers,
+  pause: pauseOffers,
+  resume: resumeOffers,
+} = useSnapSlider(computed(() => offerPages.value.length))
 
-  for (let i = 0; i < offers.length; i += SLIDE_SIZE) {
-    pages.push(offers.slice(i, i + SLIDE_SIZE))
-  }
+const {
+  viewport: processViewport,
+  pageIndex: processPage,
+  scrollToPage: scrollProcess,
+  pause: pauseProcess,
+  resume: resumeProcess,
+} = useSnapSlider(computed(() => processPages.value.length))
 
-  return pages
-})
+const stepNumber = (pageIdx: number, index: number) => pageIdx * PROCESS_SLIDE_SIZE + index + 1
+
+const resumeIfLeft = (event: FocusEvent, resume: () => void) => {
+  const root = event.currentTarget as Node | null
+  const next = event.relatedTarget as Node | null
+  if (root && next && root.contains(next)) return
+
+  resume()
+}
 
 const exampleIsExternal = (href: string, external?: boolean) =>
   Boolean(external) || href.startsWith('http')
-
-const scrollToPage = (index: number) => {
-  const el = viewport.value
-  const count = offerPages.value.length
-  if (!el || !count) return
-
-  const next = ((index % count) + count) % count
-  el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
-}
-
-const onScroll = () => {
-  const el = viewport.value
-  if (!el?.clientWidth) return
-
-  pageIndex.value = Math.round(el.scrollLeft / el.clientWidth)
-}
-
-onMounted(() => {
-  const el = viewport.value
-  if (!el) return
-
-  el.addEventListener('scroll', onScroll, { passive: true })
-
-  const resize = new ResizeObserver(() => {
-    el.scrollTo({ left: pageIndex.value * el.clientWidth })
-  })
-  resize.observe(el)
-
-  onUnmounted(() => {
-    el.removeEventListener('scroll', onScroll)
-    resize.disconnect()
-  })
-})
 </script>
 
 <template>
@@ -87,20 +167,24 @@ onMounted(() => {
         role="region"
         aria-roledescription="карусель"
         aria-label="Форматы работ"
+        @mouseenter="pauseOffers"
+        @mouseleave="resumeOffers"
+        @focusin="pauseOffers"
+        @focusout="resumeIfLeft($event, resumeOffers)"
       >
         <div
-          ref="viewport"
+          ref="offersViewport"
           class="services-hub__viewport"
           tabindex="0"
-          @keydown.left.prevent="scrollToPage(pageIndex - 1)"
-          @keydown.right.prevent="scrollToPage(pageIndex + 1)"
+          @keydown.left.prevent="scrollOffers(offersPage - 1)"
+          @keydown.right.prevent="scrollOffers(offersPage + 1)"
         >
           <div class="services-hub__track">
             <ul
               v-for="(page, pageIdx) in offerPages"
               :key="pageIdx"
               class="services-hub__list"
-              :aria-hidden="pageIdx === pageIndex ? undefined : 'true'"
+              :aria-hidden="pageIdx === offersPage ? undefined : 'true'"
             >
               <li
                 v-for="offer in page"
@@ -121,7 +205,7 @@ onMounted(() => {
                       :external="exampleIsExternal(example.href, example.external)"
                       :target="exampleIsExternal(example.href, example.external) ? '_blank' : undefined"
                       :rel="exampleIsExternal(example.href, example.external) ? 'noopener noreferrer' : undefined"
-                      :tabindex="pageIdx === pageIndex ? undefined : -1"
+                      :tabindex="pageIdx === offersPage ? undefined : -1"
                     >
                       {{ example.label }}
                     </NuxtLink>
@@ -136,7 +220,7 @@ onMounted(() => {
             type="button"
             class="services-hub__arrow"
             aria-label="Предыдущие форматы"
-            @click="scrollToPage(pageIndex - 1)"
+            @click="scrollOffers(offersPage - 1)"
           >‹</button>
           <div class="services-hub__dots">
             <button
@@ -144,20 +228,97 @@ onMounted(() => {
               :key="index"
               type="button"
               class="services-hub__dot"
-              :aria-current="index === pageIndex ? 'true' : undefined"
+              :aria-current="index === offersPage ? 'true' : undefined"
               :aria-label="`Слайд ${index + 1} из ${offerPages.length}`"
-              @click="scrollToPage(index)"
+              @click="scrollOffers(index)"
             />
           </div>
           <button
             type="button"
             class="services-hub__arrow"
             aria-label="Следующие форматы"
-            @click="scrollToPage(pageIndex + 1)"
+            @click="scrollOffers(offersPage + 1)"
           >›</button>
         </div>
       </div>
       <p class="services-hub__note">{{ services.note }}</p>
+    </section>
+
+    <section
+      id="process"
+      class="section"
+    >
+      <h2 class="section__title">От идеи до релиза</h2>
+      <p class="prose">{{ services.processLead }}</p>
+      <div
+        class="services-hub__slider"
+        role="region"
+        aria-roledescription="карусель"
+        aria-label="Этапы от идеи до релиза"
+        @mouseenter="pauseProcess"
+        @mouseleave="resumeProcess"
+        @focusin="pauseProcess"
+        @focusout="resumeIfLeft($event, resumeProcess)"
+      >
+        <div
+          ref="processViewport"
+          class="services-hub__viewport"
+          tabindex="0"
+          @keydown.left.prevent="scrollProcess(processPage - 1)"
+          @keydown.right.prevent="scrollProcess(processPage + 1)"
+        >
+          <div class="services-hub__track">
+            <ul
+              v-for="(page, pageIdx) in processPages"
+              :key="pageIdx"
+              class="services-hub__list services-hub__list--pair"
+              :aria-hidden="pageIdx === processPage ? undefined : 'true'"
+            >
+              <li
+                v-for="(step, index) in page"
+                :key="step.title"
+              >
+                <article class="services-hub__step">
+                  <h3 class="services-hub__step-title">
+                    {{ step.title }}
+                  </h3>
+                  <ul class="services-hub__step-items">
+                    <li
+                      v-for="item in step.items"
+                      :key="item"
+                    >{{ item }}</li>
+                  </ul>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="services-hub__controls">
+          <button
+            type="button"
+            class="services-hub__arrow"
+            aria-label="Предыдущие этапы"
+            @click="scrollProcess(processPage - 1)"
+          >‹</button>
+          <div class="services-hub__dots">
+            <button
+              v-for="(_, index) in processPages"
+              :key="index"
+              type="button"
+              class="services-hub__dot"
+              :aria-current="index === processPage ? 'true' : undefined"
+              :aria-label="`Слайд ${index + 1} из ${processPages.length}`"
+              @click="scrollProcess(index)"
+            />
+          </div>
+          <button
+            type="button"
+            class="services-hub__arrow"
+            aria-label="Следующие этапы"
+            @click="scrollProcess(processPage + 1)"
+          >›</button>
+        </div>
+      </div>
     </section>
 
     <section

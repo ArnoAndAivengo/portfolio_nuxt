@@ -68,6 +68,11 @@ export default defineContentConfig({
             external: z.boolean().optional(),
           })).optional(),
         })),
+        processLead: z.string(),
+        process: z.array(z.object({
+          title: z.string(),
+          items: z.array(z.string()),
+        })),
         worksLead: z.string(),
         whyFree: z.array(z.string()),
         gratitudeLead: z.string(),
