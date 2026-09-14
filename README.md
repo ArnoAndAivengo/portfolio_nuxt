@@ -21,11 +21,12 @@ npm run lint
 npm run typecheck
 npm run test       # Vitest
 npm run test:e2e   # Playwright smoke (нужен предварительный generate)
+npm run prepush    # lint + typecheck + Vitest; то же самое ставится на git push
 ```
 
 Не открывайте `index.html` как файл: без HTTP Vue не гидрируется.
 
-CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt generate` и Playwright.
+CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt generate` и Playwright. Локально перед `git push` срабатывает hook: lint, typecheck и Vitest. Сборку и e2e оставляет CI. Пропуск: `git push --no-verify`.
 
 ## Разделы
 

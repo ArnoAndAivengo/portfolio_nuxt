@@ -5,7 +5,7 @@ import './services-hub.css'
 const SLIDE_SIZE = 4
 const PROCESS_SLIDE_SIZE = 2
 
-const chunkPages = <T>(items: T[], size: number) => {
+function chunkPages<T>(items: T[], size: number) {
   const pages: T[][] = []
 
   for (let i = 0; i < items.length; i += size) {
@@ -124,8 +124,6 @@ const {
   pause: pauseProcess,
   resume: resumeProcess,
 } = useSnapSlider(computed(() => processPages.value.length))
-
-const stepNumber = (pageIdx: number, index: number) => pageIdx * PROCESS_SLIDE_SIZE + index + 1
 
 const resumeIfLeft = (event: FocusEvent, resume: () => void) => {
   const root = event.currentTarget as Node | null
@@ -275,7 +273,7 @@ const exampleIsExternal = (href: string, external?: boolean) =>
               :aria-hidden="pageIdx === processPage ? undefined : 'true'"
             >
               <li
-                v-for="(step, index) in page"
+                v-for="step in page"
                 :key="step.title"
               >
                 <article class="services-hub__step">
