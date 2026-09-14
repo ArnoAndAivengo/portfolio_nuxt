@@ -1,0 +1,72 @@
+.bugs-hub__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 0.85rem;
+}
+
+.bugs-hub__card {
+  --hub-accent: var(--accent-bugs, #f43f5e);
+  height: 100%;
+  padding: 1rem 1rem 0.95rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--hub-accent) 45%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: border-color 0.3s ease, transform 0.35s var(--ease);
+}
+
+.bugs-hub__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--hub-accent);
+}
+
+.bugs-hub__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.bugs-hub__icon {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.bugs-hub__title {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  transition: color 0.25s ease;
+}
+
+.bugs-hub__excerpt {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.bugs-hub__more {
+  margin: 0;
+}
+
+.bugs-hub__more a {
+  color: var(--heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.bugs-hub__card:hover .bugs-hub__title,
+.bugs-hub__card:hover .bugs-hub__more a {
+  color: var(--hub-accent);
+}

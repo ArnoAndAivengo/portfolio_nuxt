@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-const pages = ['/', '/resume', '/projects', '/trainers'] as const
+const pages = ['/', '/resume', '/projects', '/trainers', '/trainers/interviews', '/trainers/bugs', '/motivation'] as const
 
 for (const path of pages) {
   test(`${path} отдаёт 200 и заголовок`, async ({ page }) => {

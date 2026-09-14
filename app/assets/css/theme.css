@@ -12,6 +12,8 @@
   --accent-motivation: #f472b6;
   --accent-trainers: #22d3ee;
   --accent-python: #facc15;
+  --accent-javascript: #eab308;
+  --accent-bugs: #f43f5e;
   --accent-ai: #818cf8;
 }
 
@@ -469,6 +471,8 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
 [data-page="trainers"] { --page-accent: var(--accent-trainers); }
 [data-page="typing"] { --page-accent: var(--accent-trainers); }
 [data-page="python"] { --page-accent: var(--accent-python); }
+[data-page="javascript"] { --page-accent: var(--accent-javascript); }
+[data-page="bugs"] { --page-accent: var(--accent-bugs); }
 
 .prose {
   font-size: 1rem;

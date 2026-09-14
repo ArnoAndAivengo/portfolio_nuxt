@@ -23,8 +23,13 @@
   border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
 }
 
-.trainers-hub__card--python {
+.trainers-hub__card--interviews {
   --hub-accent: var(--accent-python, #facc15);
+  border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
+}
+
+.trainers-hub__card--bugs {
+  --hub-accent: var(--accent-bugs, #f43f5e);
   border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
 }
 

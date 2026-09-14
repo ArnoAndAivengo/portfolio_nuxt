@@ -44,8 +44,8 @@
   background: var(--accent-typing, var(--accent-trainers));
 }
 
-.trainer-nav__link--python:hover::before,
-.trainer-nav__link--python[aria-current="page"]::before {
+.trainer-nav__link--interviews:hover::before,
+.trainer-nav__link--interviews[aria-current="page"]::before {
   width: 3.5rem;
   opacity: 1;
   background: var(--accent-python, #facc15);
@@ -56,9 +56,21 @@
   color: var(--accent-typing, var(--accent-trainers));
 }
 
-.trainer-nav__link--python:hover,
-.trainer-nav__link--python[aria-current="page"] {
+.trainer-nav__link--interviews:hover,
+.trainer-nav__link--interviews[aria-current="page"] {
   color: var(--accent-python, #facc15);
+}
+
+.trainer-nav__link--bugs:hover::before,
+.trainer-nav__link--bugs[aria-current="page"]::before {
+  width: 3.5rem;
+  opacity: 1;
+  background: var(--accent-bugs, #f43f5e);
+}
+
+.trainer-nav__link--bugs:hover,
+.trainer-nav__link--bugs[aria-current="page"] {
+  color: var(--accent-bugs, #f43f5e);
 }
 
 .aside .trainer-nav {

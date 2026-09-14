@@ -77,7 +77,12 @@ export default defineNuxtConfig({
         '/motivation',
         '/trainers',
         '/trainers/typing',
+        '/trainers/interviews',
         '/trainers/python',
+        '/trainers/javascript',
+        '/trainers/bugs',
+        '/trainers/bugs/python',
+        '/trainers/bugs/javascript',
       ],
     },
     devProxy: {
@@ -127,5 +132,9 @@ export default defineNuxtConfig({
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },
     '/trainers/typing.html': { redirect: { to: '/trainers/typing', statusCode: 301 } },
     '/trainers/python.html': { redirect: { to: '/trainers/python', statusCode: 301 } },
+    '/motivation/interview': { redirect: { to: '/trainers/interviews', statusCode: 301 } },
+    '/motivation/interview.html': { redirect: { to: '/trainers/interviews', statusCode: 301 } },
+    '/motivation/bugs': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
+    '/motivation/bugs.html': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
   },
 })

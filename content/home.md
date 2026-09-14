@@ -6,7 +6,7 @@ status: Открыт к предложениям
 eyebrow: Портфолио
 lead: Фокус на Vue 3 / Nuxt.
 experienceYears: 7+ лет
-updated: 7 сентября 2026
+updated: 14 сентября 2026
 seoTitle: Александр Обухов — Frontend-разработчик (Senior)
 seoDescription: "Frontend-разработчик (Senior), 7+ лет: Vue 3, Nuxt, TypeScript, JavaScript, HTML, CSS, FSD. E-commerce, аналитика, edtech. Удалёнка, гибрид или офис в Москве."
 ogImage: https://arnoandaivengo.ru/images/alex/alex-og.jpg

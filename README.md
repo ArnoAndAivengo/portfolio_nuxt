@@ -42,12 +42,17 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | `/projects/ai-chat/` | SPA-демо AI Chat |
 | `/trainers` | Хаб тренажёров |
 | `/trainers/typing` | Touch Type |
+| `/trainers/interviews` | Собеседования: Python и JavaScript |
 | `/trainers/python` | Квиз по Python |
+| `/trainers/javascript` | Квиз по JavaScript |
+| `/trainers/bugs` | Поиск багов: Python и JavaScript |
+| `/trainers/bugs/python` | Поиск багов в Python |
+| `/trainers/bugs/javascript` | Поиск багов в JavaScript |
 | `/services` | Услуги (заглушка) |
 | `/articles` | Статьи (заглушка) |
-| `/motivation` | Мотивация (заглушка) |
+| `/motivation` | История: путь IT-специалиста |
 
-`/aobukhov` → 301 на `/resume`. Старые URL тренажёров `/trainers/typing.html` и `/trainers/python.html` тоже редиректят на актуальные пути.
+`/aobukhov` → 301 на `/resume`. Старые URL тренажёров `/trainers/typing.html` и `/trainers/python.html` тоже редиректят на актуальные пути. `/motivation/interview` и `/motivation/interview.html` ведут на `/trainers/interviews`. `/motivation/bugs` и `/motivation/bugs.html` — на `/trainers/bugs`.
 
 Страницы `/ai` нет; чат с моделями живёт как демо `/projects/ai-chat/`.
 
@@ -79,8 +84,8 @@ app/
   constants/     # SITE_NAV, SITE_ORIGIN, OG_IMAGE
   components/
   composables/
-  entities/      # страницы проектов и тренажёров
-  features/      # Touch Type, квиз Python
+  entities/      # страницы проектов, тренажёров и мотивации
+  features/      # Touch Type, квизы Python / JavaScript, история и поиск багов
   widgets/       # хабы, сайдбары, кейсы LearnPortal / Codestats
   shared/
   layouts/

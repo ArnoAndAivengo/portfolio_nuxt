@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { OG_IMAGE, SITE_NAV, SITE_ORIGIN } from '~/constants'
+import { motivationPageForPath } from '~/entities/motivation'
 import { projectPageForPath } from '~/entities/project'
 import { trainerPageForPath } from '~/entities/trainer'
 import { navItemForPath } from '~/utils/nav'
+import { MotivationAside } from '~/widgets/motivation-aside'
 import { ProjectsAside } from '~/widgets/projects-aside'
 import { TrainersAside } from '~/widgets/trainers-aside'
 
@@ -11,8 +13,12 @@ const { data: home } = await useHome()
 const currentNav = computed(() => navItemForPath(route.path))
 const trainerPage = computed(() => trainerPageForPath(route.path))
 const projectPage = computed(() => projectPageForPath(route.path))
+const motivationPage = computed(() => motivationPageForPath(route.path))
 const pageKey = computed(() =>
-  trainerPage.value?.pageKey ?? projectPage.value?.pageKey ?? currentNav.value.key,
+  trainerPage.value?.pageKey
+  ?? projectPage.value?.pageKey
+  ?? motivationPage.value?.pageKey
+  ?? currentNav.value.key,
 )
 const showProfile = computed(() => pageKey.value === 'home' || pageKey.value === 'resume')
 const pageLead = computed(() =>
@@ -22,6 +28,7 @@ const pageLead = computed(() =>
 const isSiteNavCurrent = (item: (typeof SITE_NAV)[number]) => {
   if (item.key === 'trainers') return Boolean(trainerPage.value)
   if (item.key === 'projects') return Boolean(projectPage.value)
+  if (item.key === 'motivation') return Boolean(motivationPage.value)
   if (item.to === '/') return route.path === '/'
 
   return route.path.startsWith(item.to)
@@ -79,7 +86,7 @@ useHead({
     <aside
       class="aside"
       :class="{ 'aside--compact': !showProfile }"
-      :aria-label="showProfile ? 'Профиль' : trainerPage ? 'Тренажёр' : projectPage ? 'Проект' : 'Навигация'"
+      :aria-label="showProfile ? 'Профиль' : trainerPage ? 'Тренажёр' : projectPage ? 'Проект' : motivationPage ? 'Мотивация' : 'Навигация'"
     >
       <div class="aside__top">
         <TrainersAside
@@ -90,6 +97,10 @@ useHead({
           v-else-if="projectPage"
           :key="projectPage.current"
           :page="projectPage"
+        />
+        <MotivationAside
+          v-else-if="motivationPage"
+          :page="motivationPage"
         />
         <template v-else>
           <h1
