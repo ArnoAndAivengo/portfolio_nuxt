@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Рейтинг нейросетей — Александр Обухов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Сравнивай модели, бенчмарки и цены. Найди нейросеть под код, агентов, картинки или видео.">
+  <meta name="author" content="Александр Обухов">
+  <meta name="theme-color" content="#0a192f">
+  <link rel="canonical" href="https://arnoandaivengo.ru/projects/ai/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arnoandaivengo.ru/projects/ai/">
+  <meta property="og:title" content="Рейтинг нейросетей — Александр Обухов">
+  <meta property="og:description" content="Сравнивай модели, бенчмарки и цены. Быстро находи лучшее под свои задачи.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://arnoandaivengo.ru/images/alex/alex-og.jpg">
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/inter/cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/fonts.css">
+  <link rel="stylesheet" href="./styles/index.style.css">
+  <link rel="stylesheet" href="./styles/ai.style.css">
+</head>
+<body class="bc bc--ai">
+  <canvas class="bc-stars" id="bc-stars" aria-hidden="true"></canvas>
+  <div class="bc-spotlight" id="spotlight" aria-hidden="true"></div>
+  <a class="bc-skip" href="#content">К содержимому</a>
+
+  <div class="bc-shell" id="top">
+    <aside class="bc-aside" aria-label="Профиль">
+      <div class="bc-aside__top">
+        <p class="bc-eyebrow">Нейросети</p>
+        <h1 class="bc-name">Рейтинг нейросетей</h1>
+        <p class="bc-role">Модели под задачу</p>
+        <p class="bc-lead">
+          Сравнивай модели, бенчмарки и цены.
+          Быстро находи лучшее под свои задачи.
+        </p>
+
+        <div class="ai-toolbar">
+          <input class="ai-search" id="ai-search" type="search" placeholder="Модель, компания или задача" autocomplete="off" aria-label="Поиск модели">
+          <div class="ai-filter" id="ai-license">
+            <button type="button" class="ai-filter__btn" id="ai-license-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="ai-license-list" aria-label="Фильтр по лицензии">
+              <span class="ai-filter__dot" aria-hidden="true"></span>
+              <span class="ai-filter__value">Все лицензии</span>
+              <span class="ai-filter__chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="ai-filter__list" id="ai-license-list" role="listbox" hidden>
+              <li>
+                <button type="button" role="option" aria-selected="true" data-value="all" data-label="Все лицензии">Все лицензии</button>
+              </li>
+              <li>
+                <button type="button" role="option" aria-selected="false" data-value="open" data-label="open">
+                  <span class="ai-lic is-open">open</span>
+                  <span>открытые веса</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" role="option" aria-selected="false" data-value="proprietary" data-label="closed">
+                  <span class="ai-lic is-closed">closed</span>
+                  <span>закрытые веса</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="ai-filter ai-filter--sort" id="ai-sort" data-value="rank">
+            <button type="button" class="ai-filter__btn" id="ai-sort-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="ai-sort-list" aria-label="Сортировка">
+              <span class="ai-filter__value">По рейтингу</span>
+              <span class="ai-filter__chevron" aria-hidden="true"></span>
+            </button>
+            <ul class="ai-filter__list" id="ai-sort-list" role="listbox" hidden>
+              <li>
+                <button type="button" role="option" aria-selected="true" data-value="rank" data-label="По рейтингу">По рейтингу</button>
+              </li>
+              <li>
+                <button type="button" role="option" aria-selected="false" data-value="price" data-label="Дешевле">Дешевле</button>
+              </li>
+              <li>
+                <button type="button" role="option" aria-selected="false" data-value="context" data-label="Больше контекст">Больше контекст</button>
+              </li>
+              <li>
+                <button type="button" role="option" aria-selected="false" data-value="open" data-label="Open сначала">Open сначала</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="bc-main" id="content">
+      <section class="bc-section is-visible" id="ai" data-section="ai">
+        <h2 class="bc-section__title">Сейчас в тренде</h2>
+        <div class="bc-prose">
+          <p>
+            Топ нейросетей по объёму токенов OpenRouter — код, агенты, картинки и видео.
+            Качество по задачам — со слепых сравнений Arena AI.
+          </p>
+        </div>
+
+        <ul class="ai-scenes" id="ai-scenes">
+          <li>
+            <button type="button" data-sphere="code" aria-pressed="false">
+              <span class="ai-scenes__label">Код в IDE</span>
+              <span class="ai-scenes__note">написать и править</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-sphere="text-to-image" aria-pressed="false">
+              <span class="ai-scenes__label">Картинка для статьи</span>
+              <span class="ai-scenes__note">обложка и иллюстрация</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" data-sphere="image-to-video" aria-pressed="false">
+              <span class="ai-scenes__label">Видео из фото</span>
+              <span class="ai-scenes__note">оживить кадр</span>
+            </button>
+          </li>
+        </ul>
+
+        <ul class="ai-chips" id="ai-chips">
+          <li><button type="button" class="is-active" data-sphere="trending" aria-pressed="true">Сейчас в тренде</button></li>
+          <li><button type="button" data-sphere="agent">Агенты</button></li>
+          <li><button type="button" data-sphere="code">Код</button></li>
+          <li><button type="button" data-sphere="text">Чат и текст</button></li>
+          <li><button type="button" data-sphere="search">Поиск</button></li>
+          <li><button type="button" data-sphere="vision">Зрение</button></li>
+          <li><button type="button" data-sphere="document">Документы</button></li>
+          <li><button type="button" data-sphere="text-to-image">Картинки</button></li>
+          <li><button type="button" data-sphere="image-edit">Правка фото</button></li>
+          <li><button type="button" data-sphere="text-to-video">Видео</button></li>
+          <li><button type="button" data-sphere="image-to-video">Фото → видео</button></li>
+          <li><button type="button" data-sphere="video-edit">Монтаж</button></li>
+        </ul>
+
+        <div class="ai-meta">
+          <p class="ai-hint" id="ai-hint">Кого вызывают чаще всего — по объёму токенов, не по качеству.</p>
+          <p class="ai-status" id="ai-status" role="status">Топ по объёму токенов OpenRouter</p>
+        </div>
+        <p class="ai-empty" id="ai-empty" hidden>Ничего не нашлось. Смените задачу или сбросьте поиск.</p>
+        <div class="ai-compare" id="ai-compare" hidden></div>
+        <div class="ai-grid" id="ai-grid">
+        <!-- ai-seed -->
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/deepseek.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>DeepSeek V4</h3>
+                <nav class="ai-links"><a href="https://chat.deepseek.com" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>DeepSeek</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Код и рассуждение, open-weight</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.05/$0.16</b><span>in/out</span></li><li><b>1.3M</b><span>контекст</span></li><li><b>17.21T</b><span>токены</span></li></ul>
+          <p class="ai-summary">V4 Flash — один из самых используемых моделей в мире по токенам. Pro/High сильнее в Arena Code при низкой цене.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/zai.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>GLM 5.3</h3>
+                <nav class="ai-links"><a href="https://chat.z.ai" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>Z.ai</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Семейство GLM</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.08/$0.25</b><span>in/out</span></li><li><b>1.3M</b><span>контекст</span></li><li><b>10.01T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Z.ai GLM: Flash даёт гигантский трафик OpenRouter, Max держится в топе Arena Code. Удобный open-source контур.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/openai.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>GPT-5.6 Luna</h3>
+                <nav class="ai-links"><a href="https://chatgpt.com" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>OpenAI</span>
+                <span class="ai-lic is-closed">closed</span>
+                <span>Массовая GPT-5.6</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.2/$1.2</b><span>in/out</span></li><li><b>1.1M</b><span>контекст</span></li><li><b>9.52T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Самый «горячий» GPT по объёму токенов: дешевле Sol, хватает для большинства чатов и лёгкого кода.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/xiaomimimo.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Xiaomi MiMo V2.5</h3>
+                <nav class="ai-links"><a href="https://github.com/XiaomiMiMo" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>Xiaomi</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Open-weight, высокий трафик</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.12/$0.24</b><span>in/out</span></li><li><b>1.1M</b><span>контекст</span></li><li><b>7.2T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Сюрприз OpenRouter: огромный объём токенов при низкой цене. Pro — ближе к кодовым аренам.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/tencent.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Hy3</h3>
+                <nav class="ai-links"><a href="https://openrouter.ai/tencent/hy3" rel="noopener noreferrer">OpenRouter</a></nav>
+              </div>
+              <p>
+                <span>tencent</span>
+                <span class="ai-lic is-open">open</span>
+                
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.08/$0.33</b><span>in/out</span></li><li><b>262K</b><span>контекст</span></li><li><b>5.89T</b><span>токены</span></li></ul>
+          
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/tencent.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Tencent Hy4</h3>
+                <nav class="ai-links"><a href="https://hunyuan.tencent.com" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>Tencent</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Кодовая модель</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.83/$2.5</b><span>in/out</span></li><li><b>1M</b><span>контекст</span></li><li><b>5.72T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Новый контур Tencent: быстро вошёл в топ Arena Code и в топ OpenRouter по токенам (preview).</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/minimax.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>MiniMax M3</h3>
+                <nav class="ai-links"><a href="https://www.minimax.io" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>MiniMax</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Длинный контекст, часто free-слот</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>Free</b><span>in/out</span></li><li><b>1M</b><span>контекст</span></li><li><b>5.27T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Большой контекст и бесплатные слоты на роутерах: удобно для прототипов агентов и длинных текстов.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/nvidia.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Nemotron 3 Ultra (free)</h3>
+                <nav class="ai-links"><a href="https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b" rel="noopener noreferrer">OpenRouter</a></nav>
+              </div>
+              <p>
+                <span>Nvidia</span>
+                <span class="ai-lic is-open">open</span>
+                
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>Free</b><span>in/out</span></li><li><b>1M</b><span>контекст</span></li><li><b>4.66T</b><span>токены</span></li></ul>
+          
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <span class="ai-vendor ai-vendor--letter" aria-hidden="true">S</span>
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Ox Alpha</h3>
+                <nav class="ai-links"><a href="https://openrouter.ai/stealth/ox-alpha" rel="noopener noreferrer">OpenRouter</a></nav>
+              </div>
+              <p>
+                <span>Stealth</span>
+                <span class="ai-lic is-open">open</span>
+                
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>1M</b><span>контекст</span></li><li><b>4T</b><span>токены</span></li></ul>
+          
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/gemini.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>Gemini 3.7 Flash</h3>
+                <nav class="ai-links"><a href="https://gemini.google.com" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>Google</span>
+                <span class="ai-lic is-closed">closed</span>
+                <span>Быстрый мультимодальный Flash</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.75/$3.75</b><span>in/out</span></li><li><b>1M</b><span>контекст</span></li><li><b>3.53T</b><span>токены</span></li></ul>
+          <p class="ai-summary">Массовый Gemini Flash: огромный контекст, зрение, поиск Google, высокий трафик в OpenRouter.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/deepseek.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>DeepSeek V4</h3>
+                <nav class="ai-links"><a href="https://chat.deepseek.com" rel="noopener noreferrer">Сайт</a></nav>
+              </div>
+              <p>
+                <span>DeepSeek</span>
+                <span class="ai-lic is-open">open</span>
+                <span>Код и рассуждение, open-weight</span>
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>$0.58/$1.74</b><span>in/out</span></li><li><b>1M</b><span>контекст</span></li><li><b>2.66T</b><span>токены</span></li></ul>
+          <p class="ai-summary">V4 Flash — один из самых используемых моделей в мире по токенам. Pro/High сильнее в Arena Code при низкой цене.</p>
+        </article>
+        <article class="ai-card">
+          <header class="ai-card__head">
+            <img class="ai-vendor" src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.94.0/icons/zai.svg" alt="" width="60" height="60">
+            <div class="ai-card__titles">
+              <div class="ai-card__title-row">
+                <h3>GLM 5.2 (free)</h3>
+                <nav class="ai-links"><a href="https://openrouter.ai/z-ai/glm-5.2" rel="noopener noreferrer">OpenRouter</a></nav>
+              </div>
+              <p>
+                <span>Z.ai</span>
+                <span class="ai-lic is-open">open</span>
+                
+              </p>
+            </div>
+          </header>
+          <ul class="ai-metrics"><li><b>Free</b><span>in/out</span></li><li><b>256K</b><span>контекст</span></li><li><b>2.63T</b><span>токены</span></li></ul>
+          
+        </article>
+        <!-- /ai-seed -->
+        </div>
+        <button type="button" class="ai-more" id="ai-more" hidden>Показать ещё</button>
+
+        <div class="bc-prose ai-sources">
+          <p>
+            Откуда цифры:
+            <a href="https://arena.ai/leaderboard/" target="_blank" rel="noopener noreferrer">Arena AI</a>
+            — кто лучше по слепым голосам людей;
+            <a href="https://whatstrending.ai/models" target="_blank" rel="noopener noreferrer">OpenRouter</a>
+            — кого вызывают чаще. В карточке рядом цена, контекст и для чего модель подходит.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+        <div class="bc-social">
+          <a href="https://github.com/ArnoAndAivengo" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <a href="https://gitlab.com/ArnoAndAivengo" target="_blank" rel="noopener noreferrer" aria-label="GitLab" title="GitLab">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 01-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 014.82 2a.43.42 0 01.58 0 .42.42 0 01.11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0118.6 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.51 1.22 3.78a.84.84 0 01-.3.94z"/></svg>
+          </a>
+          <a href="https://t.me/alexObukhovArno" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="mailto:alexobukhov@hotmail.com" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+        </div>
+        <div class="footer__meta">
+            <span class="footer__updated">Страница обновлена 14 сентября 2026</span>
+            <span class="footer__copy">© Александр Обухов, 2026</span>
+        </div>
+        <a href="#top" class="footer__link">Наверх ↑</a>
+    </footer>
+  </div>
+  <script src="./scripts/bc-stars.js" defer></script>
+  <script src="./scripts/page.js" defer></script>
+  <script src="./scripts/catalog.js" defer></script>
+  <script src="./scripts/snapshot.js" defer></script>
+  <script src="./scripts/agents.js" defer></script>
+</body>
+</html>

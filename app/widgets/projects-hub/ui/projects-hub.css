@@ -26,7 +26,8 @@
   --hub-accent: #2563eb;
 }
 
-.projects-hub__card--ai {
+.projects-hub__card--ai,
+.projects-hub__card--ranking {
   --hub-accent: var(--accent-ai);
 }
 

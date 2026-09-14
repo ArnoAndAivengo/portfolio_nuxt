@@ -62,6 +62,7 @@ export const projectPageForPath = (path: string): ProjectPage | null => {
   if (path.startsWith('/projects/crypto')) return null
   if (path.startsWith('/projects/saas-dashboard')) return null
   if (path.startsWith('/projects/ai-chat')) return null
+  if (path.startsWith('/projects/ai')) return null
   if (path.startsWith('/projects/pets')) return PROJECT_PAGES.pets
   if (path.startsWith('/projects/learn-portal')) return PROJECT_PAGES.learnPortal
   if (path.startsWith('/projects/codestats')) return PROJECT_PAGES.codestats

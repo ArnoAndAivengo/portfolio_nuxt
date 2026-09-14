@@ -23,6 +23,9 @@ offers:
         href: "https://gitlab.com/ArnoAndAivengo/market_laravel_vue"
       - label: "SPA-каталог"
         href: "https://gitlab.com/ArnoAndAivengo/react_spa_catalog"
+      - label: "Рейтинг нейросетей"
+        href: "/projects/ai/"
+        external: true
   - title: "Дашборды и данные в реальном времени"
     text: "Метрики, графики, инциденты, обновление по WebSocket. Когда нужно видеть цифры и состояние сервиса, а не статичную страницу."
     examples:

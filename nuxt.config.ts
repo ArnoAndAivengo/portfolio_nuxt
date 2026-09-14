@@ -1,4 +1,5 @@
 const CRYPTO_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.coingecko.com https://api.rss2json.com wss://stream.binance.com:9443 https://stream.binance.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+const AI_RANKING_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://whatstrending.ai https://raw.githubusercontent.com https://cdn.jsdelivr.net https://api.wulong.dev; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 
 export default defineNuxtConfig({
   modules: [
@@ -62,6 +63,8 @@ export default defineNuxtConfig({
         '/projects/saas-dashboard/**',
         '/projects/ai-chat',
         '/projects/ai-chat/**',
+        '/projects/ai',
+        '/projects/ai/**',
         '/yandex_dc6fc1a56afa142c.html',
         '/google848ea8eb86f9b687.html',
       ],
@@ -129,6 +132,26 @@ export default defineNuxtConfig({
         'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       },
     },
+    '/projects/ai': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': AI_RANKING_CSP,
+      },
+    },
+    '/projects/ai/**': {
+      headers: {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': AI_RANKING_CSP,
+      },
+    },
+    '/ai': { redirect: { to: '/projects/ai/', statusCode: 301 } },
+    '/ai/': { redirect: { to: '/projects/ai/', statusCode: 301 } },
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },
     '/trainers/typing.html': { redirect: { to: '/trainers/typing', statusCode: 301 } },
     '/trainers/python.html': { redirect: { to: '/trainers/python', statusCode: 301 } },

@@ -41,6 +41,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | `/projects/crypto/` | SPA-демо Crypto Dashboard |
 | `/projects/saas-dashboard/` | SPA-демо SaaS Metrics Hub |
 | `/projects/ai-chat/` | SPA-демо AI Chat |
+| `/projects/ai/` | Рейтинг нейросетей |
 | `/trainers` | Хаб тренажёров |
 | `/trainers/typing` | Touch Type |
 | `/trainers/interviews` | Собеседования: Python и JavaScript |
@@ -55,7 +56,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 
 `/aobukhov` → 301 на `/resume`. Старые URL тренажёров `/trainers/typing.html` и `/trainers/python.html` тоже редиректят на актуальные пути. `/motivation/interview` и `/motivation/interview.html` ведут на `/trainers/interviews`. `/motivation/bugs` и `/motivation/bugs.html` — на `/trainers/bugs`.
 
-Страницы `/ai` нет; чат с моделями живёт как демо `/projects/ai-chat/`.
+Страницы `/ai` нет в меню; старый URL редиректит на демо `/projects/ai/`. Чат с моделями — `/projects/ai-chat/`.
 
 Меню и SEO-тексты: `app/constants/nav.ts`.
 
@@ -77,7 +78,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 
 После правок контента достаточно `npm run generate`.
 
-SPA-демо в `public/projects/{crypto,saas-dashboard,ai-chat}/` — готовые сборки чужих приложений. Nuxt их не пререндерит; в nginx для crypto нужен свой CSP (Binance / CoinGecko), см. `nginx.snippet.conf`.
+SPA-демо в `public/projects/{crypto,saas-dashboard,ai-chat,ai}/` — готовые сборки чужих приложений и статический рейтинг нейросетей. Nuxt их не пререндерит; в nginx для crypto и рейтинга нужен свой CSP, см. `nginx.snippet.conf`.
 
 ## Структура
 
