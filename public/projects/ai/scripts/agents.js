@@ -1,6 +1,6 @@
 (function () {
-  const SNAPSHOT_URL = './data/snapshot.json';
-  const SNAPSHOT_DATE = '2026-09-03';
+  const SNAPSHOT_DATE = '2026-09-16';
+  const SNAPSHOT_URL = './data/snapshot.json?v=' + SNAPSHOT_DATE;
   const USAGE_API = 'https://whatstrending.ai/api/models';
   const GH_DATA = 'https://raw.githubusercontent.com/oolong-tea-2026/arena-ai-leaderboards/main/data/';
   const JSDELIVR = 'https://cdn.jsdelivr.net/gh/oolong-tea-2026/arena-ai-leaderboards@main/data/';

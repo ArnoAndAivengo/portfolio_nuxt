@@ -21,7 +21,10 @@
   npm run test       # Vitest
   npm run test:e2e   # Playwright smoke (нужен предварительный generate)
   npm run prepush    # lint + typecheck + Vitest; то же самое ставится на git push
+  npm run ai:snapshot  # снимок рейтингов /projects/ai/ (без nuxt generate)
 ```
+
+Cron раз в сутки, затем залить `public/projects/ai/` на хостинг.
 
 ## Разделы
 
@@ -81,5 +84,6 @@ app/
 content/
 public/          # robots.txt, sitemap.xml, файлы Вебмастера/Search Console,
                  # favicon, картинки, SPA-демо в public/projects/
+scripts/         # ai-snapshot.mjs — обновление рейтинга нейросетей
 nginx.snippet.conf
 ```
