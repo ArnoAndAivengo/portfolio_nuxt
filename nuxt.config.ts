@@ -1,3 +1,4 @@
+const SITE_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 const CRYPTO_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.coingecko.com https://api.rss2json.com wss://stream.binance.com:9443 https://stream.binance.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 const AI_RANKING_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://whatstrending.ai https://raw.githubusercontent.com https://cdn.jsdelivr.net https://api.wulong.dev; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 
@@ -22,8 +23,8 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preload', href: '/fonts/inter/cyrillic-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
         { rel: 'preload', href: '/fonts/inter/latin-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-        { rel: 'preload', href: '/fonts/inter/cyrillic-600-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
-        { rel: 'preload', href: '/fonts/inter/latin-600-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', href: '/fonts/inter/cyrillic-700-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+        { rel: 'preload', href: '/fonts/inter/latin-700-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
       ],
     },
   },
@@ -72,6 +73,7 @@ export default defineNuxtConfig({
         '/',
         '/services',
         '/articles',
+        '/articles/techblog',
         '/projects',
         '/projects/pets',
         '/projects/learn-portal',
@@ -102,7 +104,7 @@ export default defineNuxtConfig({
         'X-Frame-Options': 'DENY',
         'Referrer-Policy': 'strict-origin-when-cross-origin',
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+        'Content-Security-Policy': SITE_CSP,
       },
     },
     '/projects/crypto/**': {
@@ -159,5 +161,18 @@ export default defineNuxtConfig({
     '/motivation/interview.html': { redirect: { to: '/trainers/interviews', statusCode: 301 } },
     '/motivation/bugs': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
     '/motivation/bugs.html': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
+    '/articles/techblog.html': { redirect: { to: '/articles/techblog', statusCode: 301 } },
+    '/articles/python-svyazuyushchee-zveno.html': { redirect: { to: '/articles/python-svyazuyushchee-zveno', statusCode: 301 } },
+    '/articles/kogda-rakety-ne-vzletayut.html': { redirect: { to: '/articles/kogda-rakety-ne-vzletayut', statusCode: 301 } },
+    '/articles/iskusstvennyy-intellekt.html': { redirect: { to: '/articles/iskusstvennyy-intellekt', statusCode: 301 } },
+    '/articles/it-bez-opyta.html': { redirect: { to: '/articles/it-bez-opyta', statusCode: 301 } },
+    '/articles/learnportal-tehblog-01.html': { redirect: { to: '/articles/learnportal-tehblog-01', statusCode: 301 } },
+    '/articles/learnportal-tehblog-02.html': { redirect: { to: '/articles/learnportal-tehblog-02', statusCode: 301 } },
+    '/articles/learnportal-tehblog-03.html': { redirect: { to: '/articles/learnportal-tehblog-03', statusCode: 301 } },
+    '/articles/learnportal-tehblog-04.html': { redirect: { to: '/articles/learnportal-tehblog-04', statusCode: 301 } },
+    '/articles/learnportal-tehblog-05.html': { redirect: { to: '/articles/learnportal-tehblog-05', statusCode: 301 } },
+    '/articles/learnportal-tehblog-06.html': { redirect: { to: '/articles/learnportal-tehblog-06', statusCode: 301 } },
+    '/articles/learnportal-tehblog-07.html': { redirect: { to: '/articles/learnportal-tehblog-07', statusCode: 301 } },
+    '/articles/learnportal-tehblog-08.html': { redirect: { to: '/articles/learnportal-tehblog-08', statusCode: 301 } },
   },
 })

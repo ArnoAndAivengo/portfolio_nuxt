@@ -376,38 +376,6 @@ const exampleIsExternal = (href: string, external?: boolean) =>
     </section>
 
     <section
-      id="why"
-      class="section"
-    >
-      <h2 class="section__title">Почему безвозмездно</h2>
-      <div class="prose">
-        <p
-          v-for="(paragraph, index) in services.whyFree"
-          :key="index"
-        >
-          {{ paragraph }}
-        </p>
-      </div>
-    </section>
-
-    <section
-      id="thanks"
-      class="section"
-    >
-      <h2 class="section__title">О благодарности</h2>
-      <div class="prose">
-        <p>{{ services.gratitudeLead }}</p>
-      </div>
-      <ul class="resume-list">
-        <li
-          v-for="item in services.gratitude"
-          :key="item"
-        >{{ item }}</li>
-      </ul>
-      <p class="services-hub__note">{{ services.gratitudeNote }}</p>
-    </section>
-
-    <section
       id="contact"
       class="section"
     >

@@ -15,7 +15,22 @@ usePageSeo({
   author: () => home.value?.name,
 })
 
-const stack = ['NestJS', 'PostgreSQL', 'Redis', 'Nuxt 3', 'Vue 3', 'React', 'Docker', 'GitHub API']
+const stack = [
+  'Nuxt 3',
+  'Vue 3',
+  'TypeScript',
+  'React',
+  'Vite',
+  'NestJS',
+  'Prisma',
+  'JWT',
+  'PostgreSQL',
+  'Redis',
+  'Docker',
+  'Nginx',
+  'GitHub Actions',
+  'GitHub API',
+]
 </script>
 
 <template>

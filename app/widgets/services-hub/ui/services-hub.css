@@ -239,10 +239,6 @@
   margin-bottom: 1rem;
 }
 
-#thanks .resume-list {
-  margin-top: 0.85rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .services-hub__viewport {
     scroll-behavior: auto;

@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { OG_IMAGE, SITE_NAV, SITE_ORIGIN } from '~/constants'
+import { articlePageForPath } from '~/entities/article'
 import { motivationPageForPath } from '~/entities/motivation'
 import { projectPageForPath } from '~/entities/project'
 import { trainerPageForPath } from '~/entities/trainer'
 import { navItemForPath } from '~/utils/nav'
-import { MotivationAside } from '~/widgets/motivation-aside'
-import { ProjectsAside } from '~/widgets/projects-aside'
-import { TrainersAside } from '~/widgets/trainers-aside'
+
+const TrainersAside = defineAsyncComponent(() =>
+  import('~/widgets/trainers-aside').then((mod) => mod.TrainersAside),
+)
+const ProjectsAside = defineAsyncComponent(() =>
+  import('~/widgets/projects-aside').then((mod) => mod.ProjectsAside),
+)
+const MotivationAside = defineAsyncComponent(() =>
+  import('~/widgets/motivation-aside').then((mod) => mod.MotivationAside),
+)
+const ArticlesAside = defineAsyncComponent(() =>
+  import('~/widgets/articles-aside').then((mod) => mod.ArticlesAside),
+)
 
 const route = useRoute()
 const { data: home } = await useHome()
@@ -14,10 +25,12 @@ const currentNav = computed(() => navItemForPath(route.path))
 const trainerPage = computed(() => trainerPageForPath(route.path))
 const projectPage = computed(() => projectPageForPath(route.path))
 const motivationPage = computed(() => motivationPageForPath(route.path))
+const articlePage = computed(() => articlePageForPath(route.path))
 const pageKey = computed(() =>
   trainerPage.value?.pageKey
   ?? projectPage.value?.pageKey
   ?? motivationPage.value?.pageKey
+  ?? articlePage.value?.pageKey
   ?? currentNav.value.key,
 )
 const showProfile = computed(() => pageKey.value === 'home' || pageKey.value === 'resume')
@@ -29,6 +42,7 @@ const isSiteNavCurrent = (item: (typeof SITE_NAV)[number]) => {
   if (item.key === 'trainers') return Boolean(trainerPage.value)
   if (item.key === 'projects') return Boolean(projectPage.value)
   if (item.key === 'motivation') return Boolean(motivationPage.value)
+  if (item.key === 'articles') return Boolean(articlePage.value)
   if (item.to === '/') return route.path === '/'
 
   return route.path.startsWith(item.to)
@@ -81,12 +95,13 @@ useHead({
     class="shell"
     id="top"
     :data-page="pageKey"
+    :data-hub="articlePage?.hub ? '' : undefined"
   >
     <ThemeToggle />
     <aside
       class="aside"
       :class="{ 'aside--compact': !showProfile }"
-      :aria-label="showProfile ? 'Профиль' : trainerPage ? 'Тренажёр' : projectPage ? 'Проект' : motivationPage ? 'Мотивация' : 'Навигация'"
+      :aria-label="showProfile ? 'Профиль' : trainerPage ? 'Тренажёр' : projectPage ? 'Проект' : motivationPage ? 'Мотивация' : articlePage ? 'Статьи' : 'Навигация'"
     >
       <div class="aside__top">
         <TrainersAside
@@ -101,6 +116,10 @@ useHead({
         <MotivationAside
           v-else-if="motivationPage"
           :page="motivationPage"
+        />
+        <ArticlesAside
+          v-else-if="articlePage"
+          :page="articlePage"
         />
         <template v-else>
           <h1
@@ -130,11 +149,9 @@ useHead({
             </div>
             <h1 class="name">{{ home.name }}</h1>
             <p class="role">{{ home.role }}</p>
-            <p class="role-en">{{ home.roleEn }}</p>
             <p class="profile-contacts">
               <a :href="`mailto:${home.email}`">{{ home.email }}</a>
               <a :href="home.phoneHref">{{ home.phone }}</a>
-              <span>Москва</span>
             </p>
             <div class="status">
               <span
@@ -144,14 +161,6 @@ useHead({
               {{ home.status }}
             </div>
           </template>
-          <p
-            v-if="showProfile"
-            class="lead"
-          >
-            {{ home.lead }}
-            {{ home.experienceYears }} <br>
-            — e-commerce, аналитика, edtech.
-          </p>
           <p
             v-else
             class="lead"

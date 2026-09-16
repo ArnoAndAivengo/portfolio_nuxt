@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TrainerPage } from '~/entities/trainer'
-import { javascriptLevelMeta, useJavascriptLevel } from '~/features/javascript-quiz'
-import { pythonLevelMeta, usePythonLevel } from '~/features/python-quiz'
+import { javascriptLevelMeta, useJavascriptLevel } from '~/features/javascript-quiz/model/useJavascriptLevel'
+import { pythonLevelMeta, usePythonLevel } from '~/features/python-quiz/model/usePythonLevel'
 import { BugNav } from '~/shared/ui/bug-nav'
 import { InterviewNav } from '~/shared/ui/interview-nav'
 import { TrainerNav } from '~/shared/ui/trainer-nav'

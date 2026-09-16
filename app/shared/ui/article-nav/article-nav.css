@@ -1,0 +1,81 @@
+.article-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  margin: 0 0 1.75rem;
+}
+
+.article-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.article-nav__link span {
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.article-nav__link::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  transition: width 0.35s var(--ease), background 0.3s ease, opacity 0.3s ease;
+}
+
+.article-nav__link:hover,
+.article-nav__link[aria-current="page"] {
+  color: var(--heading);
+}
+
+.article-nav__link--posts:hover,
+.article-nav__link--posts[aria-current="page"] {
+  color: var(--accent-articles);
+}
+
+.article-nav__link--posts:hover::before,
+.article-nav__link--posts[aria-current="page"]::before {
+  width: 3.5rem;
+  opacity: 1;
+  background: var(--accent-articles);
+}
+
+.article-nav__link--issues:hover,
+.article-nav__link--issues[aria-current="page"] {
+  color: var(--accent-projects);
+}
+
+.article-nav__link--issues:hover::before,
+.article-nav__link--issues[aria-current="page"]::before {
+  width: 3.5rem;
+  opacity: 1;
+  background: var(--accent-projects);
+}
+
+.aside .article-nav {
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin: 2.15rem 0 0;
+}
+
+@media (max-width: 980px) {
+  .aside .article-nav {
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .aside .article-nav__link {
+    justify-content: center;
+  }
+}

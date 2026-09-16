@@ -51,10 +51,11 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | `/trainers/bugs/python` | Поиск багов в Python |
 | `/trainers/bugs/javascript` | Поиск багов в JavaScript |
 | `/services` | Услуги — бесплатно, от лендинга до SPA |
-| `/articles` | Статьи (заглушка) |
+| `/articles` | Статьи |
+| `/articles/techblog` | Техблог LearnPortal |
 | `/motivation` | История: путь IT-специалиста |
 
-`/aobukhov` → 301 на `/resume`. Старые URL тренажёров `/trainers/typing.html` и `/trainers/python.html` тоже редиректят на актуальные пути. `/motivation/interview` и `/motivation/interview.html` ведут на `/trainers/interviews`. `/motivation/bugs` и `/motivation/bugs.html` — на `/trainers/bugs`.
+`/aobukhov` → 301 на `/resume`. Старые URL тренажёров `/trainers/typing.html` и `/trainers/python.html` тоже редиректят на актуальные пути. `/motivation/interview` и `/motivation/interview.html` ведут на `/trainers/interviews`. `/motivation/bugs` и `/motivation/bugs.html` — на `/trainers/bugs`. Старые `/articles/*.html` ведут на `/articles/*`.
 
 Страницы `/ai` нет в меню; старый URL редиректит на демо `/projects/ai/`. Чат с моделями — `/projects/ai-chat/`.
 
@@ -74,7 +75,7 @@ CI (GitHub Actions и GitLab CI) гоняет lint, typecheck, Vitest, `nuxt gen
 | Места работы | `content/jobs/*.yml` |
 | Проекты | `content/projects/*.md` |
 | Услуги | `content/services.yml` |
-| Статьи | `content/articles/**/*.md` (пока пусто) |
+| Статьи | `content/articles/**/*.md` |
 
 После правок контента достаточно `npm run generate`.
 

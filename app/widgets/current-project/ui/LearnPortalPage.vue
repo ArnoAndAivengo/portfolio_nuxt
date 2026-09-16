@@ -28,7 +28,33 @@ const screenshots = [
   { src: '/images/learnportal/learnportal-9.png', alt: 'Профиль ученика: XP, курсы и вовлечённость' },
 ]
 
-const stack = ['Nuxt 3', 'Vue 3', 'FSD', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'Nginx']
+const stack = [
+  'Nuxt 3',
+  'Vue 3',
+  'TypeScript',
+  'Pinia',
+  'FSD',
+  'Tailwind',
+  'Sass',
+  'TipTap',
+  'Monaco Editor',
+  'CodeMirror',
+  'Chart.js',
+  'Nuxt Content',
+  'Node.js',
+  'Express',
+  'Sequelize',
+  'JWT',
+  'Swagger',
+  'Jest',
+  'PostgreSQL',
+  'Redis',
+  'Docker',
+  'Nginx',
+  'GitHub Actions',
+  'PM2',
+  'Ollama',
+]
 const roles = [
   'Fullstack',
   'Frontend',
