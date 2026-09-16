@@ -87,9 +87,13 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
                 class="projects-hub__title"
               >{{ project.title }}</h3>
               <div
-                v-if="project.spa || repoLink(project)"
+                v-if="project.status || project.spa || repoLink(project)"
                 class="projects-hub__aside"
               >
+                <span
+                  v-if="project.status"
+                  class="job__badge"
+                >{{ project.status }}</span>
                 <NuxtLink
                   v-if="project.spa"
                   class="projects-hub__preview"
