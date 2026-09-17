@@ -24,8 +24,6 @@
   npm run ai:snapshot  # снимок рейтингов /projects/ai/ (без nuxt generate)
 ```
 
-Cron раз в сутки, затем залить `public/projects/ai/` на хостинг.
-
 ## Разделы
 
 | URL | Содержание |
