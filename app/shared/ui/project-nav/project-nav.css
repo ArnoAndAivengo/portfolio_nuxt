@@ -120,7 +120,7 @@
 @media (max-width: 980px) {
   .aside .project-nav {
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: var(--page-pad, 20px);
   }
 
   .aside .project-nav__link {

@@ -84,7 +84,7 @@
 @media (max-width: 980px) {
   .aside .trainer-nav {
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: var(--page-pad, 20px);
   }
 
   .aside .trainer-nav__link {

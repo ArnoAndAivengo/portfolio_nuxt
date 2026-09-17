@@ -72,7 +72,7 @@
 @media (max-width: 980px) {
   .aside .article-nav {
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: var(--page-pad, 20px);
   }
 
   .aside .article-nav__link {

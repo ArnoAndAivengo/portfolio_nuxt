@@ -245,6 +245,12 @@
   font-style: italic;
 }
 
+@media (max-width: 980px) {
+  .article-page {
+    padding-bottom: var(--page-pad, 20px);
+  }
+}
+
 @media print {
   .article-page__back {
     display: none;

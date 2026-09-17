@@ -4,6 +4,7 @@ import './services-hub.css'
 
 const SLIDE_SIZE = 4
 const PROCESS_SLIDE_SIZE = 2
+const NARROW_MQ = '(max-width: 980px)'
 
 function chunkPages<T>(items: T[], size: number) {
   const pages: T[][] = []
@@ -15,35 +16,22 @@ function chunkPages<T>(items: T[], size: number) {
   return pages
 }
 
-const AUTO_MS = 10_000
+const isNarrow = ref(false)
+
+onMounted(() => {
+  const mq = window.matchMedia(NARROW_MQ)
+  const sync = () => {
+    isNarrow.value = mq.matches
+  }
+
+  sync()
+  mq.addEventListener('change', sync)
+  onUnmounted(() => mq.removeEventListener('change', sync))
+})
 
 const useSnapSlider = (pageCount: { readonly value: number }) => {
   const viewport = ref<HTMLElement | null>(null)
   const pageIndex = ref(0)
-  const paused = ref(false)
-  let timer: ReturnType<typeof setInterval> | null = null
-
-  const reducedMotion = () =>
-    typeof window !== 'undefined'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  const stop = () => {
-    if (!timer) return
-
-    clearInterval(timer)
-    timer = null
-  }
-
-  const start = () => {
-    stop()
-    if (paused.value || reducedMotion() || pageCount.value < 2) return
-
-    timer = setInterval(() => {
-      if (document.hidden || paused.value) return
-
-      scrollToPage(pageIndex.value + 1)
-    }, AUTO_MS)
-  }
 
   const scrollToPage = (index: number) => {
     const el = viewport.value
@@ -52,8 +40,6 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
 
     const next = ((index % count) + count) % count
     el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
-
-    if (!paused.value) start()
   }
 
   const onScroll = () => {
@@ -63,75 +49,57 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
     pageIndex.value = Math.round(el.scrollLeft / el.clientWidth)
   }
 
-  const pause = () => {
-    paused.value = true
-    stop()
-  }
-
-  const resume = () => {
-    paused.value = false
-    start()
-  }
-
-  const onVisibility = () => {
-    if (document.hidden) stop()
-    else start()
-  }
-
   onMounted(() => {
     const el = viewport.value
     if (!el) return
 
     el.addEventListener('scroll', onScroll, { passive: true })
-    document.addEventListener('visibilitychange', onVisibility)
 
     const resize = new ResizeObserver(() => {
       el.scrollTo({ left: pageIndex.value * el.clientWidth })
     })
     resize.observe(el)
-    start()
+
+    const stopWatch = watch(pageCount, () => {
+      if (pageIndex.value >= pageCount.value) {
+        pageIndex.value = Math.max(0, pageCount.value - 1)
+      }
+
+      el.scrollTo({ left: pageIndex.value * el.clientWidth })
+    })
 
     onUnmounted(() => {
+      stopWatch()
       el.removeEventListener('scroll', onScroll)
-      document.removeEventListener('visibilitychange', onVisibility)
       resize.disconnect()
-      stop()
     })
   })
 
-  return { viewport, pageIndex, scrollToPage, pause, resume }
+  return { viewport, pageIndex, scrollToPage }
 }
 
 const { data: home } = await useHome()
 const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
 const { data: services } = await useAsyncData('services', () => queryCollection('services').first())
 
-const offerPages = computed(() => chunkPages(services.value?.offers ?? [], SLIDE_SIZE))
-const processPages = computed(() => chunkPages(services.value?.process ?? [], PROCESS_SLIDE_SIZE))
+const offerPages = computed(() =>
+  chunkPages(services.value?.offers ?? [], isNarrow.value ? 2 : SLIDE_SIZE),
+)
+const processPages = computed(() =>
+  chunkPages(services.value?.process ?? [], PROCESS_SLIDE_SIZE),
+)
 
 const {
   viewport: offersViewport,
   pageIndex: offersPage,
   scrollToPage: scrollOffers,
-  pause: pauseOffers,
-  resume: resumeOffers,
 } = useSnapSlider(computed(() => offerPages.value.length))
 
 const {
   viewport: processViewport,
   pageIndex: processPage,
   scrollToPage: scrollProcess,
-  pause: pauseProcess,
-  resume: resumeProcess,
 } = useSnapSlider(computed(() => processPages.value.length))
-
-const resumeIfLeft = (event: FocusEvent, resume: () => void) => {
-  const root = event.currentTarget as Node | null
-  const next = event.relatedTarget as Node | null
-  if (root && next && root.contains(next)) return
-
-  resume()
-}
 
 const exampleIsExternal = (href: string, external?: boolean) =>
   Boolean(external) || href.startsWith('http')
@@ -165,10 +133,6 @@ const exampleIsExternal = (href: string, external?: boolean) =>
         role="region"
         aria-roledescription="карусель"
         aria-label="Форматы работ"
-        @mouseenter="pauseOffers"
-        @mouseleave="resumeOffers"
-        @focusin="pauseOffers"
-        @focusout="resumeIfLeft($event, resumeOffers)"
       >
         <div
           ref="offersViewport"
@@ -253,10 +217,6 @@ const exampleIsExternal = (href: string, external?: boolean) =>
         role="region"
         aria-roledescription="карусель"
         aria-label="Этапы от идеи до релиза"
-        @mouseenter="pauseProcess"
-        @mouseleave="resumeProcess"
-        @focusin="pauseProcess"
-        @focusout="resumeIfLeft($event, resumeProcess)"
       >
         <div
           ref="processViewport"

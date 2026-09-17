@@ -154,7 +154,8 @@
   color: var(--heading);
   font-size: inherit;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
   transition: color 0.25s ease;
 }
 
@@ -179,7 +180,6 @@
   padding: 0.6rem 0.7rem;
   border-radius: 0.35rem;
   border: 1px solid color-mix(in srgb, var(--hub-accent) 40%, transparent);
-  background: color-mix(in srgb, var(--hub-accent) 8%, var(--bg-elevated));
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -237,6 +237,18 @@
 
 #works .prose {
   margin-bottom: 1rem;
+}
+
+@media (max-width: 980px) {
+  .services-hub__list,
+  .services-hub__list--pair {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .services-hub__arrow {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

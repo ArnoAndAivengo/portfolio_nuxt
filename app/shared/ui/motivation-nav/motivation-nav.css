@@ -55,7 +55,7 @@
 @media (max-width: 980px) {
   .aside .motivation-nav {
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: var(--page-pad, 20px);
   }
 
   .aside .motivation-nav__link {

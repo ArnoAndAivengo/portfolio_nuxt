@@ -154,3 +154,13 @@
 .projects-hub__card:hover .projects-hub__actions a {
   color: var(--hub-accent);
 }
+
+@media (max-width: 980px) {
+  .projects-hub .section {
+    margin-bottom: var(--page-pad, 20px);
+  }
+
+  .projects-hub__list {
+    padding: 0;
+  }
+}

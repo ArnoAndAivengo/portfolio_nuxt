@@ -148,7 +148,26 @@
 }
 
 @media (max-width: 980px) {
- .articles-hub__list {
-   padding: 0;
- }
+  .articles-hub,
+  .articles-hub .section {
+    flex: none;
+    min-height: auto;
+  }
+
+  .articles-hub .section {
+    margin-bottom: var(--page-pad, 20px);
+  }
+
+  .articles-hub__list {
+    flex: none;
+    min-height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
+    scrollbar-gutter: auto;
+    padding: 0;
+  }
+
+  .articles-hub__card {
+    padding: var(--page-pad, 20px) 0;
+  }
 }

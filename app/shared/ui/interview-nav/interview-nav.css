@@ -45,6 +45,6 @@
   .aside .interview-nav {
     flex-direction: row;
     justify-content: center;
-    margin-top: 1.15rem;
+    margin-top: var(--page-pad, 20px);
   }
 }

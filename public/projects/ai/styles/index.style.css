@@ -1275,7 +1275,6 @@ body.bc--services .bc-nav {
   grid-row: 2;
   max-width: none;
   margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
   padding: 1.25rem 0 0;
   border-top: 1px solid var(--lightest-navy);
   font-size: 0.8rem;
