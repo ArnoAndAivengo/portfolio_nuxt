@@ -54,7 +54,9 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
 
   const onScroll = () => {
     const el = viewport.value
-    const stride = el ? pageStride(el) : 0
+    if (!el) return
+
+    const stride = pageStride(el)
     if (!stride) return
 
     pageIndex.value = Math.round(el.scrollLeft / stride)
