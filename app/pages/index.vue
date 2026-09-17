@@ -120,7 +120,7 @@ usePageSeo({
       <p class="contact-plain">
         <a :href="`mailto:${home.email}`">{{ home.email }}</a>
         <a :href="home.phoneHref">{{ home.phone }}</a>
-        <span>Москва</span>
+        <span>{{ home.city }}, {{ home.country }}</span>
       </p>
       <div class="contact-actions">
         <a

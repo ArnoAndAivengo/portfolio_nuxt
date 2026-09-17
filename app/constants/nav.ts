@@ -11,8 +11,8 @@ export const SITE_NAV = [
     key: 'services',
     eyebrow: 'Услуги',
     lead: 'Реализую проекты любой сложности и направления — от лёгкого одностраничника до сложного SPA.',
-    seoTitle: 'Услуги бесплатно — Александр Обухов',
-    seoDescription: 'Frontend бесплатно: лендинги, каталоги, SPA и продукты на Vue / Nuxt / TypeScript. Портфолио, GitHub и GitLab.',
+    seoTitle: 'Услуги — Александр Обухов · Frontend-разработчик (Senior)',
+    seoDescription: 'Frontend-разработчик (Senior): лендинги, каталоги, SPA и продукты на Vue 3 / Nuxt / TypeScript. Портфолио, GitHub и GitLab.',
   },
   {
     to: '/articles',

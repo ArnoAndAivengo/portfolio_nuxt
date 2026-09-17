@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'ru' },
       link: [
-        { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
+        { rel: 'icon', type: 'image/png', href: '/favicon.png', sizes: '120x120' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'preload', href: '/fonts/inter/cyrillic-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
         { rel: 'preload', href: '/fonts/inter/latin-400-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
@@ -155,6 +156,12 @@ export default defineNuxtConfig({
     '/ai': { redirect: { to: '/projects/ai/', statusCode: 301 } },
     '/ai/': { redirect: { to: '/projects/ai/', statusCode: 301 } },
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },
+    '/services.html': { redirect: { to: '/services', statusCode: 301 } },
+    '/resume.html': { redirect: { to: '/resume', statusCode: 301 } },
+    '/articles.html': { redirect: { to: '/articles', statusCode: 301 } },
+    '/projects.html': { redirect: { to: '/projects', statusCode: 301 } },
+    '/motivation.html': { redirect: { to: '/motivation', statusCode: 301 } },
+    '/trainers.html': { redirect: { to: '/trainers', statusCode: 301 } },
     '/trainers/typing.html': { redirect: { to: '/trainers/typing', statusCode: 301 } },
     '/trainers/python.html': { redirect: { to: '/trainers/python', statusCode: 301 } },
     '/motivation/interview': { redirect: { to: '/trainers/interviews', statusCode: 301 } },

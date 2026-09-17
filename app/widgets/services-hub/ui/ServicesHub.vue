@@ -29,6 +29,16 @@ onMounted(() => {
   onUnmounted(() => mq.removeEventListener('change', sync))
 })
 
+const pageStride = (el: HTMLElement) => {
+  const page = el.querySelector('.services-hub__list')
+  if (!(page instanceof HTMLElement)) return el.clientWidth
+
+  const track = page.parentElement
+  const gap = track ? Number.parseFloat(getComputedStyle(track).columnGap) || 0 : 0
+
+  return page.getBoundingClientRect().width + gap
+}
+
 const useSnapSlider = (pageCount: { readonly value: number }) => {
   const viewport = ref<HTMLElement | null>(null)
   const pageIndex = ref(0)
@@ -39,14 +49,15 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
     if (!el || !count) return
 
     const next = ((index % count) + count) % count
-    el.scrollTo({ left: next * el.clientWidth, behavior: 'smooth' })
+    el.scrollTo({ left: next * pageStride(el), behavior: 'smooth' })
   }
 
   const onScroll = () => {
     const el = viewport.value
-    if (!el?.clientWidth) return
+    const stride = el ? pageStride(el) : 0
+    if (!stride) return
 
-    pageIndex.value = Math.round(el.scrollLeft / el.clientWidth)
+    pageIndex.value = Math.round(el.scrollLeft / stride)
   }
 
   onMounted(() => {
@@ -56,7 +67,7 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
     el.addEventListener('scroll', onScroll, { passive: true })
 
     const resize = new ResizeObserver(() => {
-      el.scrollTo({ left: pageIndex.value * el.clientWidth })
+      el.scrollTo({ left: pageIndex.value * pageStride(el) })
     })
     resize.observe(el)
 
@@ -65,7 +76,7 @@ const useSnapSlider = (pageCount: { readonly value: number }) => {
         pageIndex.value = Math.max(0, pageCount.value - 1)
       }
 
-      el.scrollTo({ left: pageIndex.value * el.clientWidth })
+      el.scrollTo({ left: pageIndex.value * pageStride(el) })
     })
 
     onUnmounted(() => {
@@ -344,7 +355,7 @@ const exampleIsExternal = (href: string, external?: boolean) =>
       <p class="contact-plain">
         <a :href="`mailto:${home.email}`">{{ home.email }}</a>
         <a :href="home.phoneHref">{{ home.phone }}</a>
-        <span>Москва</span>
+        <span>{{ home.city }}, {{ home.country }}</span>
       </p>
       <div class="contact-actions">
         <a

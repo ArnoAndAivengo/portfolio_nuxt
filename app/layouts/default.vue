@@ -50,37 +50,83 @@ const isSiteNavCurrent = (item: (typeof SITE_NAV)[number]) => {
 
 const colorMode = useColorMode()
 
-const personSchema = computed(() => {
+const locationLabel = computed(() => {
+  if (!home.value) return ''
+
+  return [home.value.city, home.value.country].filter(Boolean).join(', ')
+})
+
+const siteSchema = computed(() => {
   if (!home.value) return null
+
+  const personId = `${SITE_ORIGIN}/#person`
+  const address = {
+    '@type': 'PostalAddress',
+    addressLocality: home.value.city,
+    addressRegion: home.value.city,
+    addressCountry: home.value.country,
+  }
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: home.value.name,
-    jobTitle: [home.value.role, home.value.roleEn],
-    email: home.value.email,
-    telephone: home.value.phoneHref.replace(/^tel:/, ''),
-    description: home.value.seoDescription,
-    image: home.value.ogImage || OG_IMAGE,
-    url: `${SITE_ORIGIN}/`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Москва',
-      addressCountry: 'RU',
-    },
-    sameAs: [home.value.github, home.value.gitlab, home.value.telegram],
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': personId,
+        name: home.value.name,
+        jobTitle: [home.value.role, home.value.roleEn].filter(Boolean),
+        email: home.value.email,
+        telephone: home.value.phoneHref.replace(/^tel:/, ''),
+        description: home.value.seoDescription,
+        image: home.value.ogImage || OG_IMAGE,
+        url: `${SITE_ORIGIN}/`,
+        address,
+        homeLocation: {
+          '@type': 'City',
+          name: home.value.city,
+        },
+        sameAs: [home.value.github, home.value.gitlab, home.value.telegram],
+      },
+      {
+        '@type': 'ProfessionalService',
+        '@id': `${SITE_ORIGIN}/#service`,
+        name: `${home.value.name} — ${home.value.role}`,
+        url: `${SITE_ORIGIN}/services`,
+        image: home.value.ogImage || OG_IMAGE,
+        logo: `${SITE_ORIGIN}/apple-touch-icon.png`,
+        description: home.value.seoDescription,
+        email: home.value.email,
+        telephone: home.value.phoneHref.replace(/^tel:/, ''),
+        address,
+        areaServed: [
+          { '@type': 'City', name: home.value.city },
+          { '@type': 'Country', name: home.value.country },
+        ],
+        founder: { '@id': personId },
+      },
+    ],
   }
 })
 
 useHead({
-  meta: [{
-    name: 'theme-color',
-    content: () => colorMode.value === 'dark' ? '#0a192f' : '#ffffff',
-  }],
-  script: () => personSchema.value
+  meta: [
+    {
+      name: 'theme-color',
+      content: () => colorMode.value === 'dark' ? '#0a192f' : '#ffffff',
+    },
+    {
+      name: 'geo.region',
+      content: () => home.value?.geoRegion,
+    },
+    {
+      name: 'geo.placename',
+      content: () => home.value?.city,
+    },
+  ],
+  script: () => siteSchema.value
     ? [{
         type: 'application/ld+json',
-        innerHTML: JSON.stringify(personSchema.value),
+        innerHTML: JSON.stringify(siteSchema.value),
       }]
     : [],
 })
@@ -152,6 +198,7 @@ useHead({
             <p class="profile-contacts">
               <a :href="`mailto:${home.email}`">{{ home.email }}</a>
               <a :href="home.phoneHref">{{ home.phone }}</a>
+              <span>{{ locationLabel }}</span>
             </p>
             <div class="status">
               <span
@@ -209,6 +256,7 @@ useHead({
           >Telegram</a>
           <a :href="`mailto:${home.email}`">{{ home.email }}</a>
           <a :href="home.phoneHref">{{ home.phone }}</a>
+          <span>{{ locationLabel }}</span>
         </div>
         <div class="social">
           <a

@@ -210,16 +210,21 @@
   cursor: pointer;
 }
 
-@media (max-width: 720px) {
-  .shots-modal {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(0, 1fr) auto;
-    align-content: center;
-    padding: 3.4rem 0.7rem 1rem;
+@media (max-width: 980px) {
+  .shots__arrow,
+  .shots__count,
+  .shots-modal__nav {
+    display: none;
   }
 
-  .shots-modal__figure {
-    grid-column: 1 / -1;
+  .shots-modal {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .shots-modal {
+    padding: 3.4rem 0.7rem 1rem;
   }
 
   .shots-modal__image {

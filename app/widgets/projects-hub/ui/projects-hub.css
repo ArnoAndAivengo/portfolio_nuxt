@@ -64,7 +64,6 @@
 }
 
 .projects-hub__card:hover {
-  transform: translateY(-2px);
   border-color: var(--hub-accent);
 }
 
@@ -156,11 +155,31 @@
 }
 
 @media (max-width: 980px) {
+  .projects-hub,
+  .projects-hub .section {
+    flex: none;
+    min-height: auto;
+  }
+
   .projects-hub .section {
     margin-bottom: var(--page-pad, 20px);
   }
 
   .projects-hub__list {
+    flex: none;
+    min-height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
+    scrollbar-gutter: auto;
     padding: 0;
+  }
+
+  .projects-hub__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projects-hub__aside {
+    margin-left: 0;
   }
 }

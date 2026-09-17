@@ -1,6 +1,7 @@
 ---
 name: Александр Обухов
 role: Frontend-разработчик (Senior)
+roleEn: Frontend Developer (Senior)
 status: Открыт к предложениям
 eyebrow: Портфолио
 lead: Фокус на Vue 3 / Nuxt.
@@ -14,6 +15,9 @@ telegram: https://t.me/alexObukhovArno
 email: alexobukhov@hotmail.com
 phone: +7 915 212-77-21
 phoneHref: tel:+79152127721
+city: Москва
+country: Россия
+geoRegion: RU-MOW
 maxUrl: https://max.ru/?phone=79152127721
 github: https://github.com/ArnoAndAivengo
 gitlab: https://gitlab.com/ArnoAndAivengo
