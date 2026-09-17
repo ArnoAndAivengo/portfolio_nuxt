@@ -42,6 +42,24 @@ const onKey = (event: KeyboardEvent) => {
     @click="toggle"
     @keydown="onKey"
   >
+    <img
+      class="theme-switch__icon theme-switch__icon--sun"
+      src="~/assets/images/sun.png"
+      alt=""
+      width="15"
+      height="15"
+      draggable="false"
+      aria-hidden="true"
+    >
+    <img
+      class="theme-switch__icon theme-switch__icon--moon"
+      src="~/assets/images/dark-sun.png"
+      alt=""
+      width="15"
+      height="15"
+      draggable="false"
+      aria-hidden="true"
+    >
     <span
       class="theme-switch__knob"
       aria-hidden="true"

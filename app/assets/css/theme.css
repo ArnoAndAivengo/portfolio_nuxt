@@ -418,16 +418,47 @@ summary:focus-visible,
 }
 
 .theme-switch:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--page-accent, var(--accent));
   outline-offset: 3px;
 }
 
+.theme-switch__icon {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  pointer-events: none;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.theme-switch__icon--sun {
+  left: calc(var(--pad) + (var(--knob) - 15px) / 2);
+}
+
+.theme-switch__icon--moon {
+  right: calc(var(--pad) + (var(--knob) - 15px) / 2);
+}
+
+.theme-switch:not(.theme-switch--dark) .theme-switch__icon--sun,
+.theme-switch--dark .theme-switch__icon--moon {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .theme-switch__knob {
+  position: relative;
+  z-index: 1;
   display: block;
   width: var(--knob);
   height: var(--knob);
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--page-accent, var(--accent));
   box-shadow: 0 2px 8px var(--shadow);
   transform: translateX(0);
   transition: transform 0.3s var(--ease), background 0.25s ease;
