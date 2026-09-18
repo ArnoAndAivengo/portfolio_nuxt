@@ -6,9 +6,9 @@ status: Открыт к предложениям
 eyebrow: Портфолио
 lead: Фокус на Vue 3 / Nuxt.
 experienceYears: 7+ лет
-updated: 17 сентября 2026
+updated: 18 сентября 2026
 seoTitle: Александр Обухов — Frontend-разработчик (Senior)
-seoDescription: "Frontend-разработчик (Senior), 7+ лет: Vue 3, Nuxt, TypeScript, JavaScript, HTML, CSS, FSD. E-commerce, аналитика, edtech. Удалёнка, гибрид или офис в Москве."
+seoDescription: "Frontend-разработчик (Senior) и Team Lead фронтенда, 7+ лет: Vue 3, Nuxt, TypeScript. Команда 5–7 человек, найм, спринты, code review. E-commerce, аналитика, edtech. Удалёнка, гибрид или офис в Москве."
 ogImage: https://arnoandaivengo.ru/images/alex/alex-og.jpg
 canonical: https://arnoandaivengo.ru/
 telegram: https://t.me/alexObukhovArno
@@ -24,6 +24,8 @@ gitlab: https://gitlab.com/ArnoAndAivengo
 skills:
   - label: Frontend
     items: [Vue 3, Nuxt 4, TypeScript, JavaScript, HTML, CSS, FSD, Pinia, Vite, Tailwind, ECharts, Storybook]
+  - label: Команда
+    items: [Team Lead, Найм, Декомпозиция задач, Scrum / Jira, Code review, Definition of Done, Онбординг]
   - label: Backend
     items: [NestJS, Laravel, PostgreSQL, Redis, JWT]
   - label: Поставка
@@ -34,8 +36,11 @@ skills:
 Специализируюсь на сложных SPA и SSR: проектирую клиентскую архитектуру,
 довожу проект от ТЗ до релиза в кратчайшие сроки.
 
-Основной стек — Vue 3, Nuxt, TypeScript, FSD. Отвечаю за стандарты кода в команде и CI/CD.
-При необходимости закрываю смежный контур frontend → backend → DevOps 
-(NestJS, PostgreSQL, Docker, Nginx) — без смены основной экспертизы с фронта.
+Руководил фронтенд-командами **5–7 человек**: найм и собеседования, декомпозиция эпиков на задачи,
+спринты в Jira, code review и Definition of Done. Сокращал цикл поставки — спринт с 3 до 2 недель,
+онбординг через FSD и единые стандарты кода.
 
-Рассматриваю роль Frontend-разработчика (Senior) — полная удалёнка, гибрид или офис в Москве.
+Основной стек — Vue 3, Nuxt, TypeScript, FSD. При необходимости закрываю смежный контур
+frontend → backend → DevOps (NestJS, PostgreSQL, Docker, Nginx) — без смены основной экспертизы с фронта.
+
+Рассматриваю роль Frontend-разработчика (Senior) или Team Lead фронтенда — полная удалёнка, гибрид или офис в Москве.

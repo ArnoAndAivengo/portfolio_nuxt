@@ -22,12 +22,22 @@ contributions:
     text: GraphQL и пагинация, виртуализация таблиц, lazy loading, SSR / Core Web Vitals, когда от этого зависит продукт.
 
   - label: Команда и поставка
-    text: Декомпозиция, code review, Definition of Done, GitLab CI. Руководил фронтендом 5–7 человек.
+    text: Team Lead фронтенда 5–7 человек. Найм (30+ собеседований), декомпозиция эпиков, спринты в Jira, code review, Definition of Done, Scrum.
 
   - label: Качество релиза
     text: Vitest, Playwright, Storybook. Меньше регрессий, короче цикл «задача → прод».
 
 skillGroups:
+  - label: Команда
+    note: Team Lead фронтенда 5–7 человек — найм, декомпозиция, спринты, ревью
+    items:
+      - Team Lead / Tech Lead фронтенда
+      - Найм и собеседования (30+)
+      - Декомпозиция эпиков на задачи
+      - Scrum / Jira
+      - Code review и Definition of Done
+      - Онбординг и стандарты FSD
+      - 1:1 и менторство
   - label: Frontend
     note: Vue 3, Nuxt 3 (SSR), TypeScript, JavaScript, HTML, CSS, Pinia, Vue Router, Vite, FSD
     items:
@@ -78,6 +88,6 @@ extra:
   - CI/CD — Docker, Nginx, GitLab CI.
 goals:
   - label: Позиция
-    text: Frontend-разработчик (Senior) · Vue 3 / Nuxt / TypeScript / FSD
+    text: Frontend-разработчик (Senior) или Team Lead фронтенда · Vue 3 / Nuxt / TypeScript / FSD
   - label: Формат
     text: полная удалёнка, гибрид или офис в Москве · полная занятость

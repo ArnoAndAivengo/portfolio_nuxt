@@ -169,6 +169,7 @@ export default defineNuxtConfig({
     '/motivation/bugs': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
     '/motivation/bugs.html': { redirect: { to: '/trainers/bugs', statusCode: 301 } },
     '/articles/techblog.html': { redirect: { to: '/articles/techblog', statusCode: 301 } },
+    '/articles/sobesedovaniya-pattern-kotoryy-rabotaet.html': { redirect: { to: '/articles/sobesedovaniya-pattern-kotoryy-rabotaet', statusCode: 301 } },
     '/articles/python-svyazuyushchee-zveno.html': { redirect: { to: '/articles/python-svyazuyushchee-zveno', statusCode: 301 } },
     '/articles/kogda-rakety-ne-vzletayut.html': { redirect: { to: '/articles/kogda-rakety-ne-vzletayut', statusCode: 301 } },
     '/articles/iskusstvennyy-intellekt.html': { redirect: { to: '/articles/iskusstvennyy-intellekt', statusCode: 301 } },
