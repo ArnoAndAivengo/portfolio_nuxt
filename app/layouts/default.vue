@@ -4,6 +4,7 @@ import { articlePageForPath } from '~/entities/article'
 import { motivationPageForPath } from '~/entities/motivation'
 import { projectPageForPath } from '~/entities/project'
 import { trainerPageForPath } from '~/entities/trainer'
+import { ProfileLinks } from '~/shared/ui/profile-links'
 import { navItemForPath } from '~/utils/nav'
 
 const TrainersAside = defineAsyncComponent(() =>
@@ -85,7 +86,7 @@ const siteSchema = computed(() => {
           '@type': 'City',
           name: home.value.city,
         },
-        sameAs: [home.value.github, home.value.gitlab, home.value.telegram],
+        sameAs: [home.value.github, home.value.gitlab, home.value.telegram, home.value.coddy, home.value.leetcode],
       },
       {
         '@type': 'ProfessionalService',
@@ -207,6 +208,12 @@ useHead({
               />
               {{ home.status }}
             </div>
+            <ProfileLinks
+              :github="home.github"
+              :gitlab="home.gitlab"
+              :coddy="home.coddy"
+              :leetcode="home.leetcode"
+            />
           </template>
           <p
             v-else

@@ -1258,6 +1258,7 @@ html.light .site-nav a[data-nav="home"][aria-current="page"] { color: #0f766e; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
   min-height: 2.75rem;
   padding: 0 1.1rem;
   border-radius: 0.25rem;

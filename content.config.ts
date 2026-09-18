@@ -28,6 +28,8 @@ export default defineContentConfig({
         maxUrl: z.string(),
         github: z.string(),
         gitlab: z.string(),
+        coddy: z.string(),
+        leetcode: z.string(),
         skills: z.array(z.object({
           label: z.string(),
           items: z.array(z.string()),

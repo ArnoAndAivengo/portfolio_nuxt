@@ -305,6 +305,24 @@ onUnmounted(() => {
         >Написать в Telegram</a>
         <a
           class="btn btn--ghost"
+          :href="home.github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconGithub />
+          GitHub
+        </a>
+        <a
+          class="btn btn--ghost"
+          :href="home.gitlab"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconGitlab />
+          GitLab
+        </a>
+        <a
+          class="btn btn--ghost"
           :href="`mailto:${home.email}`"
         >Email</a>
         <a

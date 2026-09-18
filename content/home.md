@@ -21,6 +21,8 @@ geoRegion: RU-MOW
 maxUrl: https://max.ru/?phone=79152127721
 github: https://github.com/ArnoAndAivengo
 gitlab: https://gitlab.com/ArnoAndAivengo
+coddy: https://coddy.tech/user/alexobukhovarno
+leetcode: https://leetcode.com/u/arnoandaivengo/
 skills:
   - label: Frontend
     items: [Vue 3, Nuxt 4, TypeScript, JavaScript, HTML, CSS, FSD, Pinia, Vite, Tailwind, ECharts, Storybook]

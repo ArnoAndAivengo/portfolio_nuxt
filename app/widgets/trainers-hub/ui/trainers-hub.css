@@ -7,6 +7,10 @@
   gap: 0.85rem;
 }
 
+.trainers-hub .prose {
+  margin: 0 0 0.85rem;
+}
+
 .trainers-hub__card {
   margin-inline: -1rem;
   padding: 0.85rem 1rem;
@@ -30,6 +34,16 @@
 
 .trainers-hub__card--bugs {
   --hub-accent: var(--accent-bugs, #f43f5e);
+  border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
+}
+
+.trainers-hub__card--coddy {
+  --hub-accent: #818cf8;
+  border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
+}
+
+.trainers-hub__card--leetcode {
+  --hub-accent: #ffa116;
   border-color: color-mix(in srgb, var(--hub-accent) 45%, transparent);
 }
 

@@ -17,6 +17,20 @@ export const TRAINERS = [
     key: 'bugs',
     excerpt: 'Ищи ошибки в коде на Python и JavaScript: уровни Junior → Expert, таймер и разбор.',
   },
+  {
+    to: 'https://coddy.tech/user/alexobukhovarno',
+    title: 'Coddy',
+    key: 'coddy',
+    excerpt: 'Платформа с курсами и практикой.',
+    external: true,
+  },
+  {
+    to: 'https://leetcode.com/u/arnoandaivengo/',
+    title: 'LeetCode',
+    key: 'leetcode',
+    excerpt: 'Алгоритмы и задачки на каждый день.',
+    external: true,
+  },
 ] as const
 
 export const TRAINER_PAGES = {
