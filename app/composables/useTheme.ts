@@ -13,7 +13,9 @@ export function applyTheme(on: boolean) {
 
   try {
     localStorage.setItem(THEME_KEY, on ? 'dark' : 'light')
-  } catch {}
+  } catch {
+    /* ignore */
+  }
 
   const input = document.getElementById('theme-toggle')
 

@@ -8,7 +8,9 @@ export default defineNuxtPlugin(() => {
       const stored = localStorage.getItem(THEME_KEY)
       if (stored === 'dark') dark.value = true
       if (stored === 'light') dark.value = false
-    } catch {}
+    } catch {
+      /* ignore */
+    }
     if (document.documentElement.classList.contains('dark')) dark.value = true
   }
 
