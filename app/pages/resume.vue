@@ -32,35 +32,15 @@ const printResume = () => {
   window.print()
 }
 
-const diploma = ref<{ src: string, alt: string } | null>(null)
-const diplomaCloseRef = ref<HTMLButtonElement | null>(null)
-const diplomaOpener = ref<HTMLElement | null>(null)
-
-const openDiploma = (src: string, alt: string, event?: MouseEvent) => {
-  diplomaOpener.value = (event?.currentTarget as HTMLElement) ?? null
-  diploma.value = { src, alt }
-  document.body.style.overflow = 'hidden'
-  nextTick(() => diplomaCloseRef.value?.focus())
-}
-
-const closeDiploma = () => {
-  diploma.value = null
-  document.body.style.overflow = ''
-  nextTick(() => diplomaOpener.value?.focus())
+const diplomaAnchor = (src: string) => {
+  const file = src.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'diploma'
+  return `diploma-${file}`
 }
 
 const onDiplomaKey = (event: KeyboardEvent) => {
-  if (!diploma.value) return
-
-  if (event.key === 'Escape') {
-    closeDiploma()
-    return
-  }
-
-  if (event.key === 'Tab') {
-    event.preventDefault()
-    diplomaCloseRef.value?.focus()
-  }
+  if (event.key !== 'Escape') return
+  if (!location.hash.startsWith('#diploma-')) return
+  location.hash = 'training'
 }
 
 onMounted(() => {
@@ -71,7 +51,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', onDiplomaKey)
   window.removeEventListener('beforeprint', openJobDetailsForPrint)
-  document.body.style.overflow = ''
 })
 </script>
 
@@ -221,12 +200,11 @@ onUnmounted(() => {
             <p class="edu__title">{{ item.title }}</p>
             <p class="edu__org">{{ item.org }}</p>
           </div>
-          <button
+          <a
             v-if="item.diploma"
-            type="button"
             class="edu__diploma"
+            :href="`#${diplomaAnchor(item.diploma)}`"
             :aria-label="item.diplomaAlt || 'Открыть диплом'"
-            @click="openDiploma(item.diploma, item.diplomaAlt || 'Диплом', $event)"
           >
             <img
               :src="item.diploma"
@@ -235,7 +213,7 @@ onUnmounted(() => {
               height="110"
               loading="lazy"
             >
-          </button>
+          </a>
         </li>
       </ul>
     </section>
@@ -343,28 +321,35 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <Teleport to="body">
+    <template
+      v-for="item in meta.training"
+      :key="item.title"
+    >
       <div
-        v-if="diploma"
+        v-if="item.diploma"
+        :id="diplomaAnchor(item.diploma)"
         class="diploma-modal"
         role="dialog"
         aria-modal="true"
-        :aria-label="diploma.alt"
-        @click.self="closeDiploma"
+        :aria-label="item.diplomaAlt || 'Диплом'"
       >
-        <button
-          ref="diplomaCloseRef"
-          type="button"
+        <a
+          class="diploma-modal__backdrop"
+          href="#training"
+          tabindex="-1"
+          aria-hidden="true"
+        />
+        <a
           class="diploma-modal__close"
+          href="#training"
           aria-label="Закрыть"
-          @click="closeDiploma"
-        >×</button>
+        >×</a>
         <img
           class="diploma-modal__image"
-          :src="diploma.src"
-          :alt="diploma.alt"
+          :src="item.diploma"
+          :alt="item.diplomaAlt || 'Диплом'"
         >
       </div>
-    </Teleport>
+    </template>
   </div>
 </template>

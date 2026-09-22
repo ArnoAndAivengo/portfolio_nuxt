@@ -6,131 +6,27 @@ export type Screenshot = {
   alt: string
 }
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   items: Screenshot[]
-}>()
-
-const viewport = ref<HTMLElement | null>(null)
-const modalRef = ref<HTMLElement | null>(null)
-const closeRef = ref<HTMLButtonElement | null>(null)
-const opener = ref<HTMLElement | null>(null)
-const pageIndex = ref(0)
-const openIndex = ref<number | null>(null)
-
-const count = computed(() => props.items.length)
-const current = computed(() => {
-  const index = openIndex.value
-  if (index === null) return null
-  return props.items[index] ?? null
+  name?: string
+  label?: string
+}>(), {
+  name: 'shots',
+  label: 'Скриншоты',
 })
 
-const reducedMotion = () =>
-  typeof window !== 'undefined'
-  && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const radioId = (index: number) => `${props.name}-slide-${index}`
+const lightboxId = computed(() => `${props.name}-lb`)
+const panelId = (index: number) => `${props.name}-lb-panel-${index}`
 
-const wrap = (index: number) => {
-  const n = count.value
-  if (!n) return 0
-  return ((index % n) + n) % n
-}
-
-const scrollToPage = (index: number) => {
-  const el = viewport.value
-  if (!el || !count.value) return
-
-  const next = wrap(index)
-  pageIndex.value = next
-  el.scrollTo({
-    left: next * el.clientWidth,
-    behavior: reducedMotion() ? 'auto' : 'smooth',
+const openPanel = (index: number) => {
+  requestAnimationFrame(() => {
+    document.getElementById(panelId(index))?.scrollIntoView({
+      inline: 'start',
+      block: 'nearest',
+    })
   })
 }
-
-const onScroll = () => {
-  const el = viewport.value
-  if (!el?.clientWidth) return
-
-  pageIndex.value = Math.round(el.scrollLeft / el.clientWidth)
-}
-
-const open = (index: number, event?: MouseEvent) => {
-  opener.value = (event?.currentTarget as HTMLElement) ?? null
-  openIndex.value = wrap(index)
-  document.body.style.overflow = 'hidden'
-  nextTick(() => closeRef.value?.focus())
-}
-
-const close = () => {
-  openIndex.value = null
-  document.body.style.overflow = ''
-  nextTick(() => opener.value?.focus())
-}
-
-const stepOpen = (delta: number) => {
-  if (openIndex.value === null) return
-
-  const next = wrap(openIndex.value + delta)
-  openIndex.value = next
-  scrollToPage(next)
-}
-
-const focusables = () =>
-  [...(modalRef.value?.querySelectorAll<HTMLElement>('button') ?? [])]
-
-const onKey = (event: KeyboardEvent) => {
-  if (openIndex.value === null) return
-
-  if (event.key === 'Escape') {
-    event.preventDefault()
-    close()
-    return
-  }
-
-  if (event.key === 'ArrowLeft') {
-    event.preventDefault()
-    stepOpen(-1)
-    return
-  }
-
-  if (event.key === 'ArrowRight') {
-    event.preventDefault()
-    stepOpen(1)
-    return
-  }
-
-  if (event.key !== 'Tab') return
-
-  const list = focusables()
-  if (!list.length) return
-
-  event.preventDefault()
-  const active = document.activeElement as HTMLElement
-  const i = list.indexOf(active)
-  const next = event.shiftKey
-    ? (i <= 0 ? list.length - 1 : i - 1)
-    : (i === -1 || i === list.length - 1 ? 0 : i + 1)
-  list[next]?.focus()
-}
-
-onMounted(() => {
-  const el = viewport.value
-  if (!el) return
-
-  el.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('keydown', onKey)
-
-  const resize = new ResizeObserver(() => {
-    el.scrollTo({ left: pageIndex.value * el.clientWidth })
-  })
-  resize.observe(el)
-
-  onUnmounted(() => {
-    el.removeEventListener('scroll', onScroll)
-    window.removeEventListener('keydown', onKey)
-    resize.disconnect()
-    document.body.style.overflow = ''
-  })
-})
 </script>
 
 <template>
@@ -139,28 +35,31 @@ onMounted(() => {
     class="shots"
     role="region"
     aria-roledescription="карусель"
-    aria-label="Скриншоты LearnPortal"
+    :aria-label="label"
   >
-    <div
-      ref="viewport"
-      class="shots__viewport"
-      tabindex="0"
-      @keydown.left.prevent="scrollToPage(pageIndex - 1)"
-      @keydown.right.prevent="scrollToPage(pageIndex + 1)"
+    <input
+      v-for="(_, index) in items"
+      :id="radioId(index)"
+      :key="`${name}-radio-${index}`"
+      class="shots__radio"
+      type="radio"
+      :name="name"
+      :data-slide="index"
+      :checked="index === 0"
     >
+    <div class="shots__viewport">
       <ul class="shots__track">
         <li
           v-for="(shot, index) in items"
           :key="shot.src"
           class="shots__slide"
-          :aria-hidden="index === pageIndex ? undefined : 'true'"
         >
           <button
             type="button"
             class="shots__open"
-            :tabindex="index === pageIndex ? 0 : -1"
+            :popovertarget="lightboxId"
             :aria-label="`Увеличить: ${shot.alt}`"
-            @click="open(index, $event)"
+            @click="openPanel(index)"
           >
             <img
               :src="shot.src"
@@ -172,78 +71,127 @@ onMounted(() => {
               height="900"
             >
           </button>
+          <p class="shots__slide-caption">{{ shot.alt }}</p>
         </li>
       </ul>
     </div>
-    <p class="shots__caption">{{ items[pageIndex]?.alt }}</p>
-    <div class="shots__controls">
-      <button
-        type="button"
-        class="shots__arrow"
-        aria-label="Предыдущий скриншот"
-        @click="scrollToPage(pageIndex - 1)"
-      >‹</button>
-      <div class="shots__dots">
-        <button
-          v-for="(_, index) in items"
-          :key="index"
-          type="button"
-          class="shots__dot"
-          :aria-current="index === pageIndex ? 'true' : undefined"
-          :aria-label="`Скриншот ${index + 1} из ${items.length}`"
-          @click="scrollToPage(index)"
-        />
-      </div>
-      <button
-        type="button"
-        class="shots__arrow"
-        aria-label="Следующий скриншот"
-        @click="scrollToPage(pageIndex + 1)"
-      >›</button>
+    <div class="shots__captions">
+      <p
+        v-for="(shot, index) in items"
+        :key="`${name}-caption-${shot.src}`"
+        class="shots__caption"
+        :data-page="index"
+      >{{ shot.alt }}</p>
     </div>
-    <p
-      class="shots__count"
-      aria-live="polite"
-    >{{ pageIndex + 1 }} / {{ items.length }}</p>
-  </div>
-
-  <Teleport to="body">
     <div
-      v-if="current"
-      ref="modalRef"
+      v-if="items.length > 1"
+      class="shots__controls"
+    >
+      <span class="shots__arrow-wrap">
+        <label
+          v-for="(_, index) in items"
+          :key="`${name}-prev-${index}`"
+          class="shots__arrow"
+          :data-page="index"
+          :for="radioId((index - 1 + items.length) % items.length)"
+        >
+          <span class="shots__sr">Предыдущий скриншот</span>
+          <span aria-hidden="true">‹</span>
+        </label>
+      </span>
+      <div class="shots__dots">
+        <label
+          v-for="(_, index) in items"
+          :key="`${name}-dot-${index}`"
+          class="shots__dot"
+          :for="radioId(index)"
+        >
+          <span class="shots__sr">Скриншот {{ index + 1 }} из {{ items.length }}</span>
+        </label>
+      </div>
+      <span class="shots__arrow-wrap">
+        <label
+          v-for="(_, index) in items"
+          :key="`${name}-next-${index}`"
+          class="shots__arrow"
+          :data-page="index"
+          :for="radioId((index + 1) % items.length)"
+        >
+          <span class="shots__sr">Следующий скриншот</span>
+          <span aria-hidden="true">›</span>
+        </label>
+      </span>
+    </div>
+    <div class="shots__counts">
+      <p
+        v-for="(_, index) in items"
+        :key="`${name}-count-${index}`"
+        class="shots__count"
+        :data-page="index"
+      >{{ index + 1 }} / {{ items.length }}</p>
+    </div>
+
+    <div
+      :id="lightboxId"
       class="shots-modal"
+      popover="auto"
       role="dialog"
       aria-modal="true"
-      :aria-label="current.alt"
-      @click.self="close"
+      :aria-label="label"
     >
       <button
-        ref="closeRef"
         type="button"
         class="shots-modal__close"
+        :popovertarget="lightboxId"
+        popovertargetaction="hide"
         aria-label="Закрыть"
-        @click="close"
       >×</button>
-      <button
-        type="button"
-        class="shots-modal__nav shots-modal__nav--prev"
-        aria-label="Предыдущий скриншот"
-        @click="stepOpen(-1)"
-      >‹</button>
-      <figure class="shots-modal__figure">
-        <img
-          class="shots-modal__image"
-          :src="current.src"
-          :alt="current.alt"
+      <span
+        v-if="items.length > 1"
+        class="shots-modal__arrow-wrap shots-modal__arrow-wrap--prev"
+      >
+        <label
+          v-for="(_, index) in items"
+          :key="`${name}-lb-prev-${index}`"
+          class="shots-modal__nav"
+          :data-page="index"
+          :for="radioId((index - 1 + items.length) % items.length)"
         >
-        <figcaption class="shots-modal__caption">{{ current.alt }}</figcaption>
-      </figure>
-      <button
-        type="button"
-        class="shots-modal__nav shots-modal__nav--next"
-        aria-label="Следующий скриншот"
-        @click="stepOpen(1)"
-      >›</button>
+          <span class="shots__sr">Предыдущий скриншот</span>
+          <span aria-hidden="true">‹</span>
+        </label>
+      </span>
+      <div class="shots-modal__panels">
+        <figure
+          v-for="(shot, index) in items"
+          :key="`${name}-lb-${shot.src}`"
+          :id="panelId(index)"
+          class="shots-modal__figure"
+          :data-page="index"
+        >
+          <img
+            class="shots-modal__image"
+            :src="shot.src"
+            :alt="shot.alt"
+          >
+          <figcaption class="shots-modal__caption">{{ shot.alt }}</figcaption>
+        </figure>
+      </div>
+      <span
+        v-if="items.length > 1"
+        class="shots-modal__arrow-wrap shots-modal__arrow-wrap--next"
+      >
+        <label
+          v-for="(_, index) in items"
+          :key="`${name}-lb-next-${index}`"
+          class="shots-modal__nav"
+          :data-page="index"
+          :for="radioId((index + 1) % items.length)"
+        >
+          <span class="shots__sr">Следующий скриншот</span>
+          <span aria-hidden="true">›</span>
+        </label>
+      </span>
     </div>
-  </Teleport>
+  </div>
 </template>

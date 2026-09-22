@@ -158,7 +158,11 @@ const roles = [
       class="section current-project__section"
     >
       <h2 class="section__title">Скриншоты</h2>
-      <ScreenshotSlider :items="screenshots" />
+      <ScreenshotSlider
+        name="learn-portal-shots"
+        label="Скриншоты LearnPortal"
+        :items="screenshots"
+      />
     </section>
 
     <section
