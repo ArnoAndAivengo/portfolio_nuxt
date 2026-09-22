@@ -5,6 +5,7 @@ import { motivationPageForPath } from '~/entities/motivation'
 import { projectPageForPath } from '~/entities/project'
 import { trainerPageForPath } from '~/entities/trainer'
 import { ProfileLinks } from '~/shared/ui/profile-links'
+import { JsOffBanner } from '~/shared/ui/js-required'
 import { navItemForPath } from '~/utils/nav'
 
 const TrainersAside = defineAsyncComponent(() =>
@@ -48,8 +49,6 @@ const isSiteNavCurrent = (item: (typeof SITE_NAV)[number]) => {
 
   return route.path.startsWith(item.to)
 }
-
-const colorMode = useColorMode()
 
 const locationLabel = computed(() => {
   if (!home.value) return ''
@@ -112,10 +111,6 @@ const siteSchema = computed(() => {
 useHead({
   meta: [
     {
-      name: 'theme-color',
-      content: () => colorMode.value === 'dark' ? '#0a192f' : '#ffffff',
-    },
-    {
       name: 'geo.region',
       content: () => home.value?.geoRegion,
     },
@@ -123,6 +118,9 @@ useHead({
       name: 'geo.placename',
       content: () => home.value?.city,
     },
+  ],
+  noscript: [
+    { innerHTML: '<style>.js-only{display:none!important}body{padding-bottom:4.25rem}@media(max-width:980px){.footer{padding-bottom:calc(9rem + env(safe-area-inset-bottom,0px))!important}}</style>' },
   ],
   script: () => siteSchema.value
     ? [{
@@ -136,6 +134,7 @@ useHead({
 <template>
   <NuxtRouteAnnouncer />
   <a class="skip-link" href="#content">К содержимому</a>
+  <JsOffBanner />
 
   <div
     v-if="home"

@@ -4,7 +4,7 @@
 
 ## Стек
 
-- Nuxt 4, Vue 3, `@nuxt/content` 3, `@nuxtjs/color-mode`
+- Nuxt 4, Vue 3, `@nuxt/content` 3
 - TypeScript, ESLint (`@nuxt/eslint`)
 - Vitest, Playwright
 - CSS-переменные в `app/assets/css/theme.css`, шрифты self-host

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { JsRequiredNotice } from '~/shared/ui/js-required'
 import { PrivacyPolicy } from '~/shared/ui/privacy-policy'
 import type { QuizLesson, QuizLevel, QuizView, LessonResult, ShuffledOption } from '~/shared/lib/language-quiz'
 import type { ConsentChoice } from '~/shared/lib/consent'
@@ -59,7 +60,7 @@ defineProps<{
     ]"
   >
     <div
-      class="py-progress"
+      class="py-progress js-only"
       :style="{ width: `${barPct}%` }"
     />
 
@@ -67,22 +68,25 @@ defineProps<{
       class="section py-welcome"
       id="welcome"
     >
-      <p class="py-kicker">{{ kicker }}</p>
-      <div class="prose">
-        <p
-          v-for="(paragraph, index) in welcome"
-          :key="index"
-        >{{ paragraph }}</p>
-        <p>
-          Сначала нужно принять или отклонить cookies.
-          Если примете — прогресс сохранится в браузере.
-          Если отклоните — заниматься можно, но прогресс не запомнится.
-        </p>
+      <JsRequiredNotice />
+      <div class="js-only">
+        <p class="py-kicker">{{ kicker }}</p>
+        <div class="prose">
+          <p
+            v-for="(paragraph, index) in welcome"
+            :key="index"
+          >{{ paragraph }}</p>
+          <p>
+            Сначала нужно принять или отклонить cookies.
+            Если примете — прогресс сохранится в браузере.
+            Если отклоните — заниматься можно, но прогресс не запомнится.
+          </p>
+        </div>
       </div>
     </section>
 
     <section
-      class="section"
+      class="section js-only"
       id="board"
     >
       <div
@@ -313,14 +317,16 @@ defineProps<{
       </div>
     </section>
 
-    <PrivacyPolicy
-      :trainer="trainer"
-      :cookie="cookie"
-      :storage="storage"
-      :storage-note="storageNote"
-      :consent-label="consentText"
-      @accept="applyConsent('accepted')"
-      @decline="applyConsent('declined')"
-    />
+    <div class="js-only">
+      <PrivacyPolicy
+        :trainer="trainer"
+        :cookie="cookie"
+        :storage="storage"
+        :storage-note="storageNote"
+        :consent-label="consentText"
+        @accept="applyConsent('accepted')"
+        @decline="applyConsent('declined')"
+      />
+    </div>
   </div>
 </template>

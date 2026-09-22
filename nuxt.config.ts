@@ -5,7 +5,6 @@ const AI_RANKING_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; s
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
-    '@nuxtjs/color-mode',
     '@nuxt/eslint',
   ],
   ssr: true,
@@ -18,6 +17,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'ru' },
+      meta: [
+        { name: 'theme-color', content: '#ffffff' },
+      ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png', sizes: '120x120' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -28,12 +30,6 @@ export default defineNuxtConfig({
         { rel: 'preload', href: '/fonts/inter/latin-700-normal.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
       ],
     },
-  },
-  colorMode: {
-    preference: 'light',
-    fallback: 'light',
-    classSuffix: '',
-    storageKey: 'portfolio-color-mode',
   },
   components: [
     {
@@ -155,6 +151,8 @@ export default defineNuxtConfig({
     },
     '/ai': { redirect: { to: '/projects/ai/', statusCode: 301 } },
     '/ai/': { redirect: { to: '/projects/ai/', statusCode: 301 } },
+    '/theme': { redirect: { to: '/', statusCode: 301 } },
+    '/theme/': { redirect: { to: '/', statusCode: 301 } },
     '/aobukhov': { redirect: { to: '/resume', statusCode: 301 } },
     '/services.html': { redirect: { to: '/services', statusCode: 301 } },
     '/resume.html': { redirect: { to: '/resume', statusCode: 301 } },

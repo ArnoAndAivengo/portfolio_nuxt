@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Tags } from '~/shared/ui/tags'
+import ServicesHubSlider from './ServicesHubSlider.vue'
 import './services-hub.css'
 
 const SLIDE_SIZE = 4
@@ -29,68 +30,6 @@ onMounted(() => {
   onUnmounted(() => mq.removeEventListener('change', sync))
 })
 
-const pageStride = (el: HTMLElement) => {
-  const page = el.querySelector('.services-hub__list')
-  if (!(page instanceof HTMLElement)) return el.clientWidth
-
-  const track = page.parentElement
-  const gap = track ? Number.parseFloat(getComputedStyle(track).columnGap) || 0 : 0
-
-  return page.getBoundingClientRect().width + gap
-}
-
-const useSnapSlider = (pageCount: { readonly value: number }) => {
-  const viewport = ref<HTMLElement | null>(null)
-  const pageIndex = ref(0)
-
-  const scrollToPage = (index: number) => {
-    const el = viewport.value
-    const count = pageCount.value
-    if (!el || !count) return
-
-    const next = ((index % count) + count) % count
-    el.scrollTo({ left: next * pageStride(el), behavior: 'smooth' })
-  }
-
-  const onScroll = () => {
-    const el = viewport.value
-    if (!el) return
-
-    const stride = pageStride(el)
-    if (!stride) return
-
-    pageIndex.value = Math.round(el.scrollLeft / stride)
-  }
-
-  onMounted(() => {
-    const el = viewport.value
-    if (!el) return
-
-    el.addEventListener('scroll', onScroll, { passive: true })
-
-    const resize = new ResizeObserver(() => {
-      el.scrollTo({ left: pageIndex.value * pageStride(el) })
-    })
-    resize.observe(el)
-
-    const stopWatch = watch(pageCount, () => {
-      if (pageIndex.value >= pageCount.value) {
-        pageIndex.value = Math.max(0, pageCount.value - 1)
-      }
-
-      el.scrollTo({ left: pageIndex.value * pageStride(el) })
-    })
-
-    onUnmounted(() => {
-      stopWatch()
-      el.removeEventListener('scroll', onScroll)
-      resize.disconnect()
-    })
-  })
-
-  return { viewport, pageIndex, scrollToPage }
-}
-
 const { data: home } = await useHome()
 const { data: meta } = await useAsyncData('resume-meta', () => queryCollection('resumeMeta').first())
 const { data: services } = await useAsyncData('services', () => queryCollection('services').first())
@@ -101,18 +40,6 @@ const offerPages = computed(() =>
 const processPages = computed(() =>
   chunkPages(services.value?.process ?? [], PROCESS_SLIDE_SIZE),
 )
-
-const {
-  viewport: offersViewport,
-  pageIndex: offersPage,
-  scrollToPage: scrollOffers,
-} = useSnapSlider(computed(() => offerPages.value.length))
-
-const {
-  viewport: processViewport,
-  pageIndex: processPage,
-  scrollToPage: scrollProcess,
-} = useSnapSlider(computed(() => processPages.value.length))
 
 const exampleIsExternal = (href: string, external?: boolean) =>
   Boolean(external) || href.startsWith('http')
@@ -141,81 +68,39 @@ const exampleIsExternal = (href: string, external?: boolean) =>
       class="section"
     >
       <h2 class="section__title">Форматы</h2>
-      <div
-        class="services-hub__slider"
-        role="region"
-        aria-roledescription="карусель"
-        aria-label="Форматы работ"
+      <ServicesHubSlider
+        name="formats"
+        :pages="offerPages"
+        label="Форматы работ"
       >
-        <div
-          ref="offersViewport"
-          class="services-hub__viewport"
-          tabindex="0"
-          @keydown.left.prevent="scrollOffers(offersPage - 1)"
-          @keydown.right.prevent="scrollOffers(offersPage + 1)"
-        >
-          <div class="services-hub__track">
-            <ul
-              v-for="(page, pageIdx) in offerPages"
-              :key="pageIdx"
-              class="services-hub__list"
-              :aria-hidden="pageIdx === offersPage ? undefined : 'true'"
-            >
-              <li
-                v-for="offer in page"
-                :key="offer.title"
+        <template #page="{ items }">
+          <li
+            v-for="offer in items"
+            :key="offer.title"
+          >
+            <article class="services-hub__card">
+              <h3 class="services-hub__title">{{ offer.title }}</h3>
+              <p class="services-hub__excerpt">{{ offer.text }}</p>
+              <p
+                v-if="offer.examples?.length"
+                class="services-hub__examples"
               >
-                <article class="services-hub__card">
-                  <h3 class="services-hub__title">{{ offer.title }}</h3>
-                  <p class="services-hub__excerpt">{{ offer.text }}</p>
-                  <p
-                    v-if="offer.examples?.length"
-                    class="services-hub__examples"
-                  >
-                    Например:
-                    <NuxtLink
-                      v-for="example in offer.examples"
-                      :key="example.href"
-                      :to="example.href"
-                      :external="exampleIsExternal(example.href, example.external)"
-                      :target="exampleIsExternal(example.href, example.external) ? '_blank' : undefined"
-                      :rel="exampleIsExternal(example.href, example.external) ? 'noopener noreferrer' : undefined"
-                      :tabindex="pageIdx === offersPage ? undefined : -1"
-                    >
-                      {{ example.label }}
-                    </NuxtLink>
-                  </p>
-                </article>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="services-hub__controls">
-          <button
-            type="button"
-            class="services-hub__arrow"
-            aria-label="Предыдущие форматы"
-            @click="scrollOffers(offersPage - 1)"
-          >‹</button>
-          <div class="services-hub__dots">
-            <button
-              v-for="(_, index) in offerPages"
-              :key="index"
-              type="button"
-              class="services-hub__dot"
-              :aria-current="index === offersPage ? 'true' : undefined"
-              :aria-label="`Слайд ${index + 1} из ${offerPages.length}`"
-              @click="scrollOffers(index)"
-            />
-          </div>
-          <button
-            type="button"
-            class="services-hub__arrow"
-            aria-label="Следующие форматы"
-            @click="scrollOffers(offersPage + 1)"
-          >›</button>
-        </div>
-      </div>
+                Например:
+                <NuxtLink
+                  v-for="example in offer.examples"
+                  :key="example.href"
+                  :to="example.href"
+                  :external="exampleIsExternal(example.href, example.external)"
+                  :target="exampleIsExternal(example.href, example.external) ? '_blank' : undefined"
+                  :rel="exampleIsExternal(example.href, example.external) ? 'noopener noreferrer' : undefined"
+                >
+                  {{ example.label }}
+                </NuxtLink>
+              </p>
+            </article>
+          </li>
+        </template>
+      </ServicesHubSlider>
       <p class="services-hub__note">{{ services.note }}</p>
     </section>
 
@@ -225,71 +110,31 @@ const exampleIsExternal = (href: string, external?: boolean) =>
     >
       <h2 class="section__title">От идеи до релиза</h2>
       <p class="prose">{{ services.processLead }}</p>
-      <div
-        class="services-hub__slider"
-        role="region"
-        aria-roledescription="карусель"
-        aria-label="Этапы от идеи до релиза"
+      <ServicesHubSlider
+        name="process"
+        :pages="processPages"
+        list-class="services-hub__list--pair"
+        label="Этапы от идеи до релиза"
       >
-        <div
-          ref="processViewport"
-          class="services-hub__viewport"
-          tabindex="0"
-          @keydown.left.prevent="scrollProcess(processPage - 1)"
-          @keydown.right.prevent="scrollProcess(processPage + 1)"
-        >
-          <div class="services-hub__track">
-            <ul
-              v-for="(page, pageIdx) in processPages"
-              :key="pageIdx"
-              class="services-hub__list services-hub__list--pair"
-              :aria-hidden="pageIdx === processPage ? undefined : 'true'"
-            >
-              <li
-                v-for="step in page"
-                :key="step.title"
-              >
-                <article class="services-hub__step">
-                  <h3 class="services-hub__step-title">
-                    {{ step.title }}
-                  </h3>
-                  <ul class="services-hub__step-items">
-                    <li
-                      v-for="item in step.items"
-                      :key="item"
-                    >{{ item }}</li>
-                  </ul>
-                </article>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="services-hub__controls">
-          <button
-            type="button"
-            class="services-hub__arrow"
-            aria-label="Предыдущие этапы"
-            @click="scrollProcess(processPage - 1)"
-          >‹</button>
-          <div class="services-hub__dots">
-            <button
-              v-for="(_, index) in processPages"
-              :key="index"
-              type="button"
-              class="services-hub__dot"
-              :aria-current="index === processPage ? 'true' : undefined"
-              :aria-label="`Слайд ${index + 1} из ${processPages.length}`"
-              @click="scrollProcess(index)"
-            />
-          </div>
-          <button
-            type="button"
-            class="services-hub__arrow"
-            aria-label="Следующие этапы"
-            @click="scrollProcess(processPage + 1)"
-          >›</button>
-        </div>
-      </div>
+        <template #page="{ items }">
+          <li
+            v-for="step in items"
+            :key="step.title"
+          >
+            <article class="services-hub__step">
+              <h3 class="services-hub__step-title">
+                {{ step.title }}
+              </h3>
+              <ul class="services-hub__step-items">
+                <li
+                  v-for="item in step.items"
+                  :key="item"
+                >{{ item }}</li>
+              </ul>
+            </article>
+          </li>
+        </template>
+      </ServicesHubSlider>
     </section>
 
     <section

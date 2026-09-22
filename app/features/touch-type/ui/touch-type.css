@@ -30,7 +30,7 @@
   --kt-text-bg: rgba(17, 34, 64, 0.55);
 }
 
-html.light .kt-page {
+html:not(:is(.dark, :has(#theme-toggle:checked))) .kt-page {
   --white: #0f172a;
   --key-idle-bg: #e2e8f0;
   --key-idle-fg: #1e293b;
@@ -517,7 +517,7 @@ html.light .kt-page {
   pointer-events: none;
 }
 
-html.dark .kt-key.is-locked {
+:is(html.dark, html:has(#theme-toggle:checked)) .kt-key.is-locked {
   opacity: 0.42;
 }
 
@@ -526,7 +526,7 @@ html.dark .kt-key.is-locked {
   --key-fg: var(--key-idle-fg);
 }
 
-html.dark .kt-key.is-locked.is-upcoming {
+:is(html.dark, html:has(#theme-toggle:checked)) .kt-key.is-locked.is-upcoming {
   opacity: 0.72;
 }
 

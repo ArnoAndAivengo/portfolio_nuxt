@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import '~/shared/ui/language-quiz/language-quiz.css'
+import { JsRequiredNotice } from '~/shared/ui/js-required'
 import type { BugItem } from '../model/bugs'
 import { useBugHunter } from '../model/useBugHunter'
 import './bug-hunter.css'
@@ -63,9 +64,11 @@ const variant = computed(() =>
       id="bughunter"
     >
       <div class="py-view is-on">
+        <JsRequiredNotice />
+
         <div
           v-if="!finished"
-          class="py-header"
+          class="py-header js-only"
         >
           <div>
             <span class="py-badge">{{ levelName }}</span>
@@ -171,7 +174,7 @@ const variant = computed(() =>
 
         <p
           v-else-if="!finished"
-          class="py-q-text"
+          class="py-q-text js-only"
         >Загрузка...</p>
 
         <template v-else>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { consentLabel, readConsent } from '~/shared/lib/consent'
+import { JsRequiredNotice } from '~/shared/ui/js-required'
 import { PrivacyPolicy } from '~/shared/ui/privacy-policy'
 import { mountTouchType } from '../model/engine'
 import './touch-type.css'
@@ -45,22 +46,25 @@ const onDecline = () => {
       class="section kt-welcome"
       id="welcome"
     >
-      <p class="kt-kicker">Touch Type</p>
-      <div class="prose">
-        <p>
-          Тренажёр слепой печати на английском QWERTY:
-          уроки по клавишам, разбор ошибок и практика.
-        </p>
-        <p>
-          Сначала нужно принять или отклонить cookies.
-          Если примете — прогресс сохранится в браузере.
-          Если отклоните — тренироваться можно, но прогресс не запомнится.
-        </p>
+      <JsRequiredNotice />
+      <div class="js-only">
+        <p class="kt-kicker">Touch Type</p>
+        <div class="prose">
+          <p>
+            Тренажёр слепой печати на английском QWERTY:
+            уроки по клавишам, разбор ошибок и практика.
+          </p>
+          <p>
+            Сначала нужно принять или отклонить cookies.
+            Если примете — прогресс сохранится в браузере.
+            Если отклоните — тренироваться можно, но прогресс не запомнится.
+          </p>
+        </div>
       </div>
     </section>
 
     <section
-      class="section"
+      class="section js-only"
       id="hub"
       data-section="hub"
     >
@@ -240,7 +244,7 @@ const onDecline = () => {
     </section>
 
     <section
-      class="section kt-tips"
+      class="section kt-tips js-only"
       id="tips"
       data-section="tips"
     >
@@ -259,18 +263,20 @@ const onDecline = () => {
       </div>
     </section>
 
-    <PrivacyPolicy
-      trainer="Touch Type"
-      cookie="ao-typing-consent"
-      storage="ao-typing-v1"
-      storage-note="прогресс уроков: открытые клавиши, точность по клавишам, число уроков, лучший WPM."
-      :consent-label="consentText"
-      @accept="onAccept"
-      @decline="onDecline"
-    />
+    <div class="js-only">
+      <PrivacyPolicy
+        trainer="Touch Type"
+        cookie="ao-typing-consent"
+        storage="ao-typing-v1"
+        storage-note="прогресс уроков: открытые клавиши, точность по клавишам, число уроков, лучший WPM."
+        :consent-label="consentText"
+        @accept="onAccept"
+        @decline="onDecline"
+      />
+    </div>
 
     <dialog
-      class="kt-modal"
+      class="kt-modal js-only"
       id="kt-modal"
       aria-labelledby="kt-modal-title"
     >

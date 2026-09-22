@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import '~/shared/ui/motivation-quiz/motivation-quiz.css'
+import { JsRequiredNotice } from '~/shared/ui/js-required'
 import { useMotivationStory } from '../model/useMotivationStory'
 
 const SLIDE_COUNT = 10
@@ -9,7 +10,7 @@ const { current, progressPct, counter, nextSlide, restart } = useMotivationStory
 <template>
   <div class="mg-page">
     <div
-      class="mg-progress"
+      class="mg-progress js-only"
       :style="{ width: `${progressPct}%` }"
       aria-hidden="true"
     />
@@ -19,7 +20,8 @@ const { current, progressPct, counter, nextSlide, restart } = useMotivationStory
       id="story"
     >
       <div class="game-wrapper">
-        <div class="game-container">
+        <JsRequiredNotice />
+        <div class="game-container js-only">
           <div
             class="slide"
             :class="{ active: current === 0 }"
@@ -34,7 +36,7 @@ const { current, progressPct, counter, nextSlide, restart } = useMotivationStory
             </p>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Поиск работы</button>
           </div>
@@ -55,7 +57,7 @@ const { current, progressPct, counter, nextSlide, restart } = useMotivationStory
             </p>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Работаем!</button>
           </div>
@@ -76,7 +78,7 @@ function magic() { return magic(); }</div>
             </p>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Разберёмся!</button>
           </div>
@@ -97,7 +99,7 @@ function magic() { return magic(); }</div>
             </p>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Учиться, учиться...</button>
           </div>
@@ -122,7 +124,7 @@ function magic() { return magic(); }</div>
             </div>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Не сдаёмся!</button>
           </div>
@@ -144,7 +146,7 @@ function magic() { return magic(); }</div>
             </div>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Дальше!</button>
           </div>
@@ -170,7 +172,7 @@ function magic() { return magic(); }</div>
             </div>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Продолжаем расти!</button>
           </div>
@@ -194,7 +196,7 @@ function magic() { return magic(); }</div>
             </p>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >К финалу!</button>
           </div>
@@ -225,7 +227,7 @@ function magic() { return magic(); }</div>
             </div>
             <button
               type="button"
-              class="mg-btn"
+              class="mg-btn js-only"
               @click="nextSlide"
             >Вдохновлён!</button>
           </div>
@@ -247,14 +249,14 @@ function magic() { return magic(); }</div>
             <div class="mg-btn-row">
               <button
                 type="button"
-                class="mg-btn"
+                class="mg-btn js-only"
                 @click="restart"
               >Пройти заново</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="mg-meta">
+      <div class="mg-meta js-only">
         <p class="mg-counter">{{ counter }}</p>
       </div>
     </section>

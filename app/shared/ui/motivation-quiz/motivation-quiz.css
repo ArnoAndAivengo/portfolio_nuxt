@@ -521,7 +521,7 @@
   color: #cbd5e1;
 }
 
-html.light .iv-result-badge--silver {
+html:not(:is(.dark, :has(#theme-toggle:checked))) .iv-result-badge--silver {
   color: #64748b;
 }
 

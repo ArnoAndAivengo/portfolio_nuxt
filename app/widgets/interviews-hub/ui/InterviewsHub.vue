@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { INTERVIEWS } from '~/entities/interview'
+import { JsRequiredNotice } from '~/shared/ui/js-required'
 import './interviews-hub.css'
 </script>
 
 <template>
   <div class="interviews-hub">
+    <JsRequiredNotice />
     <section
       id="interviews"
-      class="section"
+      class="section js-only"
     >
       <h2 class="section__title">Языки</h2>
       <ul class="interviews-hub__list">

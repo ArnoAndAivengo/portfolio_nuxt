@@ -55,23 +55,23 @@
 
 .profile-links__item--gitlab {
   background: #fc6d26;
-  border-color: #fc6d26;
-  color: #fff;
+  border-color: #d65a1a;
+  color: #1a0903;
 }
 
 .profile-links__item--gitlab:hover {
-  background: #e24329;
-  border-color: #e24329;
-  color: #fff;
+  background: #e8590c;
+  border-color: #c2410c;
+  color: #1a0903;
 }
 
-html.dark .profile-links__item--github {
+:is(html.dark, html:has(#theme-toggle:checked)) .profile-links__item--github {
   background: #f0f6fc;
   border-color: #f0f6fc;
   color: #0d1117;
 }
 
-html.dark .profile-links__item--github:hover {
+:is(html.dark, html:has(#theme-toggle:checked)) .profile-links__item--github:hover {
   background: #fff;
   border-color: #fff;
   color: #0d1117;

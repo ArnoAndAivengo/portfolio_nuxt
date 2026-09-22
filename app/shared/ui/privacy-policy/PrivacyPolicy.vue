@@ -50,7 +50,7 @@ const emit = defineEmits<{
         Данные не передаются на сервер и не продаются третьим лицам.
         Выбор можно изменить ниже в любой момент.
       </p>
-      <div class="trainer-privacy__actions">
+      <div class="trainer-privacy__actions js-only">
         <button
           type="button"
           class="trainer-privacy__btn"
