@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   css: [
     '~/assets/css/fonts.css',
     '~/assets/css/theme.css',
+    '~/shared/ui/project-nav/project-nav.css',
   ],
   app: {
     head: {

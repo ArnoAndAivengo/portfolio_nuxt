@@ -120,7 +120,7 @@ useHead({
     },
   ],
   noscript: [
-    { innerHTML: '<style>.js-only{display:none!important}body{padding-bottom:4.25rem}@media(max-width:980px){.footer{padding-bottom:calc(9rem + env(safe-area-inset-bottom,0px))!important}}</style>' },
+    { innerHTML: '<style>.js-only{display:none!important}body{padding-bottom:4.25rem}@media(max-width:980px){.footer{padding-bottom:calc(4rem + env(safe-area-inset-bottom,0px))!important}}</style>' },
   ],
   script: () => siteSchema.value
     ? [{

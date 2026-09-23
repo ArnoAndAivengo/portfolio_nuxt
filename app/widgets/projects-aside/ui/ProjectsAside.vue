@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ProjectPage } from '~/entities/project'
 import { ProjectNav } from '~/shared/ui/project-nav'
+import '~/shared/ui/project-nav/project-nav.css'
 import { useSectionSpy } from '~/composables/useSectionSpy'
 
 const props = defineProps<{
