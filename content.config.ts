@@ -50,6 +50,8 @@ export default defineContentConfig({
         pets: z.boolean().optional(),
         spa: z.boolean().optional(),
         variant: z.string().optional(),
+        cover: z.string().optional(),
+        coverAlt: z.string().optional(),
         order: z.number(),
         tags: z.array(z.string()),
       }),

@@ -2,7 +2,7 @@
 import './project-nav.css'
 
 defineProps<{
-  current: 'index' | 'pets' | 'learn-portal' | 'codestats'
+  current: 'index' | 'portfolio' | 'learn-portal' | 'codestats'
 }>()
 </script>
 
@@ -20,12 +20,12 @@ defineProps<{
       Текущие
     </NuxtLink>
     <NuxtLink
-      to="/projects/pets"
-      class="project-nav__link project-nav__link--pets"
-      :aria-current="current === 'pets' ? 'page' : undefined"
+      to="/projects/portfolio"
+      class="project-nav__link project-nav__link--portfolio"
+      :aria-current="current === 'portfolio' ? 'page' : undefined"
     >
       <span>02</span>
-      Проекты
+      Портфолио
     </NuxtLink>
     <NuxtLink
       to="/projects/learn-portal"

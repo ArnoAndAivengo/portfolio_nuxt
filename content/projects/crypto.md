@@ -7,8 +7,10 @@ featured: true
 current: false
 spa: true
 variant: crypto
+cover: /images/crypto/main.png
+coverAlt: Crypto Dashboard — курсы криптовалют в реальном времени
 order: 4
 tags: [React, Vite, WebSocket]
 ---
 
-Дашборд криптовалют в реальном времени на WebSocket.
+Тестовое задание. Дашборд криптовалют в реальном времени на WebSocket.

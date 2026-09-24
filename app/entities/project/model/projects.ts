@@ -7,13 +7,13 @@ export const PROJECT_PAGES = {
     role: '',
     lead: 'Собственные продукты — от архитектуры и кода до деплоя.',
   },
-  pets: {
+  portfolio: {
     pageKey: 'projects',
-    current: 'pets',
+    current: 'portfolio',
     eyebrow: 'Проекты',
     name: '',
     role: '',
-    lead: 'Эксперименты и учебные репозитории — код на GitLab или GitHub, плюс живые демо.',
+    lead: 'Портфолио — код на GitLab или GitHub, плюс живые демо.',
   },
   learnPortal: {
     pageKey: 'learn-portal',
@@ -63,7 +63,9 @@ export const projectPageForPath = (path: string): ProjectPage | null => {
   if (path.startsWith('/projects/saas-dashboard')) return null
   if (path.startsWith('/projects/ai-chat')) return null
   if (path.startsWith('/projects/ai')) return null
-  if (path.startsWith('/projects/pets')) return PROJECT_PAGES.pets
+  if (path.startsWith('/projects/portfolio') || path.startsWith('/projects/pets')) {
+    return PROJECT_PAGES.portfolio
+  }
   if (path.startsWith('/projects/learn-portal')) return PROJECT_PAGES.learnPortal
   if (path.startsWith('/projects/codestats')) return PROJECT_PAGES.codestats
 

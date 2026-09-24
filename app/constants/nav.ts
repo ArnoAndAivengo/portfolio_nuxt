@@ -39,6 +39,15 @@ export const SITE_NAV = [
     eyebrow: 'Резюме',
   },
   {
+    to: '/projects/portfolio',
+    label: 'Портфолио',
+    key: 'portfolio',
+    eyebrow: 'Проекты',
+    lead: 'Портфолио — код на GitLab или GitHub, плюс живые демо.',
+    seoTitle: 'Портфолио — Александр Обухов',
+    seoDescription: 'Портфолио: pet-проекты, живые демо и код на GitLab или GitHub.',
+  },
+  {
     to: '/motivation',
     label: 'Мотивация',
     key: 'motivation',

@@ -4,7 +4,7 @@ import { isRemoteHref, projectHrefIsExternal, projectRepoHref } from '~/utils/pr
 import './projects-hub.css'
 
 const props = defineProps<{
-  section: 'current' | 'pets'
+  section: 'current' | 'portfolio'
 }>()
 
 const { data: projects } = await useAsyncData('projects-hub', () =>
@@ -24,7 +24,7 @@ const items = computed(() => {
 const title = computed(() =>
   props.section === 'current'
     ? 'Продукты, над которыми сейчас идёт работа'
-    : 'Эксперименты и учебные репозитории',
+    : 'Портфолио',
 )
 
 const repoUrl = (project: { href: string; repo?: string }) =>
@@ -41,6 +41,8 @@ const repoLink = (project: { href: string; repo?: string }) => {
   return label ? { href, label } : null
 }
 
+const COVER_FALLBACK = '/images/projects/placeholder.svg'
+
 const variantOf = (project: { variant?: string; spa?: boolean; title: string }) => {
   if (project.variant) return project.variant
   if (project.spa) return project.variant || 'crypto'
@@ -49,6 +51,11 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
 
   return 'default'
 }
+
+const coverOf = (project: { cover?: string }) => project.cover || COVER_FALLBACK
+
+const coverLightboxId = (path: string) =>
+  `hub-cover-${path.replace(/^\//, '').replace(/\//g, '-')}`
 </script>
 
 <template>
@@ -60,6 +67,7 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
       <h2 class="section__title">{{ title }}</h2>
       <ul
         class="projects-hub__list"
+        :class="{ 'projects-hub__list--grid': section === 'portfolio' }"
         tabindex="0"
         aria-label="Список проектов"
       >
@@ -71,7 +79,54 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
             class="projects-hub__card"
             :class="`projects-hub__card--${variantOf(project)}`"
           >
-            <div class="projects-hub__head">
+            <div
+              v-if="section === 'portfolio'"
+              class="projects-hub__cover"
+            >
+              <button
+                type="button"
+                class="projects-hub__cover-media"
+                :popovertarget="coverLightboxId(project.path)"
+                :aria-label="`Увеличить: ${project.coverAlt || project.title}`"
+              >
+                <img
+                  :src="coverOf(project)"
+                  :alt="project.coverAlt || project.title"
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </button>
+            </div>
+            <div
+              v-if="section === 'portfolio'"
+              :id="coverLightboxId(project.path)"
+              class="projects-hub__lightbox"
+              popover="auto"
+              role="dialog"
+              aria-modal="true"
+              :aria-label="project.coverAlt || project.title"
+            >
+              <button
+                type="button"
+                class="projects-hub__lightbox-close"
+                :popovertarget="coverLightboxId(project.path)"
+                popovertargetaction="hide"
+                aria-label="Закрыть"
+              >×</button>
+              <figure class="projects-hub__lightbox-figure">
+                <img
+                  class="projects-hub__lightbox-image"
+                  :src="coverOf(project)"
+                  :alt="project.coverAlt || project.title"
+                >
+                <figcaption class="projects-hub__lightbox-caption">
+                  {{ project.coverAlt || project.title }}
+                </figcaption>
+              </figure>
+            </div>
+            <template v-if="section === 'portfolio'">
               <NuxtLink
                 v-if="!project.spa"
                 class="projects-hub__title-link"
@@ -86,6 +141,24 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
                 v-else
                 class="projects-hub__title"
               >{{ project.title }}</h3>
+            </template>
+            <div class="projects-hub__head">
+              <template v-if="section !== 'portfolio'">
+                <NuxtLink
+                  v-if="!project.spa"
+                  class="projects-hub__title-link"
+                  :to="project.href"
+                  :external="projectHrefIsExternal(project.href, project.spa)"
+                  :target="isRemoteHref(project.href) ? '_blank' : undefined"
+                  :rel="isRemoteHref(project.href) ? 'noopener noreferrer' : undefined"
+                >
+                  <h3 class="projects-hub__title">{{ project.title }}</h3>
+                </NuxtLink>
+                <h3
+                  v-else
+                  class="projects-hub__title"
+                >{{ project.title }}</h3>
+              </template>
               <div
                 v-if="project.status || project.spa || repoLink(project)"
                 class="projects-hub__aside"

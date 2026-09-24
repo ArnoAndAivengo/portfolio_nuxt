@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="$028:>=">
+  <defs>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="#07101f"/>
+  <polygon
+    points="60,14 72.75,37.92 99.84,37 85.5,60 99.84,83 72.75,82.08 60,106 47.25,82.08 20.16,83 34.5,60 20.16,37 47.25,37.92"
+    fill="none"
+    stroke="#3ecbff"
+    stroke-width="7.5"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+  <polygon
+    points="60,14 72.75,37.92 99.84,37 85.5,60 99.84,83 72.75,82.08 60,106 47.25,82.08 20.16,83 34.5,60 20.16,37 47.25,37.92"
+    fill="none"
+    stroke="#b9f4ff"
+    stroke-width="2.2"
+    stroke-linejoin="round"
+  />
+  <circle cx="60" cy="60" r="7" fill="#eefcff"/>
+  <path
+    d="M39 48 L29 60 L39 72 M50 46 L70 74 M81 48 L91 60 L81 72"
+    fill="none"
+    stroke="#7ee8ff"
+    stroke-width="4.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

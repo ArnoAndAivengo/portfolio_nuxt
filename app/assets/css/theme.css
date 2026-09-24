@@ -520,7 +520,7 @@ html.dark .theme-switch__knob,
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem 1rem;
+  gap: 0.65rem 0.4rem;
   margin-top: 1.25rem;
 }
 
@@ -546,7 +546,9 @@ html.dark .theme-switch__knob,
 .site-nav a[data-nav="articles"]:hover,
 .site-nav a[data-nav="articles"][aria-current="page"] { color: var(--accent-articles); }
 .site-nav a[data-nav="projects"]:hover,
-.site-nav a[data-nav="projects"][aria-current="page"] { color: var(--accent-projects); }
+.site-nav a[data-nav="projects"][aria-current="page"],
+.site-nav a[data-nav="portfolio"]:hover,
+.site-nav a[data-nav="portfolio"][aria-current="page"] { color: var(--accent-projects); }
 .site-nav a[data-nav="resume"]:hover,
 .site-nav a[data-nav="resume"][aria-current="page"] { color: var(--accent-resume); }
 .site-nav a[data-nav="motivation"]:hover,
@@ -1312,7 +1314,7 @@ html:has(.diploma-modal:target) {
   justify-content: center;
   gap: 0.4rem;
   min-height: 2.75rem;
-  padding: 0 1.1rem;
+  padding: 0 0.9rem;
   border-radius: 0.25rem;
   border: 1px solid var(--accent);
   background: transparent;

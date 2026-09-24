@@ -6,6 +6,8 @@ status: Public
 featured: false
 current: false
 pets: true
+cover: /images/portfolio/main.png
+coverAlt: Портфолио — главная страница сайта
 order: 2
 tags: [Nuxt 4, Vue 3, TypeScript, FSD, Nuxt Content]
 ---

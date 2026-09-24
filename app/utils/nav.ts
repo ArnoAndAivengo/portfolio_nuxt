@@ -5,7 +5,13 @@ export const navItemForPath = (path: string) => {
     return SITE_NAV.find((item) => item.key === 'resume') ?? SITE_NAV[0]
   }
 
-  return SITE_NAV.find((item) =>
+  const matches = SITE_NAV.filter((item) =>
     item.to === '/' ? path === '/' : path.startsWith(item.to)
-  ) ?? SITE_NAV[0]
+  )
+
+  if (!matches.length) return SITE_NAV[0]
+
+  return matches.reduce((best, item) =>
+    item.to.length > best.to.length ? item : best
+  )
 }

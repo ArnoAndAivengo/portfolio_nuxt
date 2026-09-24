@@ -31,7 +31,7 @@
 | `/` | Главная |
 | `/resume` | Резюме |
 | `/projects` | Текущие продукты: LearnPortal и Codestats |
-| `/projects/pets` | Pet-проекты и живые демо |
+| `/projects/portfolio` | Портфолио — pet-проекты и живые демо |
 | `/projects/learn-portal` | Страница LearnPortal |
 | `/projects/codestats` | Страница Codestats |
 | `/projects/crypto/` | SPA-демо Crypto Dashboard |
