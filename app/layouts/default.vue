@@ -41,10 +41,11 @@ const pageLead = computed(() =>
 )
 
 const isSiteNavCurrent = (item: (typeof SITE_NAV)[number]) => {
+  const project = projectPage.value
   if (item.key === 'trainers') return Boolean(trainerPage.value)
-  if (item.key === 'portfolio') return projectPage.value?.current === 'portfolio'
+  if (item.key === 'portfolio') return project?.current === 'portfolio'
   if (item.key === 'projects') {
-    return Boolean(projectPage.value) && projectPage.value.current !== 'portfolio'
+    return project != null && project.current !== 'portfolio'
   }
   if (item.key === 'motivation') return Boolean(motivationPage.value)
   if (item.key === 'articles') return Boolean(articlePage.value)
