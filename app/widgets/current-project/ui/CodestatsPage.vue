@@ -49,7 +49,7 @@ const stack = [
         </p>
         <p>
           Проект развивается как самостоятельный продукт, но связан с
-          <NuxtLink to="/projects/learn-portal">LearnPortal</NuxtLink>: ученики сдают домашку ссылкой на GitHub —
+          <NuxtLink to="/projects/codevega">CodeVega</NuxtLink>: ученики сдают домашку ссылкой на GitHub —
           тот же след может попасть в профиль кандидата, когда рекрутер смотрит на выпускника.
         </p>
         <p><strong>Зачем это нужно:</strong></p>
@@ -84,7 +84,7 @@ const stack = [
           Кто на какой стадии, что уже собрано, когда обновлялись данные.
         </li>
         <li>
-          <strong>Связь с LearnPortal.</strong>
+          <strong>Связь с CodeVega.</strong>
           Два отдельных продукта, общий мост через GitHub — без смешивания обучения и рекрутинга.
         </li>
       </ul>
@@ -101,7 +101,7 @@ const stack = [
         <li><strong>Аналитика GitHub</strong> — репозитории, языки, коммиты; обновление в фоне</li>
         <li><strong>Основной интерфейс</strong> — для рекрутера: вакансии, дашборды, поиск</li>
         <li><strong>Админка</strong> — пользователи, задачи, системная статистика</li>
-        <li><strong>Интеграция с LearnPortal</strong> — ученик с GitHub → кандидат с проверяемым следом</li>
+        <li><strong>Интеграция с CodeVega</strong> — ученик с GitHub → кандидат с проверяемым следом</li>
       </ul>
     </section>
 
@@ -150,21 +150,21 @@ const stack = [
     </section>
 
     <section
-      id="learnportal"
+      id="codevega"
       class="section current-project__section"
     >
-      <h2 class="section__title">LearnPortal</h2>
+      <h2 class="section__title">CodeVega</h2>
       <div class="prose">
         <p>
           Параллельный проект — обучающая платформа для web-разработчиков.
-          Codestats и LearnPortal остаются отдельными продуктами;
+          Codestats и CodeVega остаются отдельными продуктами;
           связь — через GitHub: ученик сдаёт домашку ссылкой на репозиторий,
           рекрутер видит не только «урок пройден», а реальный код и динамику роста.
         </p>
       </div>
       <ProjectCta
-        to="/projects/learn-portal"
-        label="Страница LearnPortal"
+        to="/projects/codevega"
+        label="Страница CodeVega"
         more="Открыть"
       />
     </section>

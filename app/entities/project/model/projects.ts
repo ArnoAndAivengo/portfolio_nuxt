@@ -15,16 +15,17 @@ export const PROJECT_PAGES = {
     role: '',
     lead: 'Портфолио — код на GitLab или GitHub, плюс живые демо.',
   },
-  learnPortal: {
-    pageKey: 'learn-portal',
-    current: 'learn-portal',
+  codevega: {
+    pageKey: 'codevega',
+    current: 'codevega',
     eyebrow: 'Текущий проект',
-    name: 'LearnPortal',
-    role: '',
-    lead: 'Обучающая платформа для web-разработчиков — old school фундамент, командные проекты и прозрачный путь кандидата.',
+    name: 'CodeVega',
+    role: 'Сияй в коде. Навсегда.',
+    lead: 'Уникальный проект для обучения программированию: структурное обучение и IT-паспорт, который сохраняет весь прогресс.',
     repo: 'https://github.com/ArnoAndAivengo/learn-portal-platform',
-    seoTitle: 'LearnPortal — обучающая платформа · Александр Обухов',
-    seoDescription: 'LearnPortal — обучающая платформа для web-разработчиков. Участие открыто и бесплатно: код, курсы, продукт. Пока без публичной площадки — работа локально через merge request.',
+    site: 'https://codevega.ru/',
+    seoTitle: 'CodeVega — Сияй в коде. Навсегда. · Александр Обухов',
+    seoDescription: 'CodeVega — уникальный проект для обучения программированию. Прогресс, код и пет-проекты остаются в IT-паспорте. Бесплатная платформа, которую развивает сообщество.',
     sections: [
       { id: 'overview', label: 'О проекте' },
       { id: 'screenshots', label: 'Скриншоты' },
@@ -50,7 +51,7 @@ export const PROJECT_PAGES = {
       { id: 'stack', label: 'Стек' },
       { id: 'status', label: 'Статус' },
       { id: 'code', label: 'Код' },
-      { id: 'learnportal', label: 'LearnPortal' },
+      { id: 'codevega', label: 'CodeVega' },
     ],
   },
 } as const
@@ -66,7 +67,9 @@ export const projectPageForPath = (path: string): ProjectPage | null => {
   if (path.startsWith('/projects/portfolio') || path.startsWith('/projects/pets')) {
     return PROJECT_PAGES.portfolio
   }
-  if (path.startsWith('/projects/learn-portal')) return PROJECT_PAGES.learnPortal
+  if (path.startsWith('/projects/codevega') || path.startsWith('/projects/learn-portal')) {
+    return PROJECT_PAGES.codevega
+  }
   if (path.startsWith('/projects/codestats')) return PROJECT_PAGES.codestats
 
   return PROJECT_PAGES.index

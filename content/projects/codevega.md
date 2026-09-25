@@ -1,6 +1,6 @@
 ---
-title: LearnPortal
-href: /projects/learn-portal
+title: CodeVega
+href: /projects/codevega
 repo: https://github.com/ArnoAndAivengo/learn-portal-platform
 status: Private
 badge: Pet-проект
@@ -10,4 +10,4 @@ order: 1
 tags: [Nuxt 3, Vue 3, TypeScript, Pinia, FSD, Tailwind, Sass, TipTap, Monaco Editor, CodeMirror, Chart.js, Nuxt Content, Node.js, Express, Sequelize, JWT, Swagger, Jest, PostgreSQL, Redis, Docker, Nginx, GitHub Actions, PM2, Ollama]
 ---
 
-Портал для web-разработчиков: база знаний, блог, курсы.
+Уникальный проект для обучения программированию: структурное обучение и IT-паспорт, который сохраняет весь прогресс.

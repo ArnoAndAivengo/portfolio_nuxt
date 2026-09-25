@@ -26,7 +26,7 @@ defineProps<{
       :aria-current="current === 'issues' ? 'page' : undefined"
     >
       <span>02</span>
-      Техблог LearnPortal
+      Техблог CodeVega
     </NuxtLink>
   </nav>
 </template>

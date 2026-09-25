@@ -47,7 +47,7 @@ const variantOf = (project: { variant?: string; spa?: boolean; title: string }) 
   if (project.variant) return project.variant
   if (project.spa) return project.variant || 'crypto'
   if (project.title === 'Codestats') return 'codestats'
-  if (project.title === 'LearnPortal') return 'learn-portal'
+  if (project.title === 'CodeVega') return 'codevega'
 
   return 'default'
 }

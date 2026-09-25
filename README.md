@@ -30,9 +30,9 @@
 |-----|------------|
 | `/` | Главная |
 | `/resume` | Резюме |
-| `/projects` | Текущие продукты: LearnPortal и Codestats |
+| `/projects` | Текущие продукты: CodeVega и Codestats |
 | `/projects/portfolio` | Портфолио — pet-проекты и живые демо |
-| `/projects/learn-portal` | Страница LearnPortal |
+| `/projects/codevega` | Страница CodeVega |
 | `/projects/codestats` | Страница Codestats |
 | `/projects/crypto/` | SPA-демо Crypto Dashboard |
 | `/projects/saas-dashboard/` | SPA-демо SaaS Metrics Hub |
@@ -48,7 +48,7 @@
 | `/trainers/bugs/javascript` | Поиск багов в JavaScript |
 | `/services` | Услуги — бесплатно, от лендинга до SPA |
 | `/articles` | Статьи |
-| `/articles/techblog` | Техблог LearnPortal |
+| `/articles/techblog` | Техблог CodeVega |
 | `/motivation` | История: путь IT-специалиста |
 
 ## Контент
@@ -74,7 +74,7 @@ app/
   composables/
   entities/      # страницы проектов, тренажёров и мотивации
   features/      # Touch Type, квизы Python / JavaScript, история и поиск багов
-  widgets/       # хабы, сайдбары, кейсы LearnPortal / Codestats
+  widgets/       # хабы, сайдбары, кейсы CodeVega / Codestats
   shared/
   layouts/
   pages/

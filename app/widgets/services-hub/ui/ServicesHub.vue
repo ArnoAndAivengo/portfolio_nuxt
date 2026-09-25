@@ -172,7 +172,7 @@ const exampleIsExternal = (href: string, external?: boolean) =>
       <div class="resume-tracks">
         <NuxtLink to="/projects">
           Портфолио
-          <span>LearnPortal, Codestats, рейтинг нейросетей, живые демо</span>
+          <span>CodeVega, Codestats, рейтинг нейросетей, живые демо</span>
         </NuxtLink>
         <a
           :href="home.github"

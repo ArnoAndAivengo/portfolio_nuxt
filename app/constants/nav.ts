@@ -30,7 +30,7 @@ export const SITE_NAV = [
     eyebrow: 'Проекты',
     lead: 'Собственные продукты — от архитектуры и кода до деплоя.',
     seoTitle: 'Проекты — Александр Обухов',
-    seoDescription: 'Текущие проекты LearnPortal и Codestats.',
+    seoDescription: 'Текущие проекты CodeVega и Codestats.',
   },
   {
     to: '/resume',

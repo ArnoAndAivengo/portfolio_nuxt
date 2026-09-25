@@ -59,10 +59,10 @@
 .project-nav__link--portfolio.is-active,
 .project-nav__link--portfolio[aria-current="page"],
 .project-nav__link--portfolio[aria-current="location"],
-.project-nav__link--learn-portal:hover,
-.project-nav__link--learn-portal.is-active,
-.project-nav__link--learn-portal[aria-current="page"],
-.project-nav__link--learn-portal[aria-current="location"] {
+.project-nav__link--codevega:hover,
+.project-nav__link--codevega.is-active,
+.project-nav__link--codevega[aria-current="page"],
+.project-nav__link--codevega[aria-current="location"] {
   color: var(--accent-projects);
 }
 
@@ -74,10 +74,10 @@
 .project-nav__link--portfolio.is-active::before,
 .project-nav__link--portfolio[aria-current="page"]::before,
 .project-nav__link--portfolio[aria-current="location"]::before,
-.project-nav__link--learn-portal:hover::before,
-.project-nav__link--learn-portal.is-active::before,
-.project-nav__link--learn-portal[aria-current="page"]::before,
-.project-nav__link--learn-portal[aria-current="location"]::before {
+.project-nav__link--codevega:hover::before,
+.project-nav__link--codevega.is-active::before,
+.project-nav__link--codevega[aria-current="page"]::before,
+.project-nav__link--codevega[aria-current="location"]::before {
   background: var(--accent-projects);
 }
 
@@ -103,13 +103,15 @@
   margin: 2.15rem 0 0;
 }
 
+.project-nav__link--site .project-nav__site-icon,
 .project-nav__link--repo .proj__icon {
   display: grid;
   color: inherit;
+  flex-shrink: 0;
 }
 
 .project-nav__link--repo:hover,
-.project-nav__link--learn-portal.project-nav__link--repo:hover {
+.project-nav__link--codevega.project-nav__link--repo:hover {
   color: var(--accent-projects);
 }
 

@@ -2,7 +2,7 @@
 import './project-nav.css'
 
 defineProps<{
-  current: 'index' | 'portfolio' | 'learn-portal' | 'codestats'
+  current: 'index' | 'portfolio' | 'codevega' | 'codestats'
 }>()
 </script>
 
@@ -28,12 +28,12 @@ defineProps<{
       Портфолио
     </NuxtLink>
     <NuxtLink
-      to="/projects/learn-portal"
-      class="project-nav__link project-nav__link--learn-portal"
-      :aria-current="current === 'learn-portal' ? 'page' : undefined"
+      to="/projects/codevega"
+      class="project-nav__link project-nav__link--codevega"
+      :aria-current="current === 'codevega' ? 'page' : undefined"
     >
       <span>03</span>
-      LearnPortal
+      CodeVega
     </NuxtLink>
     <NuxtLink
       to="/projects/codestats"
