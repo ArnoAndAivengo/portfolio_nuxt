@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 06"
 theme: "LearnPortal · выпуск 06"
 asideLead: "Собственный сервер против облака: контроль, опыт и экономика."
 excerpt: "Почему веду разработку на своём сервере: контроль, опыт, экономика и поддержка без облачных тарифов."
-cover: /images/articles/learnportal/6_issue.png
+cover: /images/articles/codevega/6_issue.png
 coverAlt: "Одинокая серверная стойка в тёмном зале"
 feed: issues
 issue: "06"

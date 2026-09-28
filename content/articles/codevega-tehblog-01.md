@@ -8,7 +8,7 @@ meta: "техблог LearnPortal · выпуск 01"
 theme: "LearnPortal · выпуск 01"
 asideLead: "Стартовый пост: идея платформы, требования и как они ложатся на архитектуру."
 excerpt: "Стартовый пост: fullstack обучающей платформы, идея без ИИ на старте и три требования, которые задали архитектуру — Docker, Markdown-курсы, Nuxt 3."
-cover: /images/articles/learnportal/1_issue.png
+cover: /images/articles/codevega/1_issue.png
 coverAlt: "Ноутбук с интерфейсом LearnPortal: редактор кода, прогресс курса и чашка кофе на столе"
 feed: issues
 issue: "01"

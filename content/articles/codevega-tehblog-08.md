@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 08"
 theme: "LearnPortal · выпуск 08"
 asideLead: "Один урок — три дисциплины: код, английский и школьный предмет."
 excerpt: "Один Markdown-урок качает ЯП, английские глоссы и школьный сюжет задач. Пилот: JS + math + en."
-cover: /images/articles/learnportal/8_issue.png
+cover: /images/articles/codevega/8_issue.png
 coverAlt: "Три потока знаний — код, язык и школьный предмет — сходятся в уроке LearnPortal"
 feed: issues
 issue: "08"
@@ -43,7 +43,7 @@ detailsValue: "техблог LearnPortal · выпуск 08"
 
 ## Как это выглядит в Markdown
 
-Стек контента я уже описывал в [выпуске про Markdown](/articles/learnportal-tehblog-02): файлы в git → sync в PostgreSQL → плеер.
+Стек контента я уже описывал в [выпуске про Markdown](/articles/codevega-tehblog-02): файлы в git → sync в PostgreSQL → плеер.
 Тройной трек живёт внутри тех же файлов.
 
 - **Программирование** — теория, quiz, практика, homework как обычно.

@@ -12,7 +12,7 @@ describe('articlePageForPath', () => {
   })
 
   it('отдаёт выпуск техблога и обычную статью', () => {
-    expect(articlePageForPath('/articles/learnportal-tehblog-08')).toBe(ARTICLE_PAGES.issue)
+    expect(articlePageForPath('/articles/codevega-tehblog-08')).toBe(ARTICLE_PAGES.issue)
     expect(articlePageForPath('/articles/it-bez-opyta')).toBe(ARTICLE_PAGES.post)
   })
 

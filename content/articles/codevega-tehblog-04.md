@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 04"
 theme: "LearnPortal · выпуск 04"
 asideLead: "Локальный LLM: Ollama, Qwen2.5-Coder и Continue в VS Code."
 excerpt: "Как я работаю с кодом через локальную модель: Сервер, Ollama, роли моделей и правила Continue."
-cover: /images/articles/learnportal/4_issue.png
+cover: /images/articles/codevega/4_issue.png
 coverAlt: "Ноутбук с кодом и голографический AI-ассистент на столе у окна"
 feed: issues
 issue: "04"

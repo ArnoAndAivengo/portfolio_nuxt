@@ -1,14 +1,7 @@
 <script setup lang="ts">
-import './js-required.css'
+const markup = '<div class="js-off-banner" role="status">Некоторые функции на сайте без включённого JavaScript работать не будут.</div>'
 </script>
 
 <template>
-  <noscript>
-    <div
-      class="js-off-banner"
-      role="status"
-    >
-      Некоторые функции на сайте без включённого JavaScript работать не будут.
-    </div>
-  </noscript>
+  <noscript v-html="markup" />
 </template>

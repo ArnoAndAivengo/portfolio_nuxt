@@ -17,15 +17,15 @@ usePageSeo({
 })
 
 const screenshots = [
-  { src: '/images/learnportal/learnportal.png', alt: 'Урок JavaScript: теория по DOM и опрос' },
-  { src: '/images/learnportal/learnportal-2.png', alt: 'Программа курса HTML: модули и уроки' },
-  { src: '/images/learnportal/learnportal-3.png', alt: 'Админ-панель: дашборд платформы' },
-  { src: '/images/learnportal/learnportal-4.png', alt: 'Каталог курсов для разработчиков с фильтрами' },
-  { src: '/images/learnportal/learnportal-5.png', alt: 'Документация проекта: индекс и навигация' },
-  { src: '/images/learnportal/learnportal-6.png', alt: 'Справочник: VS Code, Git, HTML, CSS и JavaScript' },
-  { src: '/images/learnportal/learnportal-7.png', alt: 'Блог: список статей автора' },
-  { src: '/images/learnportal/learnportal-8.png', alt: 'Редактор новой статьи с модерацией' },
-  { src: '/images/learnportal/learnportal-9.png', alt: 'Профиль ученика: XP, курсы и вовлечённость' },
+  { src: '/images/codevega/codevega.png', alt: 'Урок JavaScript: теория по DOM и опрос' },
+  { src: '/images/codevega/codevega-2.png', alt: 'Программа курса HTML: модули и уроки' },
+  { src: '/images/codevega/codevega-3.png', alt: 'Админ-панель: дашборд платформы' },
+  { src: '/images/codevega/codevega-4.png', alt: 'Каталог курсов для разработчиков с фильтрами' },
+  { src: '/images/codevega/codevega-5.png', alt: 'Документация проекта: индекс и навигация' },
+  { src: '/images/codevega/codevega-6.png', alt: 'Справочник: VS Code, Git, HTML, CSS и JavaScript' },
+  { src: '/images/codevega/codevega-7.png', alt: 'Блог: список статей автора' },
+  { src: '/images/codevega/codevega-8.png', alt: 'Редактор новой статьи с модерацией' },
+  { src: '/images/codevega/codevega-9.png', alt: 'Профиль ученика: XP, курсы и вовлечённость' },
 ]
 
 const stack = [

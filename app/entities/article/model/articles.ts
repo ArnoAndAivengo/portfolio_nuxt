@@ -54,7 +54,7 @@ export const articlePageForPath = (path: string): ArticlePage | null => {
   if (normalized === '/articles/techblog') return ARTICLE_PAGES.issues
 
   const slug = normalized.slice('/articles/'.length)
-  if (slug.startsWith('learnportal-tehblog-')) return ARTICLE_PAGES.issue
+  if (slug.startsWith('codevega-tehblog-') || slug.startsWith('learnportal-tehblog-')) return ARTICLE_PAGES.issue
 
   return ARTICLE_PAGES.post
 }

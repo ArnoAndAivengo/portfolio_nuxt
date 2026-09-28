@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 02"
 theme: "LearnPortal · выпуск 02"
 asideLead: "Почему курсы в Markdown и git: папки, frontmatter и sync в PostgreSQL."
 excerpt: "Курсы живут в файлах, а не только в БД. Разбираю папки, frontmatter и короткий цикл методиста."
-cover: /images/articles/learnportal/2_issue.png
+cover: /images/articles/codevega/2_issue.png
 coverAlt: "Интерфейс LearnPortal с Markdown-курсом, графиками и терминалом сборки"
 feed: issues
 issue: "02"
@@ -16,7 +16,7 @@ detailsLabel: "Серия"
 detailsValue: "техблог LearnPortal · выпуск 02"
 ---
 
-В [первом посте](/articles/learnportal-tehblog-01) обещал разобрать, как устроены курсы в `course-content/` и почему контент живёт в файлах, а не сразу в админке. Этот выпуск — про **зачем** так сделано и **как** собрать курс: от папки на диске до страницы `/courses/...`.
+В [первом посте](/articles/codevega-tehblog-01) обещал разобрать, как устроены курсы в `course-content/` и почему контент живёт в файлах, а не сразу в админке. Этот выпуск — про **зачем** так сделано и **как** собрать курс: от папки на диске до страницы `/courses/...`.
 
 ## Зачем Markdown, а не сразу БД
 
@@ -194,7 +194,7 @@ npm run sync:html-all             # все три
 
 ## Что дальше в техблоге
 
-Из списка во [вводном посте](/articles/learnportal-tehblog-01) ещё впереди: 
+Из списка во [вводном посте](/articles/codevega-tehblog-01) ещё впереди: 
 - **скорость и кэш** — что отдаём из API. 
 - Прозрачность разработки, Ubuntu, Docker и nginx.
 

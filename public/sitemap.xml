@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arnoandaivengo.ru/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
@@ -20,13 +20,13 @@
   </url>
   <url>
     <loc>https://arnoandaivengo.ru/articles</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://arnoandaivengo.ru/articles/techblog</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -61,50 +61,56 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-01</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-01</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-02</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-02</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-03</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-03</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-04</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-04</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-05</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-05</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-06</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-06</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-07</loc>
-    <lastmod>2026-09-17</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-07</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://arnoandaivengo.ru/articles/learnportal-tehblog-08</loc>
-    <lastmod>2026-09-15</lastmod>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-08</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://arnoandaivengo.ru/articles/codevega-tehblog-09</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -122,7 +128,7 @@
   </url>
   <url>
     <loc>https://arnoandaivengo.ru/projects/codevega</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 03"
 theme: "LearnPortal · выпуск 03"
 asideLead: "Прозрачность разработки: локальный сервер уже есть, отдельный из интернета — впереди."
 excerpt: "Четвёртое требование — прозрачность. Пока всё на локальном сервере. Отдельный сервер из интернета соберу позже — с тем же стеком."
-cover: /images/articles/learnportal/3_issue.png
+cover: /images/articles/codevega/3_issue.png
 coverAlt: "Серверная стойка Ubuntu рядом с логотипами Ubuntu и nginx"
 feed: issues
 issue: "03"
@@ -16,8 +16,8 @@ detailsLabel: "Серия"
 detailsValue: "техблог LearnPortal · выпуск 03"
 ---
 
-В [вводном посте](/articles/learnportal-tehblog-01) разбирали три требования: дешёвая поддержка, дешёвые курсы и современный стек.
-Во [втором посте](/articles/learnportal-tehblog-02) — как контент живёт в Markdown.
+В [вводном посте](/articles/codevega-tehblog-01) разбирали три требования: дешёвая поддержка, дешёвые курсы и современный стек.
+Во [втором посте](/articles/codevega-tehblog-02) — как контент живёт в Markdown.
 
 Сегодня — про **четвёртое требование: прозрачность разработки**.
 

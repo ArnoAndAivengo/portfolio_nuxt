@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 07"
 theme: "LearnPortal · выпуск 07"
 asideLead: "Как выкатываю фронт LearnPortal: сборка, контейнер, nginx и проверки после деплоя."
 excerpt: "Как устроена выкладка фронта: сборка, контейнер, nginx и короткая проверка после релиза."
-cover: /images/articles/learnportal/7_issue.png
+cover: /images/articles/codevega/7_issue.png
 coverAlt: "Ноутбук LearnPortal с голографическим экраном деплоя v2.4.1"
 feed: issues
 issue: "07"
@@ -39,7 +39,7 @@ detailsValue: "техблог LearnPortal · выпуск 07"
 
 Самая неприятная ошибка: контейнер поднялся, а в браузере старый адрес API, не тот домен или пустой раздел.
 
-Про ловушку `NUXT_PUBLIC_*` я уже писал в [выпуске 03](/articles/learnportal-tehblog-03): эти переменные попадают в бандл на этапе **build**, не при restart.
+Про ловушку `NUXT_PUBLIC_*` я уже писал в [выпуске 03](/articles/codevega-tehblog-03): эти переменные попадают в бандл на этапе **build**, не при restart.
 
 ## Зачем контейнер
 

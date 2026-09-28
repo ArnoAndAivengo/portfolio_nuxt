@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import './tags.css'
-
 defineProps<{
   items: string[]
 }>()

@@ -8,7 +8,7 @@ kicker: "техблог LearnPortal · выпуск 05"
 theme: "LearnPortal · выпуск 05"
 asideLead: "Как грузятся MD-файлы, что отдаёт API, как рисуется урок — и что ломается, если в поставку добавить картинки или видео."
 excerpt: "Файлы → база → API → markdown-it. Картинки и видео в ту же поставку нельзя класть как есть. Разбираю, как ускорить доставку."
-cover: /images/articles/learnportal/5_issue.png
+cover: /images/articles/codevega/5_issue.png
 coverAlt: "Голографическое окно кода с кэшем, API и импортом файлов"
 feed: issues
 issue: "05"
@@ -23,7 +23,7 @@ detailsValue: "техблог LearnPortal · выпуск 05"
 
 ## Как грузятся MD-файлы
 
-Структуру папок разбирал во [втором выпуске](/articles/learnportal-tehblog-02). Коротко путь такой:
+Структуру папок разбирал во [втором выпуске](/articles/codevega-tehblog-02). Коротко путь такой:
 
 ```
 course-content/   (theory.md, quiz.md, practice.md, bonus.md, homework.md)
