@@ -11,11 +11,13 @@ export function applyTheme(on: boolean) {
 
   document.documentElement.classList.toggle('dark', on)
 
+  const mode = on ? 'dark' : 'light'
   try {
-    localStorage.setItem(THEME_KEY, on ? 'dark' : 'light')
+    localStorage.setItem(THEME_KEY, mode)
   } catch {
     /* ignore */
   }
+  document.cookie = `${THEME_KEY}=${mode}; Path=/; Max-Age=31536000; SameSite=Lax`
 
   const input = document.getElementById('theme-toggle')
 

@@ -95,6 +95,10 @@ body {
   transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
 
+html:not(.theme-settled) body {
+  transition: none;
+}
+
 a {
   color: var(--accent);
 }

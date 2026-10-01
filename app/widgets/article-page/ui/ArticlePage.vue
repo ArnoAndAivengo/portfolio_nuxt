@@ -15,7 +15,7 @@ if (!page.value) {
 usePageSeo({
   title: () => page.value?.title,
   description: () => page.value?.description || home.value?.seoDescription,
-  path: () => route.path,
+  path: () => route.path.replace(/\/+$/, '') || '/',
   type: 'article',
   image: () => page.value?.cover ? siteUrl(page.value.cover) : home.value?.ogImage,
   author: () => home.value?.name,
