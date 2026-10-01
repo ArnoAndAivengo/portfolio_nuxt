@@ -194,6 +194,7 @@ export default defineNuxtConfig({
     '/articles/codevega-tehblog-07.html': { redirect: { to: '/articles/codevega-tehblog-07', statusCode: 301 } },
     '/articles/codevega-tehblog-08.html': { redirect: { to: '/articles/codevega-tehblog-08', statusCode: 301 } },
     '/articles/codevega-tehblog-09.html': { redirect: { to: '/articles/codevega-tehblog-09', statusCode: 301 } },
+    '/articles/codevega-tehblog-10.html': { redirect: { to: '/articles/codevega-tehblog-10', statusCode: 301 } },
     '/articles/learnportal-tehblog-01': { redirect: { to: '/articles/codevega-tehblog-01', statusCode: 301 } },
     '/articles/learnportal-tehblog-01.html': { redirect: { to: '/articles/codevega-tehblog-01', statusCode: 301 } },
     '/articles/learnportal-tehblog-02': { redirect: { to: '/articles/codevega-tehblog-02', statusCode: 301 } },
@@ -212,5 +213,7 @@ export default defineNuxtConfig({
     '/articles/learnportal-tehblog-08.html': { redirect: { to: '/articles/codevega-tehblog-08', statusCode: 301 } },
     '/articles/learnportal-tehblog-09': { redirect: { to: '/articles/codevega-tehblog-09', statusCode: 301 } },
     '/articles/learnportal-tehblog-09.html': { redirect: { to: '/articles/codevega-tehblog-09', statusCode: 301 } },
+    '/articles/learnportal-tehblog-10': { redirect: { to: '/articles/codevega-tehblog-10', statusCode: 301 } },
+    '/articles/learnportal-tehblog-10.html': { redirect: { to: '/articles/codevega-tehblog-10', statusCode: 301 } },
   },
 })

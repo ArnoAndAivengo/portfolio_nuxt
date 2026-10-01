@@ -170,15 +170,19 @@
 }
 
 .article-page__body blockquote {
-  margin: 1.5rem 0;
-  padding: 0.85rem 1rem 0.85rem 1.1rem;
+  margin: 1.5rem 0 1.5rem auto;
+  max-width: fit-content;
+  padding: 0.85rem 1.1rem 0.85rem 1rem;
   background: color-mix(in srgb, var(--page-accent) 10%, transparent);
   color: var(--text-strong);
-  border-radius: 0 0.35rem 0.35rem 0;
+  text-align: right;
+  border-radius: 0.35rem;
+  border: 1px solid var(--page-accent);
 }
 
 .article-page__body blockquote p {
   margin: 0;
+  text-align: right;
 }
 
 .article-page__body code {
@@ -199,6 +203,12 @@
   background: color-mix(in srgb, var(--bg-elevated) 80%, #000);
   font-size: 0.85rem;
   line-height: 1.55;
+}
+
+.article-page__body pre:has(code.language-rules),
+.article-page__body pre.language-rules {
+  height: 450px;
+  overflow: auto;
 }
 
 .article-page__body pre code {
